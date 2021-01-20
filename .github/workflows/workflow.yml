@@ -31,17 +31,18 @@ jobs:
   package:
     needs: test
     runs-on: self-hosted
-    container: python:3.9-windowsservercore-1809
+    container: python:3.9-buster
 
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
+          apt install -y wine64
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Package
-        run: build_executable.bat
+        run: wine cmd /c build_executable.bat
       - name: Upload Build
         uses: actions/upload-artifact@v2
         with:
