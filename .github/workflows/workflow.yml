@@ -9,7 +9,7 @@ jobs:
   test:
 
     runs-on: self-hosted
-    container: ubuntu:18.04
+    container: python:3.9.1-buster
 
     steps:
     - uses: actions/checkout@v2
