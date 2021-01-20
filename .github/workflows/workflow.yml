@@ -39,7 +39,7 @@ jobs:
         run: |
           apt update
           apt install -y wine64
-          chown -R $USER: /github/home
+          chown -R root:root /github/home
           echo $USER
           ls -la /github/
           python -m pip install --upgrade pip
