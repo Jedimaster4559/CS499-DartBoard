@@ -31,7 +31,7 @@ jobs:
   package:
     needs: test
     runs-on: self-hosted
-    container: python:3.9-buster
+    container: tobix/pywine:3.9
 
     steps:
       - uses: actions/checkout@v2
@@ -39,9 +39,9 @@ jobs:
         run: |
           apt update
           apt install -y wine64
-          chown -R root:root /github/home
-          echo $USER
-          ls -la /github/
+          # chown -R root:root /github/home
+          # echo $USER
+          # ls -la /github/
           python -m pip install --upgrade pip
           pip install flake8 pytest
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
