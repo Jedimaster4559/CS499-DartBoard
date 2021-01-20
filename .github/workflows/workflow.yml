@@ -43,8 +43,8 @@ jobs:
           # echo $USER
           # ls -la /github/
           wine cmd /c python -m pip install --upgrade pip
-          wind cmd /c pip install flake8 pytest
-          if [ -f requirements.txt ]; then wind cmd /c pip install -r requirements.txt; fi
+          wine cmd /c pip install flake8 pytest
+          if [ -f requirements.txt ]; then wine cmd /c pip install -r requirements.txt; fi
       - name: Package
         run: wine cmd /c build_executable.bat
       - name: Upload Build
