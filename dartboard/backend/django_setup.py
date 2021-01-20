@@ -2,7 +2,8 @@
 # django_setup.py
 #
 # This contains any functions necessary to setup
-# and configure django
+# and configure django. This should only be called
+# once at the very beginning of execution.
 ##################
 import django
 from django.core.management import call_command
