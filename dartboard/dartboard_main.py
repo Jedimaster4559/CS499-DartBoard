@@ -1,6 +1,4 @@
 ###################
-# @package dartboard
-#
 # The entry point for our dartboard
 # application. This should kick off all
 # of the main processes of our application.

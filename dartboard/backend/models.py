@@ -1,6 +1,4 @@
 ###################
-# @package dartboard.backend
-#
 # Contains all of the models
 # to be included in the database
 ###################

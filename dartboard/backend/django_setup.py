@@ -1,6 +1,4 @@
 ##################
-# @package dartboard.backend
-#
 # This contains any functions necessary to setup
 # and configure django. This should only be called
 # once at the very beginning of execution.

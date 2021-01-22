@@ -1,6 +1,4 @@
 ###################
-# @package dartboard.backend
-#
 # This is a basic app configuration
 # to allow django to detect that the
 # backend actually exists here.

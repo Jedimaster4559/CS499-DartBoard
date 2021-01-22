@@ -1,6 +1,4 @@
 ###################
-# @package dartboard.tests
-#
 # A basic example of how to write a unit test. Note that the class name here starts with the word "test".
 # This allows pytest to pick this up as a test class.
 ###################
