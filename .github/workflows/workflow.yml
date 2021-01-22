@@ -67,6 +67,6 @@ jobs:
           doxygen doxygen.conf
       - name: Upload Documentation
         uses: actions/upload-artifact@v2
-          with:
-            name: Dartboard Documentation
-            path: doxygen_docs/
+        with:
+          name: Dartboard Documentation
+          path: doxygen_docs/
