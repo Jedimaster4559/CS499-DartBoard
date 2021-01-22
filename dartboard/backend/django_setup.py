@@ -1,5 +1,5 @@
 ##################
-# django_setup.py
+# @package dartboard.backend
 #
 # This contains any functions necessary to setup
 # and configure django. This should only be called
@@ -11,6 +11,9 @@ from django.conf import settings
 from pathlib import Path
 
 
+##
+# Basic setup function for the backend. This automatically configures
+# django and migrates the database to the latest version
 def setup():
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     base_dir = Path(__file__).resolve().parent.parent

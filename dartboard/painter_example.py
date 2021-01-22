@@ -135,8 +135,9 @@ class Window(QGraphicsView):
 
 # runner code
 
+##
 # create application and window
-def open():
+def start_window():
     app = QApplication(sys.argv)
     window = Window()
     sys.exit(app.exec_())
