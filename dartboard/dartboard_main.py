@@ -4,7 +4,7 @@
 # of the main processes of our application.
 ###################
 from backend import django_setup
-from MainWindow import MainWindow
+from Hub import Hub
 from PySide2.QtWidgets import QApplication
 import sys
 
@@ -23,7 +23,7 @@ import extra_imports
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
-    window = MainWindow()
+    window = Hub()
     window.show()
 
     sys.exit(app.exec_())

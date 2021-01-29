@@ -1,41 +1,54 @@
-from PySide2.QtWidgets import QApplication, QWidget
-from PySide2.QtWidgets import *
+##################
+# DartboardView contains any functions necessary to
+# render a Dartboard graphic. There are functions to
+# resize, repaint, and draw points on the board when
+# clicked.
+##################
+from PySide2.QtWidgets import QApplication, QWidget, QGraphicsView, QGraphicsScene
 from PySide2.QtGui import QPainter, QPen, QBrush, QPolygon, QFont
 from PySide2.QtCore import Qt, QPoint
 import sys
 import math
 
-from backend.models import DartboardHit
- 
+##
+# DartboardView class inherits QGraphicsView
+# and adds additional functionality to represent
+# a clickable and resizable dartboard.
+
 class DartboardView(QGraphicsView):
     
-    #constructor for QGraphicsView subclass
+    ##
+    # constructor for QGraphicsView subclass
     def __init__(self, parent=None):
 
-        #call parent constructor
+        # call parent constructor
         super().__init__(parent)
 
-        #set and set scene for QGraphicsView
+        # set and set scene for QGraphicsView
         self.scene = QGraphicsScene(self)
         self.scene.setBackgroundBrush(QBrush(Qt.white))
         self.setScene(self.scene)
 
-        #set variables and constants
+        # set variables and constants
+        
         self.WindowSizeX = 300
         self.WindowSizeY = 300
         self.WindowPosX = 300
         self.WindowPosY = 300
+
+        # this variable sets the number of vertices within each rendered circle
+        # it must be a multiple of 20 to paint the dartboard correctly
         self.regionVertices = 100
+
+        # this variable defines the number of regions on a dartboard
         self.regions = 20
+
+        
         self.radius = 0
         self.scores = ["6", "10", "15", "2", "17", "3", "19", "7", "16", "8", "11", "14", "9", "12", "5", "20", "1", "18", "4", "13"]
-        self.score_labels = []
 
         #this list holds the points
         self.points = []
-
-        #names window
-        self.setWindowTitle("Pyside2 Drawing Polygon")
 
         #sets initial geometry for the window
         self.setGeometry(self.WindowPosX, self.WindowPosY, self.WindowSizeX, self.WindowSizeY)
@@ -52,15 +65,7 @@ class DartboardView(QGraphicsView):
 
          #this call could be used to get your mock points        
          #print(event.pos())
-         #
-
-         # this call could be used to get your mock points
-         print(event.pos())
-
-         #
-         hit = DartboardHit(x=event.pos().x(), y=event.pos().y())
-         hit.save()
-         print(DartboardHit.objects.all())
+        
 
          #this stores the real position of the click by adding together the top left position of the window with the click position relative to the window
          realPosition = QPoint(event.pos().x() + self.WindowPosX, event.pos().y() + self.WindowPosY)
@@ -94,7 +99,6 @@ class DartboardView(QGraphicsView):
         #recall the drawing function to replace the circles and points with the new size
         self.DrawRegions()
 
-        #tbh idek what this does
         super().resizeEvent(event)
         
     #helper used to calculate circular coordinates
@@ -103,14 +107,30 @@ class DartboardView(QGraphicsView):
         pi = math.pi
         points = [QPoint(math.cos(2*pi/n*x)*r + self.WindowPosX + (self.WindowSizeX / 2.0), math.sin(2*pi/n*x)*r + self.WindowPosY + (self.WindowSizeY / 2.0)) for x in range(0,n+1)]
         for p in points:
-            self.rotate(p, -pi/19)
+            self.rotate(p, -pi/20)
         return points
 
     def rotate(self, point, angle):
+        # Get Center of Dartboard
         centerX = self.WindowPosX + (self.WindowSizeX / 2.0)
         centerY = self.WindowPosY + (self.WindowSizeY / 2.0)
-        point.setX(centerX + math.cos(angle) * (point.x() - centerX) - math.sin(angle) * (point.y() - centerY))
-        point.setY(centerY + math.sin(angle) * (point.x() - centerX) + math.cos(angle) * (point.y() - centerY))
+        
+        # Calculate important trig information
+        sin = math.sin(angle)
+        cos = math.cos(angle)
+        
+        # Offset points so the center is the origin
+        px = point.x() - centerX
+        py = point.y() - centerY
+        
+        # Calculate new rotated points
+        xnew = (px * cos) - (py * sin)
+        ynew = (px * sin) + (py * cos)
+        
+        # Update actual point data
+        point.setX(xnew + centerX)
+        point.setY(ynew + centerY)
+
         
     #function used to draw all the shapes
     def DrawRegions(self):
@@ -286,14 +306,3 @@ class DartboardView(QGraphicsView):
             y_dec = self.radius * p[1]
             self.scene.addEllipse(self.WindowPosX + (self.WindowSizeX / 2.0) + x_dec, self.WindowPosY + (self.WindowSizeY / 2.0) + y_dec, 3, 3, QPen(), QBrush(Qt.white))
 
-
-
-
-
-
-#runner code
-
-#create application and window
-#app = QApplication(sys.argv)
-#window = Window()
-#sys.exit(app.exec_())

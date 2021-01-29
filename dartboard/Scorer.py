@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'TestUI.ui'
+## Form generated from reading UI file 'Scorer.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -15,12 +15,12 @@ from PySide2.QtWidgets import *
 from DartboardView import DartboardView
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(719, 527)
-        self.centralwidget = QWidget(MainWindow)
+class Ui_Scorer(object):
+    def setupUi(self, Scorer):
+        if not Scorer.objectName():
+            Scorer.setObjectName(u"Scorer")
+        Scorer.resize(719, 527)
+        self.centralwidget = QWidget(Scorer)
         self.centralwidget.setObjectName(u"centralwidget")
         self.formLayout = QFormLayout(self.centralwidget)
         self.formLayout.setObjectName(u"formLayout")
@@ -29,21 +29,21 @@ class Ui_MainWindow(object):
 
         self.formLayout.setWidget(0, QFormLayout.FieldRole, self.graphicsView)
 
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(MainWindow)
+        Scorer.setCentralWidget(self.centralwidget)
+        self.menubar = QMenuBar(Scorer)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 719, 21))
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow)
+        Scorer.setMenuBar(self.menubar)
+        self.statusbar = QStatusBar(Scorer)
         self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        Scorer.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Scorer)
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(Scorer)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+    def retranslateUi(self, Scorer):
+        Scorer.setWindowTitle(QCoreApplication.translate("Scorer", u"MainWindow", None))
     # retranslateUi
 
