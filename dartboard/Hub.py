@@ -1,11 +1,16 @@
-from Scorer import Ui_Scorer
+from ScorerWindow import ScorerWindow
+from StartMenuWindow import StartMenuWindow
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
 
-class Hub(QMainWindow):
+class Hub():
     def __init__(self):
-        super(Hub, self).__init__()
-        self.ui = Ui_Scorer()
-        self.ui.setupUi(self)
+
+
+        self.start_menu = StartMenuWindow(self)
+        self.start_menu.show()
+
+        self.scorer = ScorerWindow(self)
+        #self.scorer.show()
 
     #add functions and high level things here
