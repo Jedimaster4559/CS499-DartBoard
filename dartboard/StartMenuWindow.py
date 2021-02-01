@@ -14,4 +14,4 @@ class StartMenuWindow(QMainWindow):
 
     def new_match(self):
         self.hide()
-        self.hub.scorer.show()
+        self.hub.navigate_to_view("start_game_configuration")
