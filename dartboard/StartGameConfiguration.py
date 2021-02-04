@@ -96,10 +96,10 @@ class Ui_StartGameConfiguration(object):
 
         self.gridLayout.addWidget(self.lifetime_avg_checkbox, 14, 3, 1, 1, Qt.AlignLeft)
 
-        self.lineEdit_3 = QLineEdit(self.centralwidget)
-        self.lineEdit_3.setObjectName(u"lineEdit_3")
+        self.location_line_edit = QLineEdit(self.centralwidget)
+        self.location_line_edit.setObjectName(u"location_line_edit")
 
-        self.gridLayout.addWidget(self.lineEdit_3, 5, 0, 1, 7)
+        self.gridLayout.addWidget(self.location_line_edit, 5, 0, 1, 7)
 
         self.leg_value_501_radio_button = QRadioButton(self.centralwidget)
         self.leg_value_501_radio_button.setObjectName(u"leg_value_501_radio_button")
@@ -162,8 +162,8 @@ class Ui_StartGameConfiguration(object):
         self.statusbar.setObjectName(u"statusbar")
         StartGameConfiguration.setStatusBar(self.statusbar)
         QWidget.setTabOrder(self.player_one_line_edit, self.player_two_line_edit)
-        QWidget.setTabOrder(self.player_two_line_edit, self.lineEdit_3)
-        QWidget.setTabOrder(self.lineEdit_3, self.date_edit)
+        QWidget.setTabOrder(self.player_two_line_edit, self.location_line_edit)
+        QWidget.setTabOrder(self.location_line_edit, self.date_edit)
         QWidget.setTabOrder(self.date_edit, self.number_of_legs_spin_box)
         QWidget.setTabOrder(self.number_of_legs_spin_box, self.number_of_sets_spin_box)
         QWidget.setTabOrder(self.number_of_sets_spin_box, self.leg_value_801_radio_button)

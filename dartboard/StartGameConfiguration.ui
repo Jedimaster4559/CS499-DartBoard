@@ -114,7 +114,7 @@
      </widget>
     </item>
     <item row="5" column="0" colspan="7">
-     <widget class="QLineEdit" name="lineEdit_3"/>
+     <widget class="QLineEdit" name="location_line_edit"/>
     </item>
     <item row="11" column="3" alignment="Qt::AlignHCenter">
      <widget class="QRadioButton" name="leg_value_501_radio_button">
@@ -213,7 +213,7 @@
  <tabstops>
   <tabstop>player_one_line_edit</tabstop>
   <tabstop>player_two_line_edit</tabstop>
-  <tabstop>lineEdit_3</tabstop>
+  <tabstop>location_line_edit</tabstop>
   <tabstop>date_edit</tabstop>
   <tabstop>number_of_legs_spin_box</tabstop>
   <tabstop>number_of_sets_spin_box</tabstop>
