@@ -7,7 +7,7 @@ from backend import django_setup
 
 def main():
     """Run administrative tasks."""
-    django_setup.setup()
+    # django_setup.setup()
 
     try:
         from django.core.management import execute_from_command_line

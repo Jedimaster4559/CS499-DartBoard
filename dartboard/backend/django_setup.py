@@ -30,8 +30,9 @@ def setup():
     ]
 
     # Apply the settings and initialize django
-    settings.configure(DEBUG=True, DATABASES=db_config, INSTALLED_APPS=apps)
-    django.setup()
+    if not settings.configured:
+        settings.configure(DEBUG=True, DATABASES=db_config, INSTALLED_APPS=apps)
+        django.setup()
 
     # Update the database
     call_command("migrate")

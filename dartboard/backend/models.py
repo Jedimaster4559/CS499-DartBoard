@@ -5,13 +5,13 @@
 import uuid
 from django.db import models
 
-
-##
-# This is a basic model class designed to show backend proof of concept
-class DartboardHit(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    x = models.IntegerField(default=0)
-    y = models.IntegerField(default=0)
-
-    def __str__(self):
-        return str(self.x) + ', ' + str(self.y)
+# This is the file that django will look for when searching
+# for models. In order to have better organization, we
+# separate all the models into the model package and then
+# import them here so django knows they exist
+from backend.model.dartboard_hit import DartboardHit
+from backend.model.leg import Leg
+from backend.model.match import Match
+from backend.model.match_player import MatchPlayer
+from backend.model.player import Player
+from backend.model.turn import Turn
