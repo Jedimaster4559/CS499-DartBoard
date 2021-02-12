@@ -302,9 +302,9 @@ class DartboardView(QGraphicsView):
             text.setDefaultTextColor(Qt.white)
             text.setFont(font)
             if (len(self.scores[i]) == 2):
-                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 30, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 30)
+                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 10, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 10)
             elif (len(self.scores[i]) == 1):
-                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 15, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 15)
+                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 5, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 5)
       
 
         #draw the the bullseyes
