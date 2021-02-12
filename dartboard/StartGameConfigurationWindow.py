@@ -1,7 +1,6 @@
 from StartGameConfiguration import Ui_StartGameConfiguration
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
-import threading
 
 class StartGameConfigurationWindow(QMainWindow):
     def __init__(self, hub):
@@ -35,4 +34,5 @@ class StartGameConfigurationWindow(QMainWindow):
         
         self.hide()
         self.hub.navigate_to_view("scorer")
+        self.hub.navigate_to_view("scoreboard")
         

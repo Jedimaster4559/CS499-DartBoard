@@ -1,4 +1,5 @@
 from ScorerWindow import ScorerWindow
+from ScoreboardWindow import ScoreboardWindow
 from StartMenuWindow import StartMenuWindow
 from StartGameConfigurationWindow import StartGameConfigurationWindow
 from PySide2.QtWidgets import QApplication, QMainWindow
@@ -17,6 +18,9 @@ class Hub():
         self.start_game_configuration = StartGameConfigurationWindow(self)
         #self.start_game_configuration.show()
 
+        self.scoreboard = ScoreboardWindow(self)
+        #self.scoreboard.show()
+
     #add functions and high level things here
 
     def navigate_to_view(self, name):
@@ -26,3 +30,5 @@ class Hub():
             self.start_game_configuration.show()
         elif (name == "scorer"):
             self.scorer.show()
+        elif (name == "scoreboard"):
+            self.scoreboard.show()

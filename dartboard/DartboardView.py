@@ -23,6 +23,8 @@ class DartboardView(QGraphicsView):
 
         # call parent constructor
         super().__init__(parent)
+        self.setRenderHint(QPainter.Antialiasing)
+        self.setRenderHint(QPainter.SmoothPixmapTransform)
 
         # set and set scene for QGraphicsView
         self.scene = QGraphicsScene(self)
@@ -36,9 +38,10 @@ class DartboardView(QGraphicsView):
         self.WindowPosX = 300
         self.WindowPosY = 300
 
+
         # this variable sets the number of vertices within each rendered circle
         # it must be a multiple of 20 to paint the dartboard correctly
-        self.regionVertices = 100
+        self.regionVertices = 2000
 
         # this variable defines the number of regions on a dartboard
         self.regions = 20
@@ -135,6 +138,10 @@ class DartboardView(QGraphicsView):
     #function used to draw all the shapes
     def DrawRegions(self):
 
+        Pen = QPen()
+        Pen.setColor(Qt.black)
+        Pen.setWidth(3)
+
         #clear the scene
         self.scene.clear()
         if (self.WindowSizeX <= self.WindowSizeY):
@@ -190,9 +197,9 @@ class DartboardView(QGraphicsView):
         color = True
         for i in self.inner_regions:
             if (color):
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.white))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.white))
             else:
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.black))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.black))
             color = not color
 
             
@@ -213,9 +220,9 @@ class DartboardView(QGraphicsView):
         color = True
         for i in self.triples_regions:
             if (color):
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.red))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.red))
             else:
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.green))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.green))
             color = not color
 
 
@@ -237,9 +244,9 @@ class DartboardView(QGraphicsView):
         color = True
         for i in self.outer_regions:
             if (color):
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.white))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.white))
             else:
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.black))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.black))
             color = not color
 
 
@@ -259,10 +266,11 @@ class DartboardView(QGraphicsView):
 
         color = True
         for i in self.doubles_regions:
+            
             if (color):
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.red))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.red))
             else:
-                self.scene.addPolygon(i, QPen(), QBrush(Qt.green))
+                self.scene.addPolygon(i, Pen, QBrush(Qt.green))
             color = not color
 
         self.border_regions = []
@@ -280,25 +288,28 @@ class DartboardView(QGraphicsView):
             self.border_regions.append(QPolygon(dpoints))
 
         for i in self.border_regions:
-            self.scene.addPolygon(i, QPen(), QBrush(Qt.black))
+            self.scene.addPolygon(i, Pen, QBrush(Qt.black))
 
 
 
 
 
-
+        font = QFont("Helvetica")
+        font.setPointSize(12)
         for i in range(self.regions):
+            
             text = self.scene.addText(self.scores[i])
             text.setDefaultTextColor(Qt.white)
+            text.setFont(font)
             if (len(self.scores[i]) == 2):
-                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 10, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 10)
+                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 30, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 30)
             elif (len(self.scores[i]) == 1):
-                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 5, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 5)
+                text.setPos((self.border_regions[i][0].x() + self.border_regions[i][(self.regionVertices // self.regions) + 1].x()) / 2.0 - 15, (self.border_regions[i][0].y() + self.border_regions[i][(self.regionVertices // self.regions) + 1].y()) / 2.0 - 15)
       
 
         #draw the the bullseyes
-        self.scene.addPolygon(self.outer_bullseye, QPen(), QBrush(Qt.green))
-        self.scene.addPolygon(self.bullseye, QPen(), QBrush(Qt.red))
+        self.scene.addPolygon(self.outer_bullseye, Pen, QBrush(Qt.green))
+        self.scene.addPolygon(self.bullseye, Pen, QBrush(Qt.red))
 
         #calculate and draw the points that were initially placed before resize
         for p in self.points:
