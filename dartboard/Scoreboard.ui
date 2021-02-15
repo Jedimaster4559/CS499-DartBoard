@@ -31,7 +31,7 @@
       </property>
       <property name="font">
        <font>
-        <family>MS Gothic</family>
+        <family>Segoe UI</family>
         <pointsize>16</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -41,7 +41,7 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(223, 223, 223);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -246,20 +246,20 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>100</width>
+        <width>102</width>
         <height>100</height>
        </size>
       </property>
       <property name="font">
        <font>
-        <family>MS Gothic</family>
+        <family>Segoe UI</family>
         <pointsize>16</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(223, 223, 223);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -352,7 +352,7 @@
       </property>
       <property name="font">
        <font>
-        <family>MS Gothic</family>
+        <family>Segoe UI</family>
         <pointsize>16</pointsize>
         <weight>75</weight>
         <bold>true</bold>
@@ -362,7 +362,7 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(223, 223, 223);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -409,14 +409,14 @@
       </property>
       <property name="font">
        <font>
-        <family>MS Gothic</family>
+        <family>Segoe UI</family>
         <pointsize>16</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(223, 223, 223);</string>
+       <string notr="true"/>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -600,16 +600,6 @@
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1543</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
