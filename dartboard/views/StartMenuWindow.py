@@ -1,4 +1,4 @@
-from StartMenu import Ui_StartMenu
+from views.StartMenu import Ui_StartMenu
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
 

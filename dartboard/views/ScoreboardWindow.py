@@ -1,4 +1,4 @@
-from Scoreboard import Ui_Scoreboard
+from views.Scoreboard import Ui_Scoreboard
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
 

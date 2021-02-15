@@ -1,4 +1,4 @@
-from StartGameConfiguration import Ui_StartGameConfiguration
+from views.StartGameConfiguration import Ui_StartGameConfiguration
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
 

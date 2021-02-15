@@ -1,4 +1,4 @@
-from Scorer import Ui_Scorer
+from views.Scorer import Ui_Scorer
 from PySide2.QtWidgets import QApplication, QMainWindow
 import sys
 
