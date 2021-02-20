@@ -31,8 +31,11 @@ class StartGameConfigurationWindow(QMainWindow):
         print("{}".format(self.ui.season_180s_checkbox.checkState()))
 
         #get player object through player name
+
+        
         
         self.hide()
         self.hub.navigate_to_view("scorer")
         self.hub.navigate_to_view("scoreboard")
+        self.hub.send_match_id(match_id)
         

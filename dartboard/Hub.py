@@ -2,6 +2,7 @@ from views.ScorerWindow import ScorerWindow
 from views.StartMenuWindow import StartMenuWindow
 from views.StartGameConfigurationWindow import StartGameConfigurationWindow
 from views.ScoreboardWindow import ScoreboardWindow
+from views.ManagePlayersWindow import ManagePlayersWindow
 
 from PySide2.QtGui import QPalette, QColor
 from PySide2.QtCore import Qt
@@ -25,6 +26,8 @@ class Hub(QApplication):
 
         self.scoreboard = ScoreboardWindow(self)
         #self.scoreboard.show()
+
+        self.manage_players = ManagePlayersWindow(self)
 
     #add functions and high level things here
     def set_style(self):
@@ -54,3 +57,9 @@ class Hub(QApplication):
             self.scorer.show()
         elif (name == "scoreboard"):
             self.scoreboard.show()
+        elif (name == "manage_players"):
+            self.manage_players.show()
+
+    def send_match_id(self, match_id):
+        self.scorer.match_id = match_id
+        self.scoreboard.match_id = match_id
