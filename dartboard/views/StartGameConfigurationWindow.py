@@ -1,6 +1,6 @@
 from views.StartGameConfiguration import Ui_StartGameConfiguration
 from PySide2.QtWidgets import QApplication, QMainWindow, QCompleter
-from backend.dartboard_api import search_players, get_players_by_name
+from backend.dartboard_api import search_players, get_player_by_full_name, create_match
 import sys
 
 class StartGameConfigurationWindow(QMainWindow):
@@ -26,10 +26,14 @@ class StartGameConfigurationWindow(QMainWindow):
 
 
     def start_game(self):
+        print("\n\n")
+        
         player_one_name = self.ui.player_one_combo_box.currentText()
+        print(player_one_name)
         player_one = get_player_by_full_name(player_one_name)
         
         player_two_name = self.ui.player_two_combo_box.currentText()
+        print(player_two_name)
         player_two = get_player_by_full_name(player_two_name)
 
         
