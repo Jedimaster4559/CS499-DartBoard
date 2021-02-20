@@ -75,9 +75,21 @@ class DartboardView(QGraphicsView):
 
          #check for collisions with each region
          if (self.bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-             print("bullseye")
-         #elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-             #print("outer bullseye")
+            print("bullseye")
+         elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
+            print("outer bullseye")
+         for i in range(20):
+             if self.doubles_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
+                print("doubles")
+         for i in range(20):
+             if self.triples_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
+                print("triples")
+         for i in range(20):
+             if self.border_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
+                print("border")
+         for i in range(20):
+             if self.outer_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
+                print("outer")
 
          #this line adds an entry for the point that was just placed. It calculates the x and y distance from the center of the circle divided by the current radius of the circle
          #this is used to relocate the points later when the window is resized
