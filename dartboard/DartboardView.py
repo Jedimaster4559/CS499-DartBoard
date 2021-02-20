@@ -69,27 +69,29 @@ class DartboardView(QGraphicsView):
          #this call could be used to get your mock points        
          #print(event.pos())
         
-
          #this stores the real position of the click by adding together the top left position of the window with the click position relative to the window
          realPosition = QPoint(event.pos().x() + self.WindowPosX, event.pos().y() + self.WindowPosY)
 
          #check for collisions with each region
          if (self.bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            print("bullseye")
+            print("bullseye 50")
          elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            print("outer bullseye")
+            print("outer bullseye 25")
          for i in range(20):
              if self.doubles_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("doubles")
-         for i in range(20):
+                print("doubles",int(self.scores[i])*2)
+         
              if self.triples_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("triples")
-         for i in range(20):
+                print("triples",int(self.scores[i])*3)
+         
              if self.border_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("border")
-         for i in range(20):
+                print("border 0")
+        
              if self.outer_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("outer")
+                print("outer",int(self.scores[i]))
+        
+             if self.inner_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
+                print("inner",int(self.scores[i]))
 
          #this line adds an entry for the point that was just placed. It calculates the x and y distance from the center of the circle divided by the current radius of the circle
          #this is used to relocate the points later when the window is resized
