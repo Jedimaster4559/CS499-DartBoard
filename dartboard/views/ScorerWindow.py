@@ -10,3 +10,8 @@ class ScorerWindow(QMainWindow):
 
         self.ui = Ui_Scorer()
         self.ui.setupUi(self)
+
+    def enter_match_id(self, match_id):
+        print(match_id)
+        print("got it")
+    
