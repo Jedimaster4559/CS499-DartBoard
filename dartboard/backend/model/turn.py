@@ -9,3 +9,4 @@ class Turn(models.Model):
     game = models.ForeignKey(Leg, on_delete=models.CASCADE)
     player = models.ForeignKey(MatchPlayer, on_delete=models.CASCADE)
     is_bust = models.BooleanField(default=False)
+    is_committed = models.BooleanField(default=False)

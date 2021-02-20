@@ -15,3 +15,4 @@ from backend.model.match import Match
 from backend.model.match_player import MatchPlayer
 from backend.model.player import Player
 from backend.model.turn import Turn
+from backend.model.set import Set

@@ -13,6 +13,9 @@ class DartboardHit(models.Model):
     score = models.IntegerField(default=0)
     is_bounce_out = models.BooleanField(default=False)
     is_knock_out = models.BooleanField(default=False)
+    is_double = models.BooleanField(default=False)
+    is_triple = models.BooleanField(default=False)
+    is_bullseye = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.x) + ', ' + str(self.y)

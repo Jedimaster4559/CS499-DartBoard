@@ -14,6 +14,9 @@ class MatchPlayer(models.Model):
     # score so if this returns 181, then no lowest score has been set yet
     lowest_turn_score = models.IntegerField(default=181)
     number_of_turns = models.IntegerField(default=0)
+    score_remaining = models.IntegerField(default=301)
+    leg_wins = models.IntegerField(default=0)
+    set_wins = models.IntegerField(default=0)
 
     def update(self, hits):
         # Generate Score
