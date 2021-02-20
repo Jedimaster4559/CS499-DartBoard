@@ -9,7 +9,7 @@ def create_player(first_name, last_name):
 
 
 def get_player_by_full_name(full_name):
-    return Player.objects.get(full_name=full_name).first()
+    return Player.objects.filter(full_name=full_name).first()
 
 
 def get_players_by_name(first_name, last_name):
@@ -36,19 +36,19 @@ def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
     match.save()
 
     # Setup the new players and add them to the match
-    player1_stats = MatchPlayer(match=match.id, player=player1, score_remaining=game_mode)
+    player1_stats = MatchPlayer(match=match, player=player1, score_remaining=game_mode)
     player1_stats.save()
-    player2_stats = MatchPlayer(match=match.id, player=player2, score_remaining=game_mode)
+    player2_stats = MatchPlayer(match=match, player=player2, score_remaining=game_mode)
     player2_stats.save()
 
     # Add all the sets
     for x in range(num_sets):
-        darts_set = Set(match=match.id, best_of_legs_number=num_legs)
+        darts_set = Set(match=match, best_of_legs_number=num_legs)
         darts_set.save()
 
         # Add all the legs
         for y in range(num_legs):
-            leg = Leg(set=darts_set.id, game_mode=game_mode, player1=player1_stats, player2=player2_stats)
+            leg = Leg(set=darts_set, game_mode=game_mode, player1=player1_stats, player2=player2_stats)
             leg.save()
 
         darts_set.save()
