@@ -11,6 +11,10 @@ def get_players_by_name(first_name, last_name):
     return Player.objects.get(first_name=first_name, last_name=last_name)
 
 
+def get_all_players():
+    return Player.objects.all()
+
+
 def get_players_by_id(player_id):
     return Player.objects.get(id=player_id)
 

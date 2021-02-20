@@ -16,7 +16,8 @@ class NewPlayerWindow(QMainWindow):
 
 
     def accept(self):
-        self.manage_players.add_player_to_list(self.ui.first_name_line_edit, self.ui.last_name_line_edit)
+        self.manage_players.add_player_to_list(self.ui.first_name_line_edit.text(), self.ui.last_name_line_edit.text())
+        self.close()
 
     def reject(self):
         self.close()

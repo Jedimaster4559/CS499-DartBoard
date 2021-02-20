@@ -40,3 +40,6 @@ class Player(models.Model):
 
         # Save Results
         self.save()
+
+    def __str__(self):
+        return str(self.first_name) + " " + str(self.last_name)
