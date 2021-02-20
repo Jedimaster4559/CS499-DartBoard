@@ -29,6 +29,9 @@ def search_players(search):
 def get_players_by_id(player_id):
     return Player.objects.get(id=player_id)
 
+def get_match_by_id(match_id):
+    return Match.objects.get(id=match_id)
+
 
 def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
     # Create the new Match
