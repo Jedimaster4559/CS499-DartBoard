@@ -2,9 +2,14 @@ from backend.models import *
 
 
 def create_player(first_name, last_name):
-    player = Player(first_name=first_name, last_name=last_name, current_league_rank=Player.objects.count())
+    full_name = first_name + " " + last_name
+    player = Player(first_name=first_name, last_name=last_name, full_name=full_name, current_league_rank=Player.objects.count())
     player.save()
     return player
+
+
+def get_player_by_full_name(full_name):
+    return Player.objects.get(full_name=full_name).first()
 
 
 def get_players_by_name(first_name, last_name):
@@ -103,6 +108,24 @@ def check_win(turn):
                 score_remaining -= hit.score
 
         return score_remaining == 0 and is_winnable
+
+
+def add_leg_win(winning_player, losing_player, leg):
+    # Mark Winner
+    winning_player.leg_wins = winning_player.leg_wins + 1
+    winning_player.save()
+
+    # Increment Number of Legs Played
+    leg.set.num_legs_complete = leg.set.num_legs_complete + 1
+    leg.set.save()
+    leg.save()
+
+    # Increment Player Stats
+    winning_player.number_of_legs_won = winning_player.number_of_legs_won + 1
+    winning_player.save()
+    losing_player.number_of_legs_lost = losing_player.number_of_legs_lost + 1
+    losing_player.save()
+
 
 
 # Commits a turn to the database. Returns True if the turn could
