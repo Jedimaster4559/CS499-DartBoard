@@ -9,12 +9,18 @@ class Player(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)
+    full_name = models.CharField(max_length=512, default=str(first_name)+" "+str(last_name))
     current_league_rank = models.IntegerField()
     average_season_score = models.DecimalField(default=0, decimal_places=10, max_digits=15)
     average_lifetime_score = models.DecimalField(default=0, decimal_places=10, max_digits=15)
     number_of_180s = models.IntegerField(default=0)
     number_of_season_turns = models.IntegerField(default=0)
     number_of_lifetime_turns = models.IntegerField(default=0)
+    number_of_legs_won = models.IntegerField(default=0)
+    number_of_legs_lost = models.IntegerField(default=0)
+    number_of_sets_won = models.IntegerField(default=0)
+    number_of_sets_lost = models.IntegerField(default=0)
+    number_of_matches_won = models.IntegerField(default=0)
 
     def update(self, hits):
         # Generate Score
