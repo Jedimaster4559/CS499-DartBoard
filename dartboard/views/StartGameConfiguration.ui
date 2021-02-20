@@ -15,24 +15,13 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="13" column="3" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="last_match_win_checkbox">
-      <property name="text">
-       <string>Last Match Win</string>
-      </property>
-     </widget>
+    <item row="5" column="0" colspan="7">
+     <widget class="QLineEdit" name="location_line_edit"/>
     </item>
-    <item row="13" column="2" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="league_rank_checkbox">
+    <item row="11" column="3" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_501_radio_button">
       <property name="text">
-       <string>League Rank</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="3">
-     <widget class="QPushButton" name="start_game_button">
-      <property name="text">
-       <string>Start Game</string>
+       <string>501</string>
       </property>
      </widget>
     </item>
@@ -44,65 +33,9 @@
      </widget>
     </item>
     <item row="1" column="0" colspan="7">
-     <widget class="QLineEdit" name="player_one_line_edit"/>
-    </item>
-    <item row="13" column="4" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="last_champ_win_checkbox">
-      <property name="text">
-       <string>Last Champ Win</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1" colspan="2">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Number of Legs</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="7">
-     <widget class="QLineEdit" name="player_two_line_edit"/>
-    </item>
-    <item row="10" column="2" colspan="3">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Scoring Leg Value</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0" colspan="7">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Player 2 Name</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="4" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_301_radio_button">
-      <property name="text">
-       <string>301</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="4" colspan="2">
-     <widget class="QSpinBox" name="number_of_sets_spin_box"/>
-    </item>
-    <item row="8" column="4" colspan="2">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>Number of Sets</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+     <widget class="QComboBox" name="player_one_combo_box">
+      <property name="editable">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -113,20 +46,17 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="0" colspan="7">
-     <widget class="QLineEdit" name="location_line_edit"/>
-    </item>
-    <item row="11" column="3" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_501_radio_button">
+    <item row="13" column="3" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="last_match_win_checkbox">
       <property name="text">
-       <string>501</string>
+       <string>Last Match Win</string>
       </property>
      </widget>
     </item>
-    <item row="14" column="4" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="season_180s_checkbox">
+    <item row="11" column="2" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_801_radio_button">
       <property name="text">
-       <string>Season 180s</string>
+       <string>801</string>
       </property>
      </widget>
     </item>
@@ -140,6 +70,32 @@
       </property>
      </widget>
     </item>
+    <item row="7" column="0" colspan="7">
+     <widget class="QDateEdit" name="date_edit"/>
+    </item>
+    <item row="10" column="2" colspan="3">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Scoring Leg Value</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1" colspan="2">
+     <widget class="QSpinBox" name="number_of_legs_spin_box"/>
+    </item>
+    <item row="8" column="1" colspan="2">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>Number of Legs</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+     </widget>
+    </item>
     <item row="14" column="2" alignment="Qt::AlignLeft">
      <widget class="QCheckBox" name="season_avg_checkbox">
       <property name="text">
@@ -147,36 +103,10 @@
       </property>
      </widget>
     </item>
-    <item row="6" column="0" colspan="7">
-     <widget class="QLabel" name="label_8">
+    <item row="13" column="2" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="league_rank_checkbox">
       <property name="text">
-       <string>Date</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="2" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_801_radio_button">
-      <property name="text">
-       <string>801</string>
-      </property>
-     </widget>
-    </item>
-    <item row="9" column="1" colspan="2">
-     <widget class="QSpinBox" name="number_of_legs_spin_box"/>
-    </item>
-    <item row="7" column="0" colspan="7">
-     <widget class="QDateEdit" name="date_edit"/>
-    </item>
-    <item row="4" column="0" colspan="7">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>Location</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+       <string>League Rank</string>
       </property>
      </widget>
     </item>
@@ -196,6 +126,84 @@
       </property>
      </spacer>
     </item>
+    <item row="2" column="0" colspan="7">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Player 2 Name</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="4" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="last_champ_win_checkbox">
+      <property name="text">
+       <string>Last Champ Win</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="7">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Date</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="7">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Location</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="4" colspan="2">
+     <widget class="QSpinBox" name="number_of_sets_spin_box"/>
+    </item>
+    <item row="11" column="4" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_301_radio_button">
+      <property name="text">
+       <string>301</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="4" colspan="2">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Number of Sets</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="4" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="season_180s_checkbox">
+      <property name="text">
+       <string>Season 180s</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="3">
+     <widget class="QPushButton" name="start_game_button">
+      <property name="text">
+       <string>Start Game</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0" colspan="7">
+     <widget class="QComboBox" name="player_two_combo_box">
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -211,8 +219,6 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <tabstops>
-  <tabstop>player_one_line_edit</tabstop>
-  <tabstop>player_two_line_edit</tabstop>
   <tabstop>location_line_edit</tabstop>
   <tabstop>date_edit</tabstop>
   <tabstop>number_of_legs_spin_box</tabstop>

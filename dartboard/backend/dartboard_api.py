@@ -14,6 +14,12 @@ def get_players_by_name(first_name, last_name):
 def get_all_players():
     return Player.objects.all()
 
+def search_players(search):
+    first_name_search_results = Player.objects.filter(first_name__contains=search)
+    last_name_search_results = Player.objects.filter(last_name__contains=search)
+    return last_name_search_results | first_name_search_results
+    
+
 
 def get_players_by_id(player_id):
     return Player.objects.get(id=player_id)

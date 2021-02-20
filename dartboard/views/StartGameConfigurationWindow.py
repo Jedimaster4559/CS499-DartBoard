@@ -1,5 +1,6 @@
 from views.StartGameConfiguration import Ui_StartGameConfiguration
-from PySide2.QtWidgets import QApplication, QMainWindow
+from PySide2.QtWidgets import QApplication, QMainWindow, QCompleter
+from backend.dartboard_api import search_players, get_players_by_name
 import sys
 
 class StartGameConfigurationWindow(QMainWindow):
@@ -13,16 +14,44 @@ class StartGameConfigurationWindow(QMainWindow):
 
         self.ui.start_game_button.clicked.connect(self.start_game)
 
+        self.populate_player_names("")
+
+    def populate_player_names(self, text):
+        for x in search_players(text):
+            print(x)
+            self.ui.player_one_combo_box.addItem(str(x))
+            self.ui.player_two_combo_box.addItem(str(x))
+        self.ui.player_one_combo_box.setEditText("")
+        self.ui.player_two_combo_box.setEditText("")
+
+
     def start_game(self):
-        print("{}".format(self.ui.player_one_line_edit.text()))
-        print("{}".format(self.ui.player_two_line_edit.text()))
-        print("{}".format(self.ui.location_line_edit.text()))
-        print("{}".format(self.ui.date_edit.text()))
-        print("{}".format(self.ui.number_of_legs_spin_box.value()))
-        print("{}".format(self.ui.number_of_sets_spin_box.value()))
-        print("{}".format(self.ui.leg_value_801_radio_button.isChecked()))
-        print("{}".format(self.ui.leg_value_501_radio_button.isChecked()))
-        print("{}".format(self.ui.leg_value_301_radio_button.isChecked()))
+        player_one_name = self.ui.player_one_combo_box.currentText()
+        player_one = get_player_by_full_name(player_one_name)
+        
+        player_two_name = self.ui.player_two_combo_box.currentText()
+        player_two = get_player_by_full_name(player_two_name)
+
+        
+
+
+        location = self.ui.location_line_edit.text()
+        date = self.ui.date_edit.text()
+        legs = self.ui.number_of_legs_spin_box.value()
+        sets = self.ui.number_of_sets_spin_box.value()
+
+        game_mode = 0
+
+        if self.ui.leg_value_801_radio_button.isChecked():
+            game_mode = 801
+        elif self.ui.leg_value_501_radio_button.isChecked():
+            game_mode = 501
+        elif self.ui.leg_value_301_radio_button.isChecked():
+            game_mode = 301
+
+        match = create_match(player_one, player_two, sets, legs, game_mode)
+        match_id = match.id
+        
         print("{}".format(self.ui.league_rank_checkbox.checkState()))
         print("{}".format(self.ui.last_match_win_checkbox.checkState()))
         print("{}".format(self.ui.last_champ_win_checkbox.checkState()))
