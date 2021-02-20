@@ -6,7 +6,7 @@
 ##################
 from PySide2.QtWidgets import QApplication, QWidget, QGraphicsView, QGraphicsScene
 from PySide2.QtGui import QPainter, QPen, QBrush, QPolygon, QFont
-from PySide2.QtCore import Qt, QPoint
+from PySide2.QtCore import Qt, QPoint, QObject, Signal
 import sys
 import math
 
@@ -62,36 +62,50 @@ class DartboardView(QGraphicsView):
         #shows the window
         self.show()
 
+    def setup_signal(self, controller):
+        self.controller = controller
+
 
     #this function is called when a point is placed on the window
     def mousePressEvent(self, event):
-
+         
          #this call could be used to get your mock points        
          #print(event.pos())
         
          #this stores the real position of the click by adding together the top left position of the window with the click position relative to the window
          realPosition = QPoint(event.pos().x() + self.WindowPosX, event.pos().y() + self.WindowPosY)
 
+         message = ""
+
          #check for collisions with each region
          if (self.bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            print("bullseye 50")
+            message = "bullseye 50"
          elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            print("outer bullseye 25")
+            message = "outer bullseye 25"
          for i in range(20):
              if self.doubles_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("doubles",int(self.scores[i])*2)
+                #print("doubles",int(self.scores[i])*2)
+                message = "doubles {}".format(int(self.scores[i])*2)
+                
          
              if self.triples_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("triples",int(self.scores[i])*3)
+                #print("triples",int(self.scores[i])*3)
+                message = "triples {}".format(int(self.scores[i])*3)
+
          
              if self.border_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("border 0")
+                #print("border 0")
+                message = "border 0"
         
              if self.outer_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("outer",int(self.scores[i]))
+                #print("outer",int(self.scores[i]))
+                message = "outer {}".format(int(self.scores[i]))
         
              if self.inner_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                print("inner",int(self.scores[i]))
+                #print("inner",int(self.scores[i]))
+                message = "inner {}".format(int(self.scores[i]))
+
+         self.controller.dart_thrown(message)
 
          #this line adds an entry for the point that was just placed. It calculates the x and y distance from the center of the circle divided by the current radius of the circle
          #this is used to relocate the points later when the window is resized
