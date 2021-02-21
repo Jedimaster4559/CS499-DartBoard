@@ -29,6 +29,7 @@ def search_players(search):
 def get_players_by_id(player_id):
     return Player.objects.get(id=player_id)
 
+
 def get_match_by_id(match_id):
     return Match.objects.get(id=match_id)
 
@@ -41,6 +42,7 @@ def get_players_by_match_id(match_id):
     match = get_match_by_id(match_id)
     first_leg = Leg.objects.filter(match=match).first()
     return [first_leg.player1, first_leg.player2]
+
 
 def get_number_of_legs_by_match_id(match_id):
     match = get_match_by_id(match_id)
@@ -61,12 +63,12 @@ def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
 
     # Add all the sets
     for x in range(num_sets):
-        darts_set = Set(match=match, best_of_legs_number=num_legs)
+        darts_set = Set(match=match, best_of_legs_number=num_legs, set_number=x)
         darts_set.save()
 
         # Add all the legs
         for y in range(num_legs):
-            leg = Leg(set=darts_set, match=match, game_mode=game_mode, player1=player1_stats, player2=player2_stats)
+            leg = Leg(set=darts_set, match=match, game_mode=game_mode, player1=player1_stats, player2=player2_stats, leg_number=y)
             leg.save()
 
         darts_set.save()
@@ -143,6 +145,16 @@ def add_leg_win(winning_player, losing_player, leg):
     winning_player.save()
     losing_player.number_of_legs_lost = losing_player.number_of_legs_lost + 1
     losing_player.save()
+
+
+def get_set_by_number(match_id, set_number):
+    match = get_match_by_id(match_id=match_id)
+    return Set.objects.filter(match=match, set_number=set_number).first()
+
+
+def get_leg_by_number(match_id, set_number, leg_number):
+    darts_set = get_set_by_number(match_id=match_id, set_number=set_number)
+    return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
 
 
 

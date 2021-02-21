@@ -12,5 +12,6 @@ class Leg(models.Model):
     game_mode = models.IntegerField(default=301)
     player1 = models.ForeignKey(MatchPlayer, related_name="player1", on_delete=models.CASCADE)
     player2 = models.ForeignKey(MatchPlayer, related_name="player2", on_delete=models.CASCADE)
+    leg_number = models.IntegerField(default=1)
 
 
