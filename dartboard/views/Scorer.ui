@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>719</width>
+    <width>723</width>
     <height>527</height>
    </rect>
   </property>
@@ -58,19 +58,6 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="EndMatchButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>End Match</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="4" colspan="2" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="SetNumberLabel">
       <property name="text">
@@ -94,7 +81,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Player1Tab">
        <attribute name="title">
@@ -104,8 +91,11 @@
         <item row="0" column="1">
          <widget class="QTableWidget" name="Player1DartsTable">
           <property name="columnCount">
-           <number>3</number>
+           <number>5</number>
           </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>75</number>
+          </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>false</bool>
           </attribute>
@@ -119,12 +109,22 @@
           </column>
           <column>
            <property name="text">
-            <string>Dart Number</string>
+            <string>Bounce Out</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>BKF</string>
+            <string>Knock Out</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Foul</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Remove</string>
            </property>
           </column>
          </widget>
@@ -136,10 +136,30 @@
         <string>Player 2</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QTableWidget" name="Player1DartsTable_2">
+        <item row="1" column="2">
+         <widget class="QPushButton" name="EndMatchButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>End Match</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="commit_turn_button">
+          <property name="text">
+           <string>Commit Turn</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="3">
+         <widget class="QTableWidget" name="Player2DartsTable">
           <property name="columnCount">
-           <number>3</number>
+           <number>5</number>
           </property>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>false</bool>
@@ -154,15 +174,38 @@
           </column>
           <column>
            <property name="text">
-            <string>Dart Number</string>
+            <string>Bounce Out</string>
            </property>
           </column>
           <column>
            <property name="text">
-            <string>BKF</string>
+            <string>Knock Out</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Foul</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Remove</string>
            </property>
           </column>
          </widget>
+        </item>
+        <item row="1" column="1">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -206,7 +249,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>719</width>
+     <width>723</width>
      <height>21</height>
     </rect>
    </property>
