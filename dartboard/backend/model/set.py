@@ -11,3 +11,4 @@ class Set(models.Model):
     match = models.ForeignKey(Match, on_delete=models.CASCADE)
     best_of_legs_number = models.IntegerField(default=5)
     num_legs_complete = models.IntegerField(default=0)
+    set_number = models.IntegerField(default=1)
