@@ -14,6 +14,7 @@ class ScorerWindow(QMainWindow):
         self.ui.graphicsView.setup_signal(self)
         self.current_set = 1
         self.current_leg = 1
+        self.current_turns = [None, None]
 
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)

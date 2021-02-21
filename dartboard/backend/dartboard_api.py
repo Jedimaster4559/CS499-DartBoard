@@ -154,7 +154,7 @@ def get_set_by_number(match_id, set_number):
 
 def get_leg_by_number(match_id, set_number, leg_number):
     darts_set = get_set_by_number(match_id=match_id, set_number=set_number)
-    return Leg.object.filter(set=darts_set, leg_number=leg_number)
+    return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
 
 
 
