@@ -131,6 +131,7 @@ class Ui_Scorer(object):
         self.Player2DartsTable.setHorizontalHeaderItem(4, __qtablewidgetitem9)
         self.Player2DartsTable.setObjectName(u"Player2DartsTable")
         self.Player2DartsTable.setColumnCount(5)
+        self.Player2DartsTable.horizontalHeader().setDefaultSectionSize(75)
         self.Player2DartsTable.horizontalHeader().setStretchLastSection(False)
         self.Player2DartsTable.verticalHeader().setStretchLastSection(False)
 

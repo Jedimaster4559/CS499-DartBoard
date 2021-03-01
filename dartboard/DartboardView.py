@@ -51,7 +51,11 @@ class DartboardView(QGraphicsView):
                        "18", "4", "13"]
 
         # this list holds the points
-        self.points = []
+        self.points = {}
+
+
+        # this variable holds the index of the dart thrown
+        self.dart_index = 0
 
         # sets initial geometry for the window
         self.setGeometry(self.WindowPosX, self.WindowPosY, self.WindowSizeX, self.WindowSizeY)
@@ -64,6 +68,14 @@ class DartboardView(QGraphicsView):
 
     def setup_signal(self, controller):
         self.controller = controller
+
+    def remove_dart(self, index):
+        print("before: {}".format(self.points))
+        print("dart removed on DartboardView: index: {}".format(index))
+        self.points.pop(index)
+        print("after: {}".format(self.points))
+        self.DrawRegions()
+        #self.dart_index -= 1
 
     # this function is called when a point is placed on the window
     def mousePressEvent(self, event):
@@ -102,16 +114,20 @@ class DartboardView(QGraphicsView):
                 region = "regular"  # Inner
                 score = int(self.scores[i])
 
-        self.controller.dart_thrown(region=region, score=score)
+        self.controller.dart_thrown(region=region, score=score, index = self.dart_index)
+        print("dart added - score: {}, index: {}".format(score, self.dart_index))
+        
 
         # this line adds an entry for the point that was just placed. It calculates the x and y distance from the center of the circle divided by the current radius of the circle
         # this is used to relocate the points later when the window is resized
-        self.points.append([(event.pos().x() - (self.WindowSizeX / 2.0)) / self.radius,
-                            (event.pos().y() - (self.WindowSizeY / 2.0)) / self.radius])
+        self.points[self.dart_index] =  [(event.pos().x() - (self.WindowSizeX / 2.0)) / self.radius,
+                            (event.pos().y() - (self.WindowSizeY / 2.0)) / self.radius]
 
         # this line draws the point on the screen where the mouse was clicked
         self.scene.addEllipse(self.WindowPosX + event.pos().x(), self.WindowPosY + event.pos().y(), 3, 3, QPen(),
-                              QBrush(Qt.white))
+                      QBrush(Qt.white))
+
+        self.dart_index += 1
 
     # this function is called when the window is resized
     def resizeEvent(self, event):
@@ -342,8 +358,9 @@ class DartboardView(QGraphicsView):
         self.scene.addPolygon(self.bullseye, Pen, QBrush(Qt.red))
 
         # calculate and draw the points that were initially placed before resize
-        for p in self.points:
-            x_dec = self.radius * p[0]
-            y_dec = self.radius * p[1]
+  
+        for key, value in self.points.items():
+            x_dec = self.radius * value[0]
+            y_dec = self.radius * value[1]
             self.scene.addEllipse(self.WindowPosX + (self.WindowSizeX / 2.0) + x_dec,
                                   self.WindowPosY + (self.WindowSizeY / 2.0) + y_dec, 3, 3, QPen(), QBrush(Qt.white))

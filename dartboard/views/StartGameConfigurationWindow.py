@@ -16,13 +16,30 @@ class StartGameConfigurationWindow(QMainWindow):
 
         self.populate_player_names("")
 
+        self.enter_start_values()
+
+    def enter_start_values(self):
+        self.ui.number_of_legs_spin_box.setValue(5)
+        self.ui.number_of_sets_spin_box.setValue(5)
+
+        self.ui.leg_value_501_radio_button.setChecked(True)
+
+
+        
+
     def populate_player_names(self, text):
-        for x in search_players(text):
-            print(x)
+        players = search_players(text)
+        num_players = len(players)
+        for x in players:
             self.ui.player_one_combo_box.addItem(str(x))
             self.ui.player_two_combo_box.addItem(str(x))
-        self.ui.player_one_combo_box.setEditText("")
-        self.ui.player_two_combo_box.setEditText("")
+        if (num_players >= 2):
+            self.ui.player_one_combo_box.setEditText(str(players[0]))
+            self.ui.player_two_combo_box.setEditText(str(players[1]))
+        else:
+            self.ui.player_one_combo_box.setEditText("")
+            self.ui.player_two_combo_box.setEditText("")
+
 
 
     def start_game(self):
@@ -69,6 +86,6 @@ class StartGameConfigurationWindow(QMainWindow):
         
         self.hide()
         self.hub.navigate_to_view("scorer")
-        self.hub.navigate_to_view("scoreboard")
+        #self.hub.navigate_to_view("scoreboard")
         self.hub.send_match_id(match_id)
         
