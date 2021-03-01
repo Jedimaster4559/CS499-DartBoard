@@ -14,21 +14,14 @@ class ScorerWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.graphicsView.setup_signal(self)
         self.ui.commit_turn_button.clicked.connect(self.commit_turn)
-
-        header = self.ui.Player1DartsTable.horizontalHeader()
-        header.setSectionResizeMode(QHeaderView.ResizeToContents)
-        header.setSectionResizeMode(0, QHeaderView.Stretch)
-
-        self.addpopulaterow(self.ui.Player1DartsTable, "50", True, False, False)
-        self.addpopulaterow(self.ui.Player1DartsTable, "100", True, False, False)
         
         self.current_set = 1
         self.current_leg = 1
         self.current_turns = [None, None]
-
+        self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
         
         
-    def addpopulaterow(self, table, value, bounce, knock, foul):
+    def addpopulaterow(self, table, value, bounce, knock, foul, index):
         rowPosition = table.rowCount()
         table.insertRow(rowPosition)
 
@@ -84,10 +77,13 @@ class ScorerWindow(QMainWindow):
         layout.setContentsMargins(0,0,0,0)
         cell_widget.setLayout(layout)
         table.setCellWidget(rowPosition, 4, cell_widget)
-        button.clicked.connect(lambda: self.remove_dart_throw(rowPosition))
+        button.clicked.connect(lambda: self.remove_dart_throw(score, index))
 
-    def remove_dart_throw(self, row):
-        print(row)
+    def remove_dart_throw(self, item, index):
+        self.tables[self.ui.tabWidget.currentIndex()].setCurrentItem(item)
+        self.tables[self.ui.tabWidget.currentIndex()].selectRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
+        self.tables[self.ui.tabWidget.currentIndex()].removeRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
+        self.ui.graphicsView.remove_dart(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
         
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -120,7 +116,7 @@ class ScorerWindow(QMainWindow):
     def commit_turn(self):
         print("pressed commit turn")
 
-    def dart_thrown(self, region, score):
+    def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
         is_double = region == "double"
         is_triple = region == "triple"
@@ -128,6 +124,8 @@ class ScorerWindow(QMainWindow):
 
         current_player_index = self.ui.tabWidget.currentIndex()
         turn = self.current_turns[current_player_index]
+        
+        self.addpopulaterow(self.tables[current_player_index], str(score), False, False, False, index)
 
         add_hit(turn=turn, value=score, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
         
