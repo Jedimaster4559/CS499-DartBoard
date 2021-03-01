@@ -8,7 +8,7 @@ import math
 
 from PySide2.QtCore import Qt, QPoint
 from PySide2.QtGui import QPainter, QPen, QBrush, QPolygon, QFont
-from PySide2.QtWidgets import QGraphicsView, QGraphicsScene, QGraphicsEllipseItem
+from PySide2.QtWidgets import QGraphicsView, QGraphicsScene
 
 
 ##
