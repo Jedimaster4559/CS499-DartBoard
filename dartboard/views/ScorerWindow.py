@@ -80,10 +80,12 @@ class ScorerWindow(QMainWindow):
         button.clicked.connect(lambda: self.remove_dart_throw(score, index))
 
     def remove_dart_throw(self, item, index):
+        print("dart removed on scorer - index: {}".format(index))
         self.tables[self.ui.tabWidget.currentIndex()].setCurrentItem(item)
         self.tables[self.ui.tabWidget.currentIndex()].selectRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
         self.tables[self.ui.tabWidget.currentIndex()].removeRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
-        self.ui.graphicsView.remove_dart(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
+        
+        self.ui.graphicsView.remove_dart(index)
         
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
