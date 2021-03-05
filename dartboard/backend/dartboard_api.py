@@ -3,7 +3,8 @@ from backend.models import *
 
 def create_player(first_name, last_name):
     full_name = first_name + " " + last_name
-    player = Player(first_name=first_name, last_name=last_name, full_name=full_name, current_league_rank=Player.objects.count())
+    player = Player(first_name=first_name, last_name=last_name, full_name=full_name,
+                    current_league_rank=Player.objects.count())
     player.save()
     return player
 
@@ -68,7 +69,8 @@ def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
 
         # Add all the legs
         for y in range(num_legs):
-            leg = Leg(set=darts_set, match=match, game_mode=game_mode, player1=player1_stats, player2=player2_stats, leg_number=y)
+            leg = Leg(set=darts_set, match=match, game_mode=game_mode, player1=player1_stats, player2=player2_stats,
+                      leg_number=y)
             leg.save()
 
         darts_set.save()
@@ -147,6 +149,36 @@ def add_leg_win(winning_player, losing_player, leg):
     losing_player.save()
 
 
+def add_match_win(winning_player, losing_player, match):
+    # Mark winner
+    winning_player.match_wins = winning_player.match_wins + 1
+    winning_player.save()
+
+    # No need to increment number of matches for match
+
+    # Increment player stats
+    winning_player.player.number_of_matches_won = winning_player.player.number_of_matches_won + 1
+    winning_player.save()
+    losing_player.player.number_of_matches_won = losing_player.player.number_of_matches_won + 1
+    losing_player.save()
+
+
+def add_set_win(winning_player, losing_player, set):
+    # Mark Winner
+    winning_player.set_wins = winning_player.set_wins + 1
+    winning_player.save()
+
+    # Increment number of sets played
+    set.match.num_sets_complete = set.match.num_sets_complete + 1
+    set.save()
+
+    # Increment Player Stats
+    winning_player.number_of_sets_won = winning_player.number_of_sets_won + 1
+    winning_player.save()
+    losing_player.number_of_sets_lost = losing_player.number_of_sets_lost + 1
+    losing_player.save()
+
+
 def get_set_by_number(match_id, set_number):
     match = get_match_by_id(match_id=match_id)
     return Set.objects.filter(match=match, set_number=set_number).first()
@@ -155,7 +187,6 @@ def get_set_by_number(match_id, set_number):
 def get_leg_by_number(match_id, set_number, leg_number):
     darts_set = get_set_by_number(match_id=match_id, set_number=set_number)
     return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
-
 
 
 # Commits a turn to the database. Returns True if the turn could
@@ -177,7 +208,8 @@ def commit_turn(turn):
         if not hit.is_bounce_out and not hit.is_knock_out:
             score += hit.score
             # Check that this turn wasn't a bust
-            if score_remaining - score < 0 or score_remaining - score == 1 or (score_remaining == 0 and not is_winnable):
+            if score_remaining - score < 0 or score_remaining - score == 1 or (
+                    score_remaining == 0 and not is_winnable):
                 turn.is_bust = True
                 turn.is_committed = True
                 turn.save()
