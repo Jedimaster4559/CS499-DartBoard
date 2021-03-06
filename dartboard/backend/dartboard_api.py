@@ -148,8 +148,10 @@ def add_leg_win(winning_player, losing_player, leg):
     leg.save()
 
     # Increment Player Stats
+    winning_player.score_remaining = leg.game_mode
     winning_player.number_of_legs_won = winning_player.number_of_legs_won + 1
     winning_player.save()
+    losing_player.score_remaining = leg.game_mode
     losing_player.number_of_legs_lost = losing_player.number_of_legs_lost + 1
     losing_player.save()
 
@@ -178,8 +180,10 @@ def add_set_win(winning_player, losing_player, set):
     set.save()
 
     # Increment Player Stats
+    winning_player.leg_wins = 0
     winning_player.number_of_sets_won = winning_player.number_of_sets_won + 1
     winning_player.save()
+    losing_player.leg_wins = 0
     losing_player.number_of_sets_lost = losing_player.number_of_sets_lost + 1
     losing_player.save()
 

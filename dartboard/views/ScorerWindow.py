@@ -110,6 +110,7 @@ class ScorerWindow(QMainWindow):
 
         leg = get_leg_by_number(match_id=match_id, set_number=1, leg_number=1)
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
+            
 
     def change_set_number_label(self, current_set):
         result = str(current_set) + "/" + str(self.number_of_sets)
@@ -149,6 +150,40 @@ class ScorerWindow(QMainWindow):
 
         self.darts_thrown[index] = dart
 
+    def check_game_win(self):
+
+        current_player_index = self.ui.tabWidget.currentIndex()
+        turn = self.current_turns[current_player_index]
+
+        opponent_turn = self.current_turns[(current_player_index+1) % 2]
+
+        if (check_win(turn)):
+
+            # leg is won everytime
+            leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg)
+            add_leg_win(turn.player, opponent_turn, leg)
+
+
+            # set is only won when number of legs won == number of legs
+            if (turn.player.leg_wins == (self.number_of_legs // 2) + 1):
+
+                set = get_set_by_number(self.match.id, self.current_set)
+                add_set_win(turn.player, opponent_turn, set)
+
+                
+
+
+            if (self.current_set == self.number_of_sets and self.current_leg == self.number_of_legs):
+                # add match win
+            elif (self.current_set == self.number_of_sets):
+                #
+            elif (self.current_leg == self.number_of_legs):
+                
+                
+                  
+            
+            self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
+            self.current_leg = get_leg_by_number(self.match_id, self.current_leg + 1).leg_number
 
         
 
