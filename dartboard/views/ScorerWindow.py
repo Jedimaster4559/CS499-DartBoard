@@ -19,6 +19,10 @@ class ScorerWindow(QMainWindow):
         self.current_leg = 1
         self.current_turns = [None, None]
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
+
+        self.darts_thrown = {
+
+        }
         
         
     def addpopulaterow(self, table, value, bounce, knock, foul, index):
@@ -80,10 +84,12 @@ class ScorerWindow(QMainWindow):
         button.clicked.connect(lambda: self.remove_dart_throw(score, index))
 
     def remove_dart_throw(self, item, index):
-        print("dart removed on scorer - index: {}".format(index))
         self.tables[self.ui.tabWidget.currentIndex()].setCurrentItem(item)
         self.tables[self.ui.tabWidget.currentIndex()].selectRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
         self.tables[self.ui.tabWidget.currentIndex()].removeRow(self.tables[self.ui.tabWidget.currentIndex()].currentRow())
+
+        dart = self.darts_thrown.get(index)
+        remove_hit(dart)
         
         self.ui.graphicsView.remove_dart(index)
         
@@ -117,6 +123,16 @@ class ScorerWindow(QMainWindow):
 
     def commit_turn(self):
         print("pressed commit turn")
+        current_player_index = self.ui.tabWidget.currentIndex()
+        isbust = not commit_turn(self.current_turns[current_player_index])
+
+        if isbust:
+            print("Player busted")
+        else:
+            print("Turn Committed")
+
+        leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
+        start_new_turn(leg, self.players[current_player_index])
 
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
@@ -129,7 +145,9 @@ class ScorerWindow(QMainWindow):
         
         self.addpopulaterow(self.tables[current_player_index], str(score), False, False, False, index)
 
-        add_hit(turn=turn, value=score, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
+        dart = add_hit(turn=turn, value=score, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
+
+        self.darts_thrown[index] = dart
         
 
         

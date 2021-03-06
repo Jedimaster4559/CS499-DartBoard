@@ -90,6 +90,11 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
     return hit
 
 
+def remove_hit(dart):
+    dart.delete()
+    return True
+
+
 def mark_bounce_out(hit_id):
     hit = DartboardHit.objects.get(id=hit_id)
     hit.is_bounce_out = True
