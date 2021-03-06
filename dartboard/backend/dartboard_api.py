@@ -120,7 +120,7 @@ def check_win(turn):
 
     # Determine if last throw was one that could win
     last_hit = hits[hits.count()]
-    is_winnable = last_hit.is_double or last_hit.is_triple or last_hit.is_bullseye
+    is_winnable = last_hit.is_double or last_hit.is_bullseye
 
     # If turn is committed, win occurs when score = 0
     if turn.is_committed:
@@ -194,6 +194,22 @@ def get_leg_by_number(match_id, set_number, leg_number):
     return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
 
 
+# Checks if a turn is a bust or not
+# Returns true if it is a bust and false if not
+def is_turn_bust(turn):
+    # Get hits
+    hits = DartboardHit.objects.filter(turn=turn)
+
+    # Get the players current score
+    score_remaining = turn.player.score_remaining
+
+    # Calculate Score for the turn
+    for hit in hits:
+        if not hit.is_bounce_out and not hit.is_knock_out:
+            score_remaining -= hit.score
+
+    return score_remaining == 1 or score_remaining < 0
+
 # Commits a turn to the database. Returns True if the turn could
 # be committed and false if the turn was a bust.
 def commit_turn(turn):
@@ -202,7 +218,7 @@ def commit_turn(turn):
 
     # Determine if last throw was one that could win
     last_hit = hits[hits.count()]
-    is_winnable = last_hit.is_double or last_hit.is_triple or last_hit.is_bullseye
+    is_winnable = last_hit.is_double or last_hit.is_bullseye
 
     # Get the players current score
     score_remaining = turn.player.score_remaining

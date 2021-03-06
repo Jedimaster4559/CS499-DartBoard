@@ -148,6 +148,8 @@ class ScorerWindow(QMainWindow):
         dart = add_hit(turn=turn, value=score, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
 
         self.darts_thrown[index] = dart
+
+
         
 
         
