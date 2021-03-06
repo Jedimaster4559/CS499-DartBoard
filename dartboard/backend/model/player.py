@@ -26,7 +26,7 @@ class Player(models.Model):
         # Generate Score
         score = 0
         for hit in hits:
-            score += hit
+            score += hit.score
 
         # Update Season Average
         total_score = self.average_season_score * self.number_of_season_turns
@@ -35,10 +35,10 @@ class Player(models.Model):
         self.average_season_score = total_score / self.number_of_season_turns
 
         # Update Lifetime Average
-        total_score = self.average_turn_score * self.number_of_lifetime_turns
+        total_score = self.average_lifetime_score * self.number_of_lifetime_turns
         total_score += score
         self.number_of_lifetime_turns += 1
-        self.average_turn_score = total_score / self.number_of_lifetime_turns
+        self.average_lifetime_score = total_score / self.number_of_lifetime_turns
 
         # Update 180s
         if score == 180:

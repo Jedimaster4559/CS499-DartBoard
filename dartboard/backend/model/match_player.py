@@ -22,7 +22,7 @@ class MatchPlayer(models.Model):
         # Generate Score
         score = 0
         for hit in hits:
-            score += hit
+            score += hit.score
 
         # Update Average
         total_score = self.average_turn_score * self.number_of_turns

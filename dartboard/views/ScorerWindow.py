@@ -132,8 +132,10 @@ class ScorerWindow(QMainWindow):
         else:
             print("Turn Committed")
 
+        self.check_game_win()
+
         leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
-        start_new_turn(leg, self.players[current_player_index])
+        self.current_turns[current_player_index] = start_new_turn(leg, self.players[current_player_index])
 
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
@@ -150,6 +152,8 @@ class ScorerWindow(QMainWindow):
 
         self.darts_thrown[index] = dart
 
+        self.check_game_win()
+
     def check_game_win(self):
 
         current_player_index = self.ui.tabWidget.currentIndex()
@@ -157,33 +161,31 @@ class ScorerWindow(QMainWindow):
 
         opponent_turn = self.current_turns[(current_player_index+1) % 2]
 
-        if (check_win(turn)):
-
+        if check_win(turn):
             # leg is won everytime
             leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg)
-            add_leg_win(turn.player, opponent_turn, leg)
-
+            add_leg_win(turn.player, opponent_turn.player, leg)
+            print("Leg Won!")
 
             # set is only won when number of legs won == number of legs
-            if (turn.player.leg_wins == (self.number_of_legs // 2) + 1):
-
+            if turn.player.leg_wins == (self.number_of_legs // 2) + 1:
                 set = get_set_by_number(self.match.id, self.current_set)
-                add_set_win(turn.player, opponent_turn, set)
+                add_set_win(turn.player, opponent_turn.player, set)
+                self.current_leg = 0
+                print("Set Won!")
 
-                
+            # Handle Match win
+            if turn.player.set_wins == (self.number_of_sets // 2) + 1:
+                add_match_win(turn.player, opponent_turn.player, self.match)
+                print("Match Won!")
 
-
-            if (self.current_set == self.number_of_sets and self.current_leg == self.number_of_legs):
-                # add match win
-            elif (self.current_set == self.number_of_sets):
-                #
-            elif (self.current_leg == self.number_of_legs):
-                
-                
-                  
-            
             self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
-            self.current_leg = get_leg_by_number(self.match_id, self.current_leg + 1).leg_number
+            self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
+            self.change_leg_number_label(self.current_leg)
+            self.change_set_number_label(self.current_set)
+            leg = get_leg_by_number(match_id=self.match.id, set_number=1, leg_number=1)
+            self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
+
 
         
 

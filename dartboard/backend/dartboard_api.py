@@ -119,7 +119,7 @@ def check_win(turn):
     hits = DartboardHit.objects.filter(turn=turn)
 
     # Determine if last throw was one that could win
-    last_hit = hits[hits.count()]
+    last_hit = hits[hits.count() - 1]
     is_winnable = last_hit.is_double or last_hit.is_bullseye
 
     # If turn is committed, win occurs when score = 0
@@ -149,11 +149,13 @@ def add_leg_win(winning_player, losing_player, leg):
 
     # Increment Player Stats
     winning_player.score_remaining = leg.game_mode
-    winning_player.number_of_legs_won = winning_player.number_of_legs_won + 1
+    winning_player.player.number_of_legs_won = winning_player.player.number_of_legs_won + 1
     winning_player.save()
+    winning_player.player.save()
     losing_player.score_remaining = leg.game_mode
-    losing_player.number_of_legs_lost = losing_player.number_of_legs_lost + 1
+    losing_player.player.number_of_legs_lost = losing_player.player.number_of_legs_lost + 1
     losing_player.save()
+    losing_player.player.save()
 
 
 def add_match_win(winning_player, losing_player, match):
@@ -181,21 +183,23 @@ def add_set_win(winning_player, losing_player, set):
 
     # Increment Player Stats
     winning_player.leg_wins = 0
-    winning_player.number_of_sets_won = winning_player.number_of_sets_won + 1
+    winning_player.player.number_of_sets_won = winning_player.player.number_of_sets_won + 1
     winning_player.save()
+    winning_player.player.save()
     losing_player.leg_wins = 0
-    losing_player.number_of_sets_lost = losing_player.number_of_sets_lost + 1
+    losing_player.player.number_of_sets_lost = losing_player.player.number_of_sets_lost + 1
     losing_player.save()
+    losing_player.player.save()
 
 
 def get_set_by_number(match_id, set_number):
     match = get_match_by_id(match_id=match_id)
-    return Set.objects.filter(match=match, set_number=set_number).first()
+    return Set.objects.filter(match=match, set_number=set_number - 1).first()
 
 
 def get_leg_by_number(match_id, set_number, leg_number):
     darts_set = get_set_by_number(match_id=match_id, set_number=set_number)
-    return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
+    return Leg.objects.filter(set=darts_set, leg_number=leg_number - 1).first()
 
 
 # Checks if a turn is a bust or not
@@ -221,17 +225,19 @@ def commit_turn(turn):
     hits = DartboardHit.objects.filter(turn=turn)
 
     # Determine if last throw was one that could win
-    last_hit = hits[hits.count()]
+    last_hit = hits[hits.count() - 1]
     is_winnable = last_hit.is_double or last_hit.is_bullseye
 
     # Get the players current score
     score_remaining = turn.player.score_remaining
+    print(score_remaining)
 
     # Calculate Score for the turn
     score = 0
     for hit in hits:
         if not hit.is_bounce_out and not hit.is_knock_out:
             score += hit.score
+            print(str(hit.score) + " " + str(score))
             # Check that this turn wasn't a bust
             if score_remaining - score < 0 or score_remaining - score == 1 or (
                     score_remaining == 0 and not is_winnable):
