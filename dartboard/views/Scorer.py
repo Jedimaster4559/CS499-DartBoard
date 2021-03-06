@@ -20,72 +20,50 @@ class Ui_Scorer(object):
         if not Scorer.objectName():
             Scorer.setObjectName(u"Scorer")
         Scorer.resize(723, 527)
+        self.actionMatch_Averages = QAction(Scorer)
+        self.actionMatch_Averages.setObjectName(u"actionMatch_Averages")
+        self.actionMatch_Score_Stats = QAction(Scorer)
+        self.actionMatch_Score_Stats.setObjectName(u"actionMatch_Score_Stats")
+        self.actionMatch_Highest_Out = QAction(Scorer)
+        self.actionMatch_Highest_Out.setObjectName(u"actionMatch_Highest_Out")
+        self.action_Match_Statistics = QAction(Scorer)
+        self.action_Match_Statistics.setObjectName(u"action_Match_Statistics")
+        self.actionMatch_Averages_2 = QAction(Scorer)
+        self.actionMatch_Averages_2.setObjectName(u"actionMatch_Averages_2")
+        self.actionMatch_Score_Stats_2 = QAction(Scorer)
+        self.actionMatch_Score_Stats_2.setObjectName(u"actionMatch_Score_Stats_2")
+        self.actionMatch_Highest_Out_2 = QAction(Scorer)
+        self.actionMatch_Highest_Out_2.setObjectName(u"actionMatch_Highest_Out_2")
+        self.actionMatch_Doubles_Triples = QAction(Scorer)
+        self.actionMatch_Doubles_Triples.setObjectName(u"actionMatch_Doubles_Triples")
+        self.actionPlayer_Ranks = QAction(Scorer)
+        self.actionPlayer_Ranks.setObjectName(u"actionPlayer_Ranks")
+        self.actionPlayer_Last_Win = QAction(Scorer)
+        self.actionPlayer_Last_Win.setObjectName(u"actionPlayer_Last_Win")
+        self.actionPlayer_Averages = QAction(Scorer)
+        self.actionPlayer_Averages.setObjectName(u"actionPlayer_Averages")
+        self.actionPlayer_Score_Stats = QAction(Scorer)
+        self.actionPlayer_Score_Stats.setObjectName(u"actionPlayer_Score_Stats")
         self.centralwidget = QWidget(Scorer)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.SetNumberLabel = QLabel(self.centralwidget)
-        self.SetNumberLabel.setObjectName(u"SetNumberLabel")
-
-        self.gridLayout.addWidget(self.SetNumberLabel, 2, 4, 1, 2, Qt.AlignHCenter)
-
-        self.NextSetButton = QPushButton(self.centralwidget)
-        self.NextSetButton.setObjectName(u"NextSetButton")
-
-        self.gridLayout.addWidget(self.NextSetButton, 3, 5, 1, 1)
-
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
 
         self.gridLayout.addWidget(self.label, 0, 1, 1, 2, Qt.AlignHCenter)
 
-        self.PreviousLegButton = QPushButton(self.centralwidget)
-        self.PreviousLegButton.setObjectName(u"PreviousLegButton")
-        sizePolicy = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.PreviousLegButton.sizePolicy().hasHeightForWidth())
-        self.PreviousLegButton.setSizePolicy(sizePolicy)
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout.addWidget(self.PreviousLegButton, 3, 1, 1, 1)
-
-        self.label_2 = QLabel(self.centralwidget)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout.addWidget(self.label_2, 0, 4, 1, 2, Qt.AlignHCenter)
-
-        self.horizontalSpacer = QSpacerItem(75, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer, 3, 3, 1, 1)
-
-        self.LegNumberLabel = QLabel(self.centralwidget)
-        self.LegNumberLabel.setObjectName(u"LegNumberLabel")
-
-        self.gridLayout.addWidget(self.LegNumberLabel, 2, 1, 1, 2, Qt.AlignHCenter)
-
-        self.graphicsView = DartboardView(self.centralwidget)
-        self.graphicsView.setObjectName(u"graphicsView")
-        self.graphicsView.setMinimumSize(QSize(300, 300))
-
-        self.gridLayout.addWidget(self.graphicsView, 0, 0, 6, 1)
-
-        self.NextLegButton = QPushButton(self.centralwidget)
-        self.NextLegButton.setObjectName(u"NextLegButton")
-
-        self.gridLayout.addWidget(self.NextLegButton, 3, 2, 1, 1)
-
-        self.PreviousSetButton = QPushButton(self.centralwidget)
-        self.PreviousSetButton.setObjectName(u"PreviousSetButton")
-
-        self.gridLayout.addWidget(self.PreviousSetButton, 3, 4, 1, 1)
+        self.gridLayout.addItem(self.horizontalSpacer_2, 5, 2, 1, 3)
 
         self.tabWidget = QTabWidget(self.centralwidget)
         self.tabWidget.setObjectName(u"tabWidget")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
-        self.tabWidget.setSizePolicy(sizePolicy1)
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        self.tabWidget.setSizePolicy(sizePolicy)
         self.Player1Tab = QWidget()
         self.Player1Tab.setObjectName(u"Player1Tab")
         self.gridLayout_2 = QGridLayout(self.Player1Tab)
@@ -141,6 +119,27 @@ class Ui_Scorer(object):
 
         self.gridLayout.addWidget(self.tabWidget, 4, 1, 1, 5)
 
+        self.LegNumberLabel = QLabel(self.centralwidget)
+        self.LegNumberLabel.setObjectName(u"LegNumberLabel")
+
+        self.gridLayout.addWidget(self.LegNumberLabel, 2, 1, 1, 2, Qt.AlignHCenter)
+
+        self.label_2 = QLabel(self.centralwidget)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 0, 4, 1, 2, Qt.AlignHCenter)
+
+        self.graphicsView = DartboardView(self.centralwidget)
+        self.graphicsView.setObjectName(u"graphicsView")
+        self.graphicsView.setMinimumSize(QSize(300, 300))
+
+        self.gridLayout.addWidget(self.graphicsView, 0, 0, 6, 1)
+
+        self.SetNumberLabel = QLabel(self.centralwidget)
+        self.SetNumberLabel.setObjectName(u"SetNumberLabel")
+
+        self.gridLayout.addWidget(self.SetNumberLabel, 2, 4, 1, 2, Qt.AlignHCenter)
+
         self.commit_turn_button = QPushButton(self.centralwidget)
         self.commit_turn_button.setObjectName(u"commit_turn_button")
 
@@ -148,26 +147,39 @@ class Ui_Scorer(object):
 
         self.EndMatchButton = QPushButton(self.centralwidget)
         self.EndMatchButton.setObjectName(u"EndMatchButton")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.EndMatchButton.sizePolicy().hasHeightForWidth())
-        self.EndMatchButton.setSizePolicy(sizePolicy2)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.EndMatchButton.sizePolicy().hasHeightForWidth())
+        self.EndMatchButton.setSizePolicy(sizePolicy1)
 
         self.gridLayout.addWidget(self.EndMatchButton, 5, 5, 1, 1)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(215, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
-        self.gridLayout.addItem(self.horizontalSpacer_2, 5, 2, 1, 3)
+        self.gridLayout.addItem(self.horizontalSpacer, 2, 3, 1, 1)
 
         Scorer.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(Scorer)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 723, 21))
+        self.menuScoreboard_View = QMenu(self.menubar)
+        self.menuScoreboard_View.setObjectName(u"menuScoreboard_View")
         Scorer.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(Scorer)
         self.statusbar.setObjectName(u"statusbar")
         Scorer.setStatusBar(self.statusbar)
+
+        self.menubar.addAction(self.menuScoreboard_View.menuAction())
+        self.menuScoreboard_View.addAction(self.actionMatch_Averages_2)
+        self.menuScoreboard_View.addAction(self.actionMatch_Score_Stats_2)
+        self.menuScoreboard_View.addAction(self.actionMatch_Highest_Out_2)
+        self.menuScoreboard_View.addAction(self.actionMatch_Doubles_Triples)
+        self.menuScoreboard_View.addSeparator()
+        self.menuScoreboard_View.addAction(self.actionPlayer_Ranks)
+        self.menuScoreboard_View.addAction(self.actionPlayer_Last_Win)
+        self.menuScoreboard_View.addAction(self.actionPlayer_Averages)
+        self.menuScoreboard_View.addAction(self.actionPlayer_Score_Stats)
 
         self.retranslateUi(Scorer)
 
@@ -179,14 +191,19 @@ class Ui_Scorer(object):
 
     def retranslateUi(self, Scorer):
         Scorer.setWindowTitle(QCoreApplication.translate("Scorer", u"MainWindow", None))
-        self.SetNumberLabel.setText(QCoreApplication.translate("Scorer", u"2/4", None))
-        self.NextSetButton.setText(QCoreApplication.translate("Scorer", u">", None))
+        self.actionMatch_Averages.setText(QCoreApplication.translate("Scorer", u"Match Averages", None))
+        self.actionMatch_Score_Stats.setText(QCoreApplication.translate("Scorer", u"Match Score Stats", None))
+        self.actionMatch_Highest_Out.setText(QCoreApplication.translate("Scorer", u"Match Highest Out", None))
+        self.action_Match_Statistics.setText(QCoreApplication.translate("Scorer", u"-- Match Statistics --", None))
+        self.actionMatch_Averages_2.setText(QCoreApplication.translate("Scorer", u"Match Averages", None))
+        self.actionMatch_Score_Stats_2.setText(QCoreApplication.translate("Scorer", u"Match Score Stats", None))
+        self.actionMatch_Highest_Out_2.setText(QCoreApplication.translate("Scorer", u"Match Highest Out", None))
+        self.actionMatch_Doubles_Triples.setText(QCoreApplication.translate("Scorer", u"Match Doubles/Triples", None))
+        self.actionPlayer_Ranks.setText(QCoreApplication.translate("Scorer", u"Player Ranks", None))
+        self.actionPlayer_Last_Win.setText(QCoreApplication.translate("Scorer", u"Player Last Win", None))
+        self.actionPlayer_Averages.setText(QCoreApplication.translate("Scorer", u"Player Averages", None))
+        self.actionPlayer_Score_Stats.setText(QCoreApplication.translate("Scorer", u"Player Score Stats", None))
         self.label.setText(QCoreApplication.translate("Scorer", u"Legs", None))
-        self.PreviousLegButton.setText(QCoreApplication.translate("Scorer", u"<", None))
-        self.label_2.setText(QCoreApplication.translate("Scorer", u"Sets", None))
-        self.LegNumberLabel.setText(QCoreApplication.translate("Scorer", u"4/14", None))
-        self.NextLegButton.setText(QCoreApplication.translate("Scorer", u">", None))
-        self.PreviousSetButton.setText(QCoreApplication.translate("Scorer", u"<", None))
         ___qtablewidgetitem = self.Player1DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Scorer", u"Score", None));
         ___qtablewidgetitem1 = self.Player1DartsTable.horizontalHeaderItem(1)
@@ -209,7 +226,11 @@ class Ui_Scorer(object):
         ___qtablewidgetitem9 = self.Player2DartsTable.horizontalHeaderItem(4)
         ___qtablewidgetitem9.setText(QCoreApplication.translate("Scorer", u"Remove", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Player2Tab), QCoreApplication.translate("Scorer", u"Player 2", None))
+        self.LegNumberLabel.setText(QCoreApplication.translate("Scorer", u"4/14", None))
+        self.label_2.setText(QCoreApplication.translate("Scorer", u"Sets", None))
+        self.SetNumberLabel.setText(QCoreApplication.translate("Scorer", u"2/4", None))
         self.commit_turn_button.setText(QCoreApplication.translate("Scorer", u"Commit Turn", None))
         self.EndMatchButton.setText(QCoreApplication.translate("Scorer", u"End Match", None))
+        self.menuScoreboard_View.setTitle(QCoreApplication.translate("Scorer", u"Scoreboard View", None))
     # retranslateUi
 

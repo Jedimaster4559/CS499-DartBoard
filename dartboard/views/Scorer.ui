@@ -15,20 +15,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="4" colspan="2" alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="SetNumberLabel">
-      <property name="text">
-       <string>2/4</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="5">
-     <widget class="QPushButton" name="NextSetButton">
-      <property name="text">
-       <string>&gt;</string>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1" colspan="2" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="label">
       <property name="text">
@@ -36,72 +22,18 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="PreviousLegButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="text">
-       <string>&lt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4" colspan="2" alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Sets</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <spacer name="horizontalSpacer">
+    <item row="5" column="2" colspan="3">
+     <spacer name="horizontalSpacer_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>75</width>
+        <width>40</width>
         <height>20</height>
        </size>
       </property>
      </spacer>
-    </item>
-    <item row="2" column="1" colspan="2" alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="LegNumberLabel">
-      <property name="text">
-       <string>4/14</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0" rowspan="6">
-     <widget class="DartboardView" name="graphicsView">
-      <property name="minimumSize">
-       <size>
-        <width>300</width>
-        <height>300</height>
-       </size>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="NextLegButton">
-      <property name="text">
-       <string>&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="4">
-     <widget class="QPushButton" name="PreviousSetButton">
-      <property name="text">
-       <string>&lt;</string>
-      </property>
-     </widget>
     </item>
     <item row="4" column="1" colspan="5">
      <widget class="QTabWidget" name="tabWidget">
@@ -212,6 +144,37 @@
       </widget>
      </widget>
     </item>
+    <item row="2" column="1" colspan="2" alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="LegNumberLabel">
+      <property name="text">
+       <string>4/14</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4" colspan="2" alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>Sets</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" rowspan="6">
+     <widget class="DartboardView" name="graphicsView">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="4" colspan="2" alignment="Qt::AlignHCenter">
+     <widget class="QLabel" name="SetNumberLabel">
+      <property name="text">
+       <string>2/4</string>
+      </property>
+     </widget>
+    </item>
     <item row="5" column="1">
      <widget class="QPushButton" name="commit_turn_button">
       <property name="text">
@@ -232,14 +195,17 @@
       </property>
      </widget>
     </item>
-    <item row="5" column="2" colspan="3">
-     <spacer name="horizontalSpacer_2">
+    <item row="2" column="3">
+     <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
+        <width>215</width>
         <height>20</height>
        </size>
       </property>
@@ -256,8 +222,83 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuScoreboard_View">
+    <property name="title">
+     <string>Scoreboard View</string>
+    </property>
+    <addaction name="actionMatch_Averages_2"/>
+    <addaction name="actionMatch_Score_Stats_2"/>
+    <addaction name="actionMatch_Highest_Out_2"/>
+    <addaction name="actionMatch_Doubles_Triples"/>
+    <addaction name="separator"/>
+    <addaction name="actionPlayer_Ranks"/>
+    <addaction name="actionPlayer_Last_Win"/>
+    <addaction name="actionPlayer_Averages"/>
+    <addaction name="actionPlayer_Score_Stats"/>
+   </widget>
+   <addaction name="menuScoreboard_View"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionMatch_Averages">
+   <property name="text">
+    <string>Match Averages</string>
+   </property>
+  </action>
+  <action name="actionMatch_Score_Stats">
+   <property name="text">
+    <string>Match Score Stats</string>
+   </property>
+  </action>
+  <action name="actionMatch_Highest_Out">
+   <property name="text">
+    <string>Match Highest Out</string>
+   </property>
+  </action>
+  <action name="action_Match_Statistics">
+   <property name="text">
+    <string>-- Match Statistics --</string>
+   </property>
+  </action>
+  <action name="actionMatch_Averages_2">
+   <property name="text">
+    <string>Match Averages</string>
+   </property>
+  </action>
+  <action name="actionMatch_Score_Stats_2">
+   <property name="text">
+    <string>Match Score Stats</string>
+   </property>
+  </action>
+  <action name="actionMatch_Highest_Out_2">
+   <property name="text">
+    <string>Match Highest Out</string>
+   </property>
+  </action>
+  <action name="actionMatch_Doubles_Triples">
+   <property name="text">
+    <string>Match Doubles/Triples</string>
+   </property>
+  </action>
+  <action name="actionPlayer_Ranks">
+   <property name="text">
+    <string>Player Ranks</string>
+   </property>
+  </action>
+  <action name="actionPlayer_Last_Win">
+   <property name="text">
+    <string>Player Last Win</string>
+   </property>
+  </action>
+  <action name="actionPlayer_Averages">
+   <property name="text">
+    <string>Player Averages</string>
+   </property>
+  </action>
+  <action name="actionPlayer_Score_Stats">
+   <property name="text">
+    <string>Player Score Stats</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
