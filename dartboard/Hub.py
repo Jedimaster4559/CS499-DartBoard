@@ -63,4 +63,4 @@ class Hub(QApplication):
 
     def send_match_id(self, match_id):
         self.scorer.enter_match_id(match_id)
-        self.scoreboard.match_id = match_id
+        self.scoreboard.enter_match_id(match_id)

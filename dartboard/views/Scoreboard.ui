@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1543</width>
+    <width>1486</width>
     <height>838</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="1" column="4" alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="player_2_name">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -73,7 +73,7 @@
      </widget>
     </item>
     <item row="2" column="0">
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="player_1_score_table">
       <property name="minimumSize">
        <size>
         <width>400</width>
@@ -207,7 +207,7 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLCDNumber" name="lcdNumber_2">
+     <widget class="QLCDNumber" name="player_1_score">
       <property name="font">
        <font>
         <pointsize>9</pointsize>
@@ -237,7 +237,7 @@
      </widget>
     </item>
     <item row="3" column="2">
-     <widget class="QLabel" name="label_4">
+     <widget class="QLabel" name="current_score">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -291,7 +291,7 @@
      </widget>
     </item>
     <item row="3" column="3">
-     <widget class="QLCDNumber" name="lcdNumber">
+     <widget class="QLCDNumber" name="player_2_score">
       <property name="font">
        <font>
         <pointsize>9</pointsize>
@@ -321,7 +321,7 @@
      </widget>
     </item>
     <item row="2" column="1" colspan="3">
-     <widget class="QColumnView" name="columnView">
+     <widget class="QColumnView" name="dartboard_container">
       <property name="minimumSize">
        <size>
         <width>0</width>
@@ -337,7 +337,7 @@
      </widget>
     </item>
     <item row="1" column="0" alignment="Qt::AlignHCenter">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="player_1_name">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -394,7 +394,7 @@
      </widget>
     </item>
     <item row="1" column="2">
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="title">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
         <horstretch>0</horstretch>
@@ -448,7 +448,7 @@
      </widget>
     </item>
     <item row="2" column="4">
-     <widget class="QTableWidget" name="tableWidget_2">
+     <widget class="QTableWidget" name="player_1_score_table_2">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>

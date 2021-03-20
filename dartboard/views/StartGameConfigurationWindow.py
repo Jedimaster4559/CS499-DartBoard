@@ -89,6 +89,6 @@ class StartGameConfigurationWindow(QMainWindow):
         
         self.hide()
         self.hub.navigate_to_view("scorer")
-        #self.hub.navigate_to_view("scoreboard")
+        self.hub.navigate_to_view("scoreboard")
         self.hub.send_match_id(match_id)
         
