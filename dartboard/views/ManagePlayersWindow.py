@@ -14,8 +14,12 @@ class ManagePlayersWindow(QMainWindow):
         self.ui.setupUi(self)
 
         self.ui.new_player_button.clicked.connect(self.open_new_player_dialog)
-
+        self.ui.return_button.clicked.connect(self.return_to_menu)
         self.populate_players()
+
+    def return_to_menu(self):
+        self.hub.navigate_to_view("start_menu")
+        self.hide()
 
     def open_new_player_dialog(self):
         self.new_player_dialog = NewPlayerWindow(self)

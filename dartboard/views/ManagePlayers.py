@@ -22,14 +22,14 @@ class Ui_ManagePlayers(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.horizontalSpacer = QSpacerItem(616, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 0, 1, 1, 1)
+
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
 
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
-
-        self.horizontalSpacer = QSpacerItem(616, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer, 0, 1, 1, 1)
 
         self.new_player_button = QPushButton(self.centralwidget)
         self.new_player_button.setObjectName(u"new_player_button")
@@ -40,6 +40,11 @@ class Ui_ManagePlayers(object):
         self.players_listwidget.setObjectName(u"players_listwidget")
 
         self.gridLayout.addWidget(self.players_listwidget, 1, 0, 1, 3)
+
+        self.return_button = QPushButton(self.centralwidget)
+        self.return_button.setObjectName(u"return_button")
+
+        self.gridLayout.addWidget(self.return_button, 2, 2, 1, 1)
 
         ManagePlayers.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(ManagePlayers)
@@ -59,5 +64,6 @@ class Ui_ManagePlayers(object):
         ManagePlayers.setWindowTitle(QCoreApplication.translate("ManagePlayers", u"MainWindow", None))
         self.label.setText(QCoreApplication.translate("ManagePlayers", u"Manage Players", None))
         self.new_player_button.setText(QCoreApplication.translate("ManagePlayers", u"New Player", None))
+        self.return_button.setText(QCoreApplication.translate("ManagePlayers", u"Back", None))
     # retranslateUi
 

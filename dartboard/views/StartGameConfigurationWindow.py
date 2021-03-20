@@ -24,10 +24,13 @@ class StartGameConfigurationWindow(QMainWindow):
 
         self.ui.leg_value_501_radio_button.setChecked(True)
 
-
+    def on_navigated_to(self):
+        self.populate_player_names("")
         
 
     def populate_player_names(self, text):
+        self.ui.player_one_combo_box.clear()
+        self.ui.player_two_combo_box.clear()
         players = search_players(text)
         num_players = len(players)
         for x in players:

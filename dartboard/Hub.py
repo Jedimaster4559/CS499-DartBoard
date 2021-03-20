@@ -52,6 +52,7 @@ class Hub(QApplication):
         if (name == "start_menu"):
             self.start_menu.show()
         elif (name == "start_game_configuration"):
+            self.start_game_configuration.on_navigated_to()
             self.start_game_configuration.show()
         elif (name == "scorer"):
             self.scorer.show()

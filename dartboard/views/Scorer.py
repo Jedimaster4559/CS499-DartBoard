@@ -28,22 +28,22 @@ class Ui_Scorer(object):
         self.actionMatch_Highest_Out.setObjectName(u"actionMatch_Highest_Out")
         self.action_Match_Statistics = QAction(Scorer)
         self.action_Match_Statistics.setObjectName(u"action_Match_Statistics")
-        self.actionMatch_Averages_2 = QAction(Scorer)
-        self.actionMatch_Averages_2.setObjectName(u"actionMatch_Averages_2")
-        self.actionMatch_Score_Stats_2 = QAction(Scorer)
-        self.actionMatch_Score_Stats_2.setObjectName(u"actionMatch_Score_Stats_2")
-        self.actionMatch_Highest_Out_2 = QAction(Scorer)
-        self.actionMatch_Highest_Out_2.setObjectName(u"actionMatch_Highest_Out_2")
-        self.actionMatch_Doubles_Triples = QAction(Scorer)
-        self.actionMatch_Doubles_Triples.setObjectName(u"actionMatch_Doubles_Triples")
-        self.actionPlayer_Ranks = QAction(Scorer)
-        self.actionPlayer_Ranks.setObjectName(u"actionPlayer_Ranks")
-        self.actionPlayer_Last_Win = QAction(Scorer)
-        self.actionPlayer_Last_Win.setObjectName(u"actionPlayer_Last_Win")
-        self.actionPlayer_Averages = QAction(Scorer)
-        self.actionPlayer_Averages.setObjectName(u"actionPlayer_Averages")
-        self.actionPlayer_Score_Stats = QAction(Scorer)
-        self.actionPlayer_Score_Stats.setObjectName(u"actionPlayer_Score_Stats")
+        self.match_averages = QAction(Scorer)
+        self.match_averages.setObjectName(u"match_averages")
+        self.match_score_stats = QAction(Scorer)
+        self.match_score_stats.setObjectName(u"match_score_stats")
+        self.match_highest_out = QAction(Scorer)
+        self.match_highest_out.setObjectName(u"match_highest_out")
+        self.match_doubles_triples = QAction(Scorer)
+        self.match_doubles_triples.setObjectName(u"match_doubles_triples")
+        self.player_ranks = QAction(Scorer)
+        self.player_ranks.setObjectName(u"player_ranks")
+        self.player_last_win = QAction(Scorer)
+        self.player_last_win.setObjectName(u"player_last_win")
+        self.player_averages = QAction(Scorer)
+        self.player_averages.setObjectName(u"player_averages")
+        self.player_score_stats = QAction(Scorer)
+        self.player_score_stats.setObjectName(u"player_score_stats")
         self.centralwidget = QWidget(Scorer)
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
@@ -68,6 +68,36 @@ class Ui_Scorer(object):
         self.Player1Tab.setObjectName(u"Player1Tab")
         self.gridLayout_2 = QGridLayout(self.Player1Tab)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label_5 = QLabel(self.Player1Tab)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout_2.addWidget(self.label_5, 0, 3, 1, 1)
+
+        self.label_7 = QLabel(self.Player1Tab)
+        self.label_7.setObjectName(u"label_7")
+
+        self.gridLayout_2.addWidget(self.label_7, 0, 4, 1, 1)
+
+        self.label_6 = QLabel(self.Player1Tab)
+        self.label_6.setObjectName(u"label_6")
+
+        self.gridLayout_2.addWidget(self.label_6, 0, 5, 1, 1)
+
+        self.label_4 = QLabel(self.Player1Tab)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout_2.addWidget(self.label_4, 0, 2, 1, 1)
+
+        self.label_3 = QLabel(self.Player1Tab)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout_2.addWidget(self.label_3, 0, 1, 1, 1, Qt.AlignRight)
+
+        self.label_8 = QLabel(self.Player1Tab)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout_2.addWidget(self.label_8, 0, 6, 1, 1)
+
         self.Player1DartsTable = QTableWidget(self.Player1Tab)
         if (self.Player1DartsTable.columnCount() < 5):
             self.Player1DartsTable.setColumnCount(5)
@@ -83,17 +113,47 @@ class Ui_Scorer(object):
         self.Player1DartsTable.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.Player1DartsTable.setObjectName(u"Player1DartsTable")
         self.Player1DartsTable.setColumnCount(5)
-        self.Player1DartsTable.horizontalHeader().setDefaultSectionSize(75)
+        self.Player1DartsTable.horizontalHeader().setDefaultSectionSize(74)
         self.Player1DartsTable.horizontalHeader().setStretchLastSection(False)
         self.Player1DartsTable.verticalHeader().setStretchLastSection(False)
 
-        self.gridLayout_2.addWidget(self.Player1DartsTable, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.Player1DartsTable, 3, 1, 1, 6)
 
         self.tabWidget.addTab(self.Player1Tab, "")
         self.Player2Tab = QWidget()
         self.Player2Tab.setObjectName(u"Player2Tab")
         self.gridLayout_3 = QGridLayout(self.Player2Tab)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.label_12 = QLabel(self.Player2Tab)
+        self.label_12.setObjectName(u"label_12")
+
+        self.gridLayout_3.addWidget(self.label_12, 1, 3, 1, 1)
+
+        self.label_13 = QLabel(self.Player2Tab)
+        self.label_13.setObjectName(u"label_13")
+
+        self.gridLayout_3.addWidget(self.label_13, 1, 4, 1, 1)
+
+        self.label_9 = QLabel(self.Player2Tab)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout_3.addWidget(self.label_9, 1, 0, 1, 1)
+
+        self.label_10 = QLabel(self.Player2Tab)
+        self.label_10.setObjectName(u"label_10")
+
+        self.gridLayout_3.addWidget(self.label_10, 1, 1, 1, 1)
+
+        self.label_11 = QLabel(self.Player2Tab)
+        self.label_11.setObjectName(u"label_11")
+
+        self.gridLayout_3.addWidget(self.label_11, 1, 2, 1, 1)
+
+        self.label_14 = QLabel(self.Player2Tab)
+        self.label_14.setObjectName(u"label_14")
+
+        self.gridLayout_3.addWidget(self.label_14, 1, 5, 1, 1)
+
         self.Player2DartsTable = QTableWidget(self.Player2Tab)
         if (self.Player2DartsTable.columnCount() < 5):
             self.Player2DartsTable.setColumnCount(5)
@@ -109,11 +169,11 @@ class Ui_Scorer(object):
         self.Player2DartsTable.setHorizontalHeaderItem(4, __qtablewidgetitem9)
         self.Player2DartsTable.setObjectName(u"Player2DartsTable")
         self.Player2DartsTable.setColumnCount(5)
-        self.Player2DartsTable.horizontalHeader().setDefaultSectionSize(75)
+        self.Player2DartsTable.horizontalHeader().setDefaultSectionSize(74)
         self.Player2DartsTable.horizontalHeader().setStretchLastSection(False)
         self.Player2DartsTable.verticalHeader().setStretchLastSection(False)
 
-        self.gridLayout_3.addWidget(self.Player2DartsTable, 0, 0, 1, 3)
+        self.gridLayout_3.addWidget(self.Player2DartsTable, 4, 0, 1, 6)
 
         self.tabWidget.addTab(self.Player2Tab, "")
 
@@ -163,23 +223,23 @@ class Ui_Scorer(object):
         self.menubar = QMenuBar(Scorer)
         self.menubar.setObjectName(u"menubar")
         self.menubar.setGeometry(QRect(0, 0, 723, 21))
-        self.menuScoreboard_View = QMenu(self.menubar)
-        self.menuScoreboard_View.setObjectName(u"menuScoreboard_View")
+        self.menu = QMenu(self.menubar)
+        self.menu.setObjectName(u"menu")
         Scorer.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(Scorer)
         self.statusbar.setObjectName(u"statusbar")
         Scorer.setStatusBar(self.statusbar)
 
-        self.menubar.addAction(self.menuScoreboard_View.menuAction())
-        self.menuScoreboard_View.addAction(self.actionMatch_Averages_2)
-        self.menuScoreboard_View.addAction(self.actionMatch_Score_Stats_2)
-        self.menuScoreboard_View.addAction(self.actionMatch_Highest_Out_2)
-        self.menuScoreboard_View.addAction(self.actionMatch_Doubles_Triples)
-        self.menuScoreboard_View.addSeparator()
-        self.menuScoreboard_View.addAction(self.actionPlayer_Ranks)
-        self.menuScoreboard_View.addAction(self.actionPlayer_Last_Win)
-        self.menuScoreboard_View.addAction(self.actionPlayer_Averages)
-        self.menuScoreboard_View.addAction(self.actionPlayer_Score_Stats)
+        self.menubar.addAction(self.menu.menuAction())
+        self.menu.addAction(self.match_averages)
+        self.menu.addAction(self.match_score_stats)
+        self.menu.addAction(self.match_highest_out)
+        self.menu.addAction(self.match_doubles_triples)
+        self.menu.addSeparator()
+        self.menu.addAction(self.player_ranks)
+        self.menu.addAction(self.player_last_win)
+        self.menu.addAction(self.player_averages)
+        self.menu.addAction(self.player_score_stats)
 
         self.retranslateUi(Scorer)
 
@@ -195,15 +255,21 @@ class Ui_Scorer(object):
         self.actionMatch_Score_Stats.setText(QCoreApplication.translate("Scorer", u"Match Score Stats", None))
         self.actionMatch_Highest_Out.setText(QCoreApplication.translate("Scorer", u"Match Highest Out", None))
         self.action_Match_Statistics.setText(QCoreApplication.translate("Scorer", u"-- Match Statistics --", None))
-        self.actionMatch_Averages_2.setText(QCoreApplication.translate("Scorer", u"Match Averages", None))
-        self.actionMatch_Score_Stats_2.setText(QCoreApplication.translate("Scorer", u"Match Score Stats", None))
-        self.actionMatch_Highest_Out_2.setText(QCoreApplication.translate("Scorer", u"Match Highest Out", None))
-        self.actionMatch_Doubles_Triples.setText(QCoreApplication.translate("Scorer", u"Match Doubles/Triples", None))
-        self.actionPlayer_Ranks.setText(QCoreApplication.translate("Scorer", u"Player Ranks", None))
-        self.actionPlayer_Last_Win.setText(QCoreApplication.translate("Scorer", u"Player Last Win", None))
-        self.actionPlayer_Averages.setText(QCoreApplication.translate("Scorer", u"Player Averages", None))
-        self.actionPlayer_Score_Stats.setText(QCoreApplication.translate("Scorer", u"Player Score Stats", None))
-        self.label.setText(QCoreApplication.translate("Scorer", u"Legs", None))
+        self.match_averages.setText(QCoreApplication.translate("Scorer", u"Match Averages", None))
+        self.match_score_stats.setText(QCoreApplication.translate("Scorer", u"Match Score Stats", None))
+        self.match_highest_out.setText(QCoreApplication.translate("Scorer", u"Match Highest Out", None))
+        self.match_doubles_triples.setText(QCoreApplication.translate("Scorer", u"Match Doubles/Triples", None))
+        self.player_ranks.setText(QCoreApplication.translate("Scorer", u"Player Ranks", None))
+        self.player_last_win.setText(QCoreApplication.translate("Scorer", u"Player Last Win", None))
+        self.player_averages.setText(QCoreApplication.translate("Scorer", u"Player Averages", None))
+        self.player_score_stats.setText(QCoreApplication.translate("Scorer", u"Player Score Stats", None))
+        self.label.setText(QCoreApplication.translate("Scorer", u"Current Leg", None))
+        self.label_5.setText(QCoreApplication.translate("Scorer", u"Legs Won:", None))
+        self.label_7.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.label_6.setText(QCoreApplication.translate("Scorer", u"Sets Won:", None))
+        self.label_4.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.label_3.setText(QCoreApplication.translate("Scorer", u"Remaining Score:", None))
+        self.label_8.setText(QCoreApplication.translate("Scorer", u"0", None))
         ___qtablewidgetitem = self.Player1DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Scorer", u"Score", None));
         ___qtablewidgetitem1 = self.Player1DartsTable.horizontalHeaderItem(1)
@@ -215,6 +281,12 @@ class Ui_Scorer(object):
         ___qtablewidgetitem4 = self.Player1DartsTable.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Scorer", u"Remove", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Player1Tab), QCoreApplication.translate("Scorer", u"Player 1", None))
+        self.label_12.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.label_13.setText(QCoreApplication.translate("Scorer", u"Sets Won:", None))
+        self.label_9.setText(QCoreApplication.translate("Scorer", u"Remaining Score:", None))
+        self.label_10.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.label_11.setText(QCoreApplication.translate("Scorer", u"Legs Won:", None))
+        self.label_14.setText(QCoreApplication.translate("Scorer", u"0", None))
         ___qtablewidgetitem5 = self.Player2DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("Scorer", u"Score", None));
         ___qtablewidgetitem6 = self.Player2DartsTable.horizontalHeaderItem(1)
@@ -227,10 +299,10 @@ class Ui_Scorer(object):
         ___qtablewidgetitem9.setText(QCoreApplication.translate("Scorer", u"Remove", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Player2Tab), QCoreApplication.translate("Scorer", u"Player 2", None))
         self.LegNumberLabel.setText(QCoreApplication.translate("Scorer", u"4/14", None))
-        self.label_2.setText(QCoreApplication.translate("Scorer", u"Sets", None))
+        self.label_2.setText(QCoreApplication.translate("Scorer", u"Current Set", None))
         self.SetNumberLabel.setText(QCoreApplication.translate("Scorer", u"2/4", None))
         self.commit_turn_button.setText(QCoreApplication.translate("Scorer", u"Commit Turn", None))
         self.EndMatchButton.setText(QCoreApplication.translate("Scorer", u"End Match", None))
-        self.menuScoreboard_View.setTitle(QCoreApplication.translate("Scorer", u"Scoreboard View", None))
+        self.menu.setTitle(QCoreApplication.translate("Scorer", u"Scoreboard View", None))
     # retranslateUi
 

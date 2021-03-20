@@ -15,14 +15,47 @@ class ScorerWindow(QMainWindow):
         self.ui.graphicsView.setup_signal(self)
         self.ui.commit_turn_button.clicked.connect(self.commit_turn)
         
+        self.ui.match_averages.triggered.connect(self.match_averages_clicked)
+        self.ui.match_score_stats.triggered.connect(self.match_score_stats_clicked)
+        self.ui.match_highest_out.triggered.connect(self.match_highest_out_clicked)
+        self.ui.match_doubles_triples.triggered.connect(self.match_doubles_triples_clicked)
+        self.ui.player_ranks.triggered.connect(self.player_ranks_clicked)
+        self.ui.player_last_win.triggered.connect(self.player_last_win_clicked)
+        self.ui.player_averages.triggered.connect(self.player_averages_clicked)
+        self.ui.player_score_stats.triggered.connect(self.player_score_stats_clicked)
+        
         self.current_set = 1
         self.current_leg = 1
         self.current_turns = [None, None]
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
 
-        self.darts_thrown = {
+        self.darts_thrown = {}
 
-        }
+    def match_averages_clicked(self):
+        print("match averages clicked")
+
+    def match_score_stats_clicked(self):
+        print("match score stats clicked")
+
+    def match_highest_out_clicked(self):
+        print("match highest out clicked")
+
+    def match_doubles_triples_clicked(self):
+        print("match doubles triples clicked")
+
+    def player_ranks_clicked(self):
+        print("player ranks clicked")
+
+    def player_last_win_clicked(self):
+        print("player last win clicked")
+
+    def player_averages_clicked(self):
+        print("player averages clicked")
+
+    def player_score_stats_clicked(self):
+        print("player score stats clicked")
+
+    
         
         
     def addpopulaterow(self, table, value, bounce, knock, foul, index):
