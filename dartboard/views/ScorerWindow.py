@@ -125,6 +125,7 @@ class ScorerWindow(QMainWindow):
         remove_hit(dart)
         
         self.ui.graphicsView.remove_dart(index)
+        self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
         
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -186,6 +187,8 @@ class ScorerWindow(QMainWindow):
         self.darts_thrown[index] = dart
 
         self.check_game_win()
+
+        self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
 
     def check_game_win(self):
 

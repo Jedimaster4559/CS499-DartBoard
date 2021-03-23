@@ -107,14 +107,14 @@
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>true</bool>
       </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>100</number>
+      </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>100</number>
       </attribute>
       <attribute name="horizontalHeaderHighlightSections">
        <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>100</number>
       </attribute>
       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
        <bool>false</bool>
@@ -320,22 +320,6 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1" colspan="3">
-     <widget class="QColumnView" name="dartboard_container">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>1000000</width>
-        <height>16777215</height>
-       </size>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="player_1_name">
       <property name="sizePolicy">
@@ -491,14 +475,14 @@
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>true</bool>
       </attribute>
+      <attribute name="horizontalHeaderMinimumSectionSize">
+       <number>100</number>
+      </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>100</number>
       </attribute>
       <attribute name="horizontalHeaderHighlightSections">
        <bool>true</bool>
-      </attribute>
-      <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>100</number>
       </attribute>
       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
        <bool>false</bool>
@@ -512,11 +496,11 @@
       <attribute name="verticalHeaderCascadingSectionResizes">
        <bool>true</bool>
       </attribute>
-      <attribute name="verticalHeaderDefaultSectionSize">
-       <number>30</number>
-      </attribute>
       <attribute name="verticalHeaderMinimumSectionSize">
        <number>23</number>
+      </attribute>
+      <attribute name="verticalHeaderDefaultSectionSize">
+       <number>30</number>
       </attribute>
       <attribute name="verticalHeaderShowSortIndicator" stdset="0">
        <bool>false</bool>
@@ -599,10 +583,20 @@
       </item>
      </widget>
     </item>
+    <item row="2" column="1" colspan="3">
+     <widget class="DartboardViewer" name="graphicsView"/>
+    </item>
    </layout>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DartboardViewer</class>
+   <extends>QGraphicsView</extends>
+   <header>DartboardViewer.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

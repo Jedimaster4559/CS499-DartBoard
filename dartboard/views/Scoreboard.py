@@ -12,6 +12,8 @@ from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
+from DartboardViewer import DartboardViewer
+
 
 class Ui_Scoreboard(object):
     def setupUi(self, Scoreboard):
@@ -157,13 +159,6 @@ class Ui_Scoreboard(object):
 
         self.gridLayout.addWidget(self.player_2_score, 3, 3, 1, 1)
 
-        self.dartboard_container = QColumnView(self.centralwidget)
-        self.dartboard_container.setObjectName(u"dartboard_container")
-        self.dartboard_container.setMinimumSize(QSize(0, 0))
-        self.dartboard_container.setMaximumSize(QSize(1000000, 16777215))
-
-        self.gridLayout.addWidget(self.dartboard_container, 2, 1, 1, 3)
-
         self.player_1_name = QLabel(self.centralwidget)
         self.player_1_name.setObjectName(u"player_1_name")
         sizePolicy1.setHeightForWidth(self.player_1_name.sizePolicy().hasHeightForWidth())
@@ -255,6 +250,11 @@ class Ui_Scoreboard(object):
         self.player_1_score_table_2.verticalHeader().setProperty("showSortIndicator", False)
 
         self.gridLayout.addWidget(self.player_1_score_table_2, 2, 4, 1, 1)
+
+        self.graphicsView = DartboardViewer(self.centralwidget)
+        self.graphicsView.setObjectName(u"graphicsView")
+
+        self.gridLayout.addWidget(self.graphicsView, 2, 1, 1, 3)
 
         Scoreboard.setCentralWidget(self.centralwidget)
         self.statusbar = QStatusBar(Scoreboard)

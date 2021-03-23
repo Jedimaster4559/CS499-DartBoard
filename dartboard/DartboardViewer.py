@@ -1,5 +1,5 @@
 ##################
-# DartboardView contains any functions necessary to
+# DartboardViewer contains any functions necessary to
 # render a Dartboard graphic. There are functions to
 # resize, repaint, and draw points on the board when
 # clicked.
@@ -12,11 +12,11 @@ from PySide2.QtWidgets import QGraphicsView, QGraphicsScene
 
 
 ##
-# DartboardView class inherits QGraphicsView
+# DartboardViewer class inherits QGraphicsView
 # and adds additional functionality to represent
 # a clickable and resizable dartboard.
 
-class DartboardView(QGraphicsView):
+class DartboardViewer(QGraphicsView):
 
     ##
     # constructor for QGraphicsView subclass
@@ -66,69 +66,6 @@ class DartboardView(QGraphicsView):
         # shows the window
         self.show()
 
-    def setup_signal(self, controller):
-        self.controller = controller
-
-    def remove_dart(self, index):
-        print("before: {}".format(self.points))
-        print("dart removed on DartboardView: index: {}".format(index))
-        self.points.pop(index)
-        print("after: {}".format(self.points))
-        self.DrawRegions()
-        #self.dart_index -= 1
-
-    # this function is called when a point is placed on the window
-    def mousePressEvent(self, event):
-
-        # this call could be used to get your mock points
-        # print(event.pos())
-
-        # this stores the real position of the click by adding together the top left position of the window with the click position relative to the window
-        realPosition = QPoint(event.pos().x() + self.WindowPosX, event.pos().y() + self.WindowPosY)
-
-        region = ""
-        score = 0
-
-        # check for collisions with each region
-        if (self.bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            region = "bullseye"  # Inner
-            score = 50
-        elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            region = "bullseye"  # Outer
-            score = 25
-        for i in range(20):
-            if self.doubles_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                region = "double"
-                score = int(self.scores[i]) * 2
-            if self.triples_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                region = "triple"
-                score = int(self.scores[i]) * 3
-            if self.border_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                region = "border"
-                score = 0
-            if self.outer_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                region = "regular"  # Outer
-                score = int(self.scores[i])
-
-            if self.inner_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
-                region = "regular"  # Inner
-                score = int(self.scores[i])
-                
-        self.points[self.dart_index] =  [(event.pos().x() - (self.WindowSizeX / 2.0)) / self.radius,
-                            (event.pos().y() - (self.WindowSizeY / 2.0)) / self.radius]
-
-        self.controller.dart_thrown(region=region, score=score, index = self.dart_index)
-        
-
-        # this line adds an entry for the point that was just placed. It calculates the x and y distance from the center of the circle divided by the current radius of the circle
-        # this is used to relocate the points later when the window is resized
-        
-
-        # this line draws the point on the screen where the mouse was clicked
-        self.scene.addEllipse(self.WindowPosX + event.pos().x(), self.WindowPosY + event.pos().y(), 3, 3, QPen(),
-                      QBrush(Qt.white))
-
-        self.dart_index += 1
 
     # this function is called when the window is resized
     def resizeEvent(self, event):
@@ -365,3 +302,7 @@ class DartboardView(QGraphicsView):
             y_dec = self.radius * value[1]
             self.scene.addEllipse(self.WindowPosX + (self.WindowSizeX / 2.0) + x_dec,
                                   self.WindowPosY + (self.WindowSizeY / 2.0) + y_dec, 3, 3, QPen(), QBrush(Qt.white))
+
+    def set_points(self, points):
+        self.points = points
+        self.DrawRegions()
