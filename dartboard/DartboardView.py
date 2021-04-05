@@ -11,7 +11,6 @@ from PySide2.QtGui import QPainter, QPen, QBrush, QPolygon, QFont
 from PySide2.QtWidgets import QGraphicsView, QGraphicsScene
 
 
-##
 # DartboardView class inherits QGraphicsView
 # and adds additional functionality to represent
 # a clickable and resizable dartboard.

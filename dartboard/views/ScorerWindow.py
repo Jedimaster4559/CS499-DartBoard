@@ -2,6 +2,7 @@ from views.Scorer import Ui_Scorer
 from PySide2.QtWidgets import QApplication, QMainWindow, QCheckBox, QTableWidgetItem, QWidget, QHBoxLayout, QHeaderView, QPushButton
 from PySide2.QtCore import Qt
 from backend.dartboard_api import *
+from views.ScoreboardWindow import ScoreboardWindow 
 import sys
 
 class ScorerWindow(QMainWindow):
@@ -12,6 +13,7 @@ class ScorerWindow(QMainWindow):
 
         self.ui = Ui_Scorer()
         self.ui.setupUi(self)
+        
         self.ui.graphicsView.setup_signal(self)
         self.ui.commit_turn_button.clicked.connect(self.commit_turn)
         
@@ -126,6 +128,7 @@ class ScorerWindow(QMainWindow):
         
         self.ui.graphicsView.remove_dart(index)
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
+        self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
         
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -138,13 +141,15 @@ class ScorerWindow(QMainWindow):
         # set names
         self.ui.tabWidget.setTabText(0, self.players[0].player.full_name)
         self.ui.tabWidget.setTabText(1, self.players[1].player.full_name)
-
+        # set leg and set numbers
         self.change_set_number_label(1)
         self.change_leg_number_label(1)
 
         leg = get_leg_by_number(match_id=match_id, set_number=1, leg_number=1)
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
-            
+        self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
+
+
 
     def change_set_number_label(self, current_set):
         result = str(current_set) + "/" + str(self.number_of_sets)
@@ -189,6 +194,11 @@ class ScorerWindow(QMainWindow):
         self.check_game_win()
 
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
+
+        self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
+        
+
+
 
     def check_game_win(self):
 

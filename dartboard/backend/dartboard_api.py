@@ -89,6 +89,9 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
     hit.save()
     return hit
 
+def get_hits(turn):
+    return DartboardHit.objects.filter(turn=turn)
+
 
 def remove_hit(dart):
     dart.delete()
