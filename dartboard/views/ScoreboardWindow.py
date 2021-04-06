@@ -39,6 +39,45 @@ class ScoreboardWindow(QMainWindow):
         self.clear_scoreboard()
         hits_player_1 = get_hits(turn_1)
         hits_player_2 = get_hits(turn_2)
+
+        #get checkouts for player 1 if applicable
+        print("Turn 1 Remaining: {}".format(turn_1.player.score_remaining))
+        if (turn_1.player.score_remaining <= 170):
+            print("Hits count for Player 1: {}".format(hits_player_1.count()))
+            # we can call checkout function
+            if hits_player_1.count() == 0:
+                first, second, third = check_outs.initial_sum(turn_1.player.score_remaining)
+            elif hits_player_1.count() == 1:
+                first, second, third = check_outs.first_sum(turn_1.player.score_remaining, hits_player_1[hits_player_1.count()-1])
+            elif hits_player_1.count() == 2:
+                first, second, third = check_outs.second_sum(turn_1.player.score_remaining, hits_player_1[hits_player_1.count() - 2], hits_player_1[hits_player_1.count()-1])
+
+            self.ui.player_one_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
+            self.ui.player_one_checkouts_label.show()
+            
+        else:
+            self.ui.player_one_checkouts_label.hide()
+
+        #get checkouts for player 2 if applicable
+        if (turn_2.player.score_remaining <= 170):
+            # we can call checkout function
+            if hits_player_2.count() == 0:
+                first, second, third = check_outs.initial_sum(turn_2.player.score_remaining)
+            elif hits_player_2.count() == 1:
+                first, second, third = check_outs.first_sum(turn_2.player.score_remaining, hits_player_2[hits_player_2.count()-1])
+            elif hits_player_2.count() == 2:
+                first, second, third = check_outs.second_sum(turn_2.player.score_remaining, hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
+
+            self.ui.player_two_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
+            self.ui.player_two_checkouts_label.show()
+
+        else:
+            self.ui.player_two_checkouts_label.hide()
+
+
+        
+
+        
         index = 0
 
         for hit in hits_player_1:
