@@ -82,9 +82,11 @@ def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
 def start_new_turn(leg, player):
     turn = Turn(game=leg, player=player)
     turn.save()
+    """
     if turn.player.score_remaining <= 170:
         first, second, third = check_outs.initial_sum(turn.player.score_remaining)
         print(first, second, third)
+    """
     return turn
 
 
@@ -92,14 +94,18 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
     hit = DartboardHit(turn=turn, score=value, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
     hit.save()
 
+    """
     hits = DartboardHit.objects.filter(turn=turn)
     if turn.player.score_remaining <= 170:
         if hits.count() == 1:
+            print("Score from add_hit: ", turn.player.score_remaining)
             first, second, third = check_outs.first_sum(turn.player.score_remaining, hit)
             print(first, second, third)
         elif hits.count() == 2:
+            print("Score from add_hit, hit counts 2: ", turn.player.score_remaining)
             first, second, third = check_outs.second_sum(turn.player.score_remaining, hits[hits.count() - 2], hit)
             print(first, second, third)
+    """
     return hit
 
 
@@ -251,6 +257,10 @@ def get_score_remaining(turn):
                 score_remaining -= hit.score
 
         return score_remaining
+
+
+def get_turn_score_remaining(turn):
+    return turn.player.score_remaining
 
 
 # Commits a turn to the database. Returns True if the turn could
