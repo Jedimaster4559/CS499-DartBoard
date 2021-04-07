@@ -164,6 +164,7 @@ class ScorerWindow(QMainWindow):
     def commit_turn(self):
         print("pressed commit turn")
         current_player_index = self.ui.tabWidget.currentIndex()
+        
         isbust = not commit_turn(self.current_turns[current_player_index])
 
         if isbust:
@@ -183,6 +184,11 @@ class ScorerWindow(QMainWindow):
         self.ui.tabWidget.setCurrentIndex((current_player_index + 1) % 2)
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
+
+        if (current_player_index == 0):
+            self.ui.tabWidget.setCurrentIndex(1)
+        else:
+            self.ui.tabWidget.setCurrentIndex(0)
 
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
