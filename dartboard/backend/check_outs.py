@@ -135,7 +135,7 @@ def first_sum(target, first_dart):
                         else:
                             # print(first_dart.score, alldict[j][0], doublesdict[i])
                             return first_dart.score, alldict[j][0], doublesdict[i]
-        print("First sum did not find a number.")
+        # print("First sum did not find a number.")
         return "", "", ""
     return "", "", ""
 
@@ -179,9 +179,9 @@ def second_sum(target, first_dart, second_dart):
                     else:
                         # print(first_dart.score, second_dart.score, doublesdict[i])
                         return first_dart.score, second_dart.score, doublesdict[i]
-        print("Second sum did not find a number.")
+        # print("Second sum did not find a number.")
         return "", "", ""
-    print("Score is not <= 170")
+    # print("Score is not <= 170")
     return "", "", ""
 
 
@@ -216,5 +216,5 @@ def initial_sum(target):
                             if third_target == 0:
                                 # print(alldict[k][0], alldict[j][0], doublesdict[i])
                                 return alldict[k][0], alldict[j][0], doublesdict[i]
-        print("Initial sum did not find a number.")
+        # print("Initial sum did not find a number.")
         return "", "", ""
