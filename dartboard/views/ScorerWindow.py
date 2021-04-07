@@ -5,6 +5,7 @@ from backend.dartboard_api import *
 from views.ScoreboardWindow import ScoreboardWindow 
 import sys
 
+
 class ScorerWindow(QMainWindow):
     def __init__(self, hub):
         super(ScorerWindow, self).__init__()
@@ -28,6 +29,7 @@ class ScorerWindow(QMainWindow):
         
         self.current_set = 1
         self.current_leg = 1
+        self.leg_starting_player_index = 0
         self.current_turns = [None, None]
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
 
@@ -57,9 +59,6 @@ class ScorerWindow(QMainWindow):
     def player_score_stats_clicked(self):
         print("player score stats clicked")
 
-    
-        
-        
     def addpopulaterow(self, table, value, bounce, knock, foul, index):
         rowPosition = table.rowCount()
         table.insertRow(rowPosition)
@@ -149,8 +148,6 @@ class ScorerWindow(QMainWindow):
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
         self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
 
-
-
     def change_set_number_label(self, current_set):
         result = str(current_set) + "/" + str(self.number_of_sets)
         self.current_set = current_set
@@ -177,7 +174,7 @@ class ScorerWindow(QMainWindow):
         leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
 
         # start new turns
-        if current_player_index == 1:
+        if current_player_index == (self.leg_starting_player_index + 1) % 2:
             self.current_turns[0] = start_new_turn(leg, self.players[0])
             self.current_turns[1] = start_new_turn(leg, self.players[1])
 
@@ -204,10 +201,7 @@ class ScorerWindow(QMainWindow):
 
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
 
-        self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
-        
-
-
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
 
     def check_game_win(self):
 
@@ -240,6 +234,8 @@ class ScorerWindow(QMainWindow):
             self.change_set_number_label(self.current_set)
             leg = get_leg_by_number(match_id=self.match.id, set_number=1, leg_number=1)
             self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
+            self.leg_starting_player_index = (self.leg_starting_player_index + 1) % 2
+            self.ui.tabWidget.setCurrentIndex(self.leg_starting_player_index)
 
 
         
