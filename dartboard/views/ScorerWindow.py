@@ -185,11 +185,6 @@ class ScorerWindow(QMainWindow):
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
 
-        if (current_player_index == 0):
-            self.ui.tabWidget.setCurrentIndex(1)
-        else:
-            self.ui.tabWidget.setCurrentIndex(0)
-
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
         is_double = region == "double"
