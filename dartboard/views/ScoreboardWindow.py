@@ -16,8 +16,6 @@ class ScoreboardWindow(QMainWindow):
         self.hub = hub
         self.ui = Ui_Scoreboard()
         self.ui.setupUi(self)
-        # score table set up
-        self.ui.graphicsView.setup_signal(self)  # needs work
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
 
         self.current_set = 1
