@@ -176,7 +176,7 @@
     <item row="8" column="4" colspan="2">
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>Number of Sets</string>
+       <string>Number of Matches</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignHCenter</set>

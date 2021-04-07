@@ -75,7 +75,7 @@ class Ui_StartMenu(object):
     def retranslateUi(self, StartMenu):
         StartMenu.setWindowTitle(QCoreApplication.translate("StartMenu", u"StartMenu", None))
         self.label.setText(QCoreApplication.translate("StartMenu", u"Dart Premier League", None))
-        self.new_match_button.setText(QCoreApplication.translate("StartMenu", u"New Match", None))
+        self.new_match_button.setText(QCoreApplication.translate("StartMenu", u"New Game", None))
         self.manage_players_button.setText(QCoreApplication.translate("StartMenu", u"Manage Players", None))
     # retranslateUi
 

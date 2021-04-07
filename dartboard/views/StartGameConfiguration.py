@@ -198,7 +198,7 @@ class Ui_StartGameConfiguration(object):
         self.label_8.setText(QCoreApplication.translate("StartGameConfiguration", u"Date", None))
         self.label_3.setText(QCoreApplication.translate("StartGameConfiguration", u"Location", None))
         self.leg_value_301_radio_button.setText(QCoreApplication.translate("StartGameConfiguration", u"301", None))
-        self.label_5.setText(QCoreApplication.translate("StartGameConfiguration", u"Number of Sets", None))
+        self.label_5.setText(QCoreApplication.translate("StartGameConfiguration", u"Number of Matches", None))
         self.season_180s_checkbox.setText(QCoreApplication.translate("StartGameConfiguration", u"Season 180s", None))
         self.start_game_button.setText(QCoreApplication.translate("StartGameConfiguration", u"Start Game", None))
     # retranslateUi

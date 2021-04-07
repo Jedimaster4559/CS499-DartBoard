@@ -266,7 +266,7 @@ class Ui_Scorer(object):
         self.label.setText(QCoreApplication.translate("Scorer", u"Current Leg", None))
         self.label_5.setText(QCoreApplication.translate("Scorer", u"Legs Won:", None))
         self.label_7.setText(QCoreApplication.translate("Scorer", u"0", None))
-        self.label_6.setText(QCoreApplication.translate("Scorer", u"Sets Won:", None))
+        self.label_6.setText(QCoreApplication.translate("Scorer", u"Matches Won:", None))
         self.label_4.setText(QCoreApplication.translate("Scorer", u"0", None))
         self.label_3.setText(QCoreApplication.translate("Scorer", u"Remaining Score:", None))
         self.label_8.setText(QCoreApplication.translate("Scorer", u"0", None))
@@ -299,10 +299,10 @@ class Ui_Scorer(object):
         ___qtablewidgetitem9.setText(QCoreApplication.translate("Scorer", u"Remove", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Player2Tab), QCoreApplication.translate("Scorer", u"Player 2", None))
         self.LegNumberLabel.setText(QCoreApplication.translate("Scorer", u"4/14", None))
-        self.label_2.setText(QCoreApplication.translate("Scorer", u"Current Set", None))
+        self.label_2.setText(QCoreApplication.translate("Scorer", u"Current Match", None))
         self.SetNumberLabel.setText(QCoreApplication.translate("Scorer", u"2/4", None))
         self.commit_turn_button.setText(QCoreApplication.translate("Scorer", u"Commit Turn", None))
-        self.EndMatchButton.setText(QCoreApplication.translate("Scorer", u"End Match", None))
+        self.EndMatchButton.setText(QCoreApplication.translate("Scorer", u"End Game", None))
         self.menu.setTitle(QCoreApplication.translate("Scorer", u"Scoreboard View", None))
     # retranslateUi
 

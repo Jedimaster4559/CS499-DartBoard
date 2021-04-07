@@ -68,7 +68,7 @@
         <item row="0" column="5">
          <widget class="QLabel" name="label_6">
           <property name="text">
-           <string>Sets Won:</string>
+           <string>Matches Won:</string>
           </property>
          </widget>
         </item>
@@ -238,7 +238,7 @@
     <item row="0" column="4" colspan="2" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>Current Set</string>
+       <string>Current Match</string>
       </property>
      </widget>
     </item>
@@ -275,7 +275,7 @@
        </sizepolicy>
       </property>
       <property name="text">
-       <string>End Match</string>
+       <string>End Game</string>
       </property>
      </widget>
     </item>
