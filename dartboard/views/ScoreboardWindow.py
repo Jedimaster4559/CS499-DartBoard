@@ -39,16 +39,16 @@ class ScoreboardWindow(QMainWindow):
         hits_player_2 = get_hits(turn_2)
 
         #get checkouts for player 1 if applicable
-        print("Turn 1 Remaining: {}".format(turn_1.player.score_remaining))
-        if (turn_1.player.score_remaining <= 170):
+        print("Turn 1 Remaining: {}".format(get_score_remaining(turn_1)))
+        if (get_score_remaining(turn_1) <= 170):
             print("Hits count for Player 1: {}".format(hits_player_1.count()))
             # we can call checkout function
             if hits_player_1.count() == 0:
-                first, second, third = check_outs.initial_sum(turn_1.player.score_remaining)
+                first, second, third = check_outs.initial_sum(get_score_remaining(turn_1))
             elif hits_player_1.count() == 1:
-                first, second, third = check_outs.first_sum(turn_1.player.score_remaining, hits_player_1[hits_player_1.count()-1])
+                first, second, third = check_outs.first_sum(get_score_remaining(turn_1), hits_player_1[hits_player_1.count()-1])
             elif hits_player_1.count() == 2:
-                first, second, third = check_outs.second_sum(turn_1.player.score_remaining, hits_player_1[hits_player_1.count() - 2], hits_player_1[hits_player_1.count()-1])
+                first, second, third = check_outs.second_sum(get_score_remaining(turn_1), hits_player_1[hits_player_1.count() - 2], hits_player_1[hits_player_1.count()-1])
 
             self.ui.player_one_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
             self.ui.player_one_checkouts_label.show()
@@ -57,14 +57,14 @@ class ScoreboardWindow(QMainWindow):
             self.ui.player_one_checkouts_label.hide()
 
         #get checkouts for player 2 if applicable
-        if (turn_2.player.score_remaining <= 170):
+        if (get_score_remaining(turn_2) <= 170):
             # we can call checkout function
             if hits_player_2.count() == 0:
-                first, second, third = check_outs.initial_sum(turn_2.player.score_remaining)
+                first, second, third = check_outs.initial_sum(get_score_remaining(turn_2))
             elif hits_player_2.count() == 1:
-                first, second, third = check_outs.first_sum(turn_2.player.score_remaining, hits_player_2[hits_player_2.count()-1])
+                first, second, third = check_outs.first_sum(get_score_remaining(turn_2), hits_player_2[hits_player_2.count()-1])
             elif hits_player_2.count() == 2:
-                first, second, third = check_outs.second_sum(turn_2.player.score_remaining, hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
+                first, second, third = check_outs.second_sum(get_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
 
             self.ui.player_two_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
             self.ui.player_two_checkouts_label.show()
@@ -90,10 +90,13 @@ class ScoreboardWindow(QMainWindow):
                 self.tables[1], hit.score, hit.is_bounce_out, hit.is_knock_out, False, index)
             index = index+1
 
+        # Set Players Name
         self.ui.player_1_name.setText(self.players[0].player.full_name)
         self.ui.player_2_name.setText(self.players[1].player.full_name)
-        self.ui.player_1_score.display(str(turn_1.player.score_remaining))
-        self.ui.player_2_score.display(str(turn_2.player.score_remaining))
+
+        # Set the players remaining scores
+        self.ui.player_1_score.display(str(get_score_remaining(turn_1)))
+        self.ui.player_2_score.display(str(get_score_remaining(turn_2)))
 
     def addpopulaterow(self, table, value, bounce, knock, foul, index):
         rowPosition = table.rowCount()

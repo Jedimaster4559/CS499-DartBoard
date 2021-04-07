@@ -102,6 +102,7 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
             print(first, second, third)
     return hit
 
+
 def get_hits(turn):
     return DartboardHit.objects.filter(turn=turn)
 
@@ -233,6 +234,24 @@ def is_turn_bust(turn):
             score_remaining -= hit.score
 
     return score_remaining == 1 or score_remaining < 0
+
+
+# Gets the score remaining, accounting for the current turn.
+def get_score_remaining(turn):
+    score_remaining = turn.player.score_remaining
+    if turn.is_committed:
+        return score_remaining
+    else:
+        # Get hits
+        hits = DartboardHit.objects.filter(turn=turn)
+
+        # Get Updated Score
+        for hit in hits:
+            if not hit.is_bounce_out and not hit.is_knock_out:
+                score_remaining -= hit.score
+
+        return score_remaining
+
 
 # Commits a turn to the database. Returns True if the turn could
 # be committed and false if the turn was a bust.
