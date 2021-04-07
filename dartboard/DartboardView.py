@@ -68,6 +68,10 @@ class DartboardView(QGraphicsView):
     def setup_signal(self, controller):
         self.controller = controller
 
+    def clear_board(self):
+        self.points.clear()
+        self.DrawRegions()
+
     def remove_dart(self, index):
         print("before: {}".format(self.points))
         print("dart removed on DartboardView: index: {}".format(index))
