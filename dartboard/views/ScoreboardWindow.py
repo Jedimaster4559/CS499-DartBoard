@@ -40,15 +40,11 @@ class ScoreboardWindow(QMainWindow):
         first, second, third = "", "", ""
 
         #get checkouts for player 1 if applicable
-        print("Turn 1 Remaining: {}".format(get_score_remaining(turn_1)))
         if (get_turn_score_remaining(turn_1) <= 170):
-            print("Hits count for Player 1: {}".format(hits_player_1.count()))
             # we can call checkout function
             if hits_player_1.count() == 0:
                 first, second, third = check_outs.initial_sum(get_turn_score_remaining(turn_1))
             elif hits_player_1.count() == 1:
-                print("The remaining score passed into checkout is: ", get_turn_score_remaining(turn_1))
-                print("The dart score passed into checkouts is: ", hits_player_1[hits_player_1.count()-1].score)
                 first, second, third = check_outs.first_sum(get_turn_score_remaining(turn_1), hits_player_1[hits_player_1.count()-1])
             elif hits_player_1.count() == 2:
                 first, second, third = check_outs.second_sum(get_turn_score_remaining(turn_1), hits_player_1[hits_player_1.count() - 2], hits_player_1[hits_player_1.count()-1])
@@ -71,8 +67,11 @@ class ScoreboardWindow(QMainWindow):
             elif hits_player_2.count() == 2:
                 first, second, third = check_outs.second_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
 
-            self.ui.player_two_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
-            self.ui.player_two_checkouts_label.show()
+            if first != "":
+                self.ui.player_two_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
+                self.ui.player_two_checkouts_label.show()
+            else:
+                self.ui.player_two_checkouts_label.hide()
 
         else:
             self.ui.player_two_checkouts_label.hide()
