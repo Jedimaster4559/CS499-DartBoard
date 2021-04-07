@@ -174,7 +174,15 @@ class ScorerWindow(QMainWindow):
         self.check_game_win()
 
         leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
-        self.current_turns[current_player_index] = start_new_turn(leg, self.players[current_player_index])
+
+        # start new turns
+        if current_player_index == 1:
+            self.current_turns[0] = start_new_turn(leg, self.players[0])
+            self.current_turns[1] = start_new_turn(leg, self.players[1])
+
+        self.ui.tabWidget.setCurrentIndex((current_player_index + 1) % 2)
+
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
 
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
