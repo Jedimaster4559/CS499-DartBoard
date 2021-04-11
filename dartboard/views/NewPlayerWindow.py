@@ -9,6 +9,7 @@ class NewPlayerWindow(QMainWindow):
         self.manage_players = manage_players
 
         self.ui = Ui_NewPlayer()
+        self.new_player = True
         self.ui.setupUi(self)
 
         self.ui.accept_button.clicked.connect(self.accept)
@@ -16,7 +17,12 @@ class NewPlayerWindow(QMainWindow):
 
 
     def accept(self):
-        self.manage_players.add_player_to_list(self.ui.first_name_line_edit.text(), self.ui.last_name_line_edit.text())
+        if (self.new_player):
+            self.manage_players.add_player_to_list(self.ui.first_name_line_edit.text(), self.ui.last_name_line_edit.text())
+            print("new player")
+        else:
+            self.manage_players.modify_existing_player()
+            print("modify existing")
         self.close()
 
     def reject(self):
