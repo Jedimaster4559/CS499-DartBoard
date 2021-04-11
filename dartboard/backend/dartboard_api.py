@@ -5,10 +5,20 @@ from backend.models import *
 def create_player(first_name, last_name):
     full_name = first_name + " " + last_name
     player = Player(first_name=first_name, last_name=last_name, full_name=full_name,
-                    current_league_rank=Player.objects.count())
+                    current_league_rank=(Player.objects.count() + 1))
     player.save()
     return player
 
+def delete_player(player):
+    player.delete()
+    return True
+
+def edit_player(first, last, player):
+    player.first_name = first
+    player.last_name = last
+    player.full_name = first + " " + last
+    player.save()
+    return player
 
 def get_player_by_full_name(full_name):
     return Player.objects.filter(full_name=full_name).first()

@@ -4,7 +4,7 @@ from PySide2.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QWidg
 from PySide2.QtCore import Qt
 
 import sys
-from backend.dartboard_api import create_player, get_all_players, get_player_by_full_name
+from backend.dartboard_api import create_player, get_all_players, get_player_by_full_name, delete_player, edit_player
 
 
 class ManagePlayersWindow(QMainWindow):
@@ -15,11 +15,10 @@ class ManagePlayersWindow(QMainWindow):
 
         self.ui = Ui_ManagePlayers()
         self.ui.setupUi(self)
-        #self.ui.players_table_widget.setSelectionBehavior(QAbstractItemView::SelectRows)
 
         self.ui.new_player_button.clicked.connect(self.open_new_player_dialog)
         self.ui.return_button.clicked.connect(self.return_to_menu)
-        self.ui.players_table_widget.cellClicked.connect(self.edit_player)
+        self.ui.players_table_widget.cellClicked.connect(self.cell_clicked)
         self.populate_players()
 
     def return_to_menu(self):
@@ -36,8 +35,8 @@ class ManagePlayersWindow(QMainWindow):
         create_player(first_name=first, last_name=last)
         self.populate_players()
 
-    def modify_existing_player(self):
-
+    def modify_existing_player(self, first, last, player):
+        edit_player(first, last, player)
         self.populate_players()
 
     def populate_players(self):
@@ -63,12 +62,12 @@ class ManagePlayersWindow(QMainWindow):
 
         average_season_score = QTableWidgetItem()
         average_season_score.setTextAlignment(Qt.AlignCenter)
-        average_season_score.setText(str(x.average_season_score))
+        average_season_score.setText(str(round(x.average_season_score,2)))
         self.ui.players_table_widget.setItem(rowPosition, 2, average_season_score)
 
         average_lifetime_score = QTableWidgetItem()
         average_lifetime_score.setTextAlignment(Qt.AlignCenter)
-        average_lifetime_score.setText(str(x.average_lifetime_score))
+        average_lifetime_score.setText(str(round(x.average_lifetime_score,2)))
         self.ui.players_table_widget.setItem(rowPosition, 3, average_lifetime_score)
 
         number_of_180s = QTableWidgetItem()
@@ -92,8 +91,7 @@ class ManagePlayersWindow(QMainWindow):
         self.ui.players_table_widget.setCellWidget(rowPosition, 6, cell_widget)
         button.clicked.connect(lambda: self.remove_player(x))
 
-    def edit_player(self, row, column):
-        print("{} {}".format(row, column))
+    def cell_clicked(self, row, column):
     
         # get player by name
         player = get_player_by_full_name(self.ui.players_table_widget.item(row, 0).text())  
@@ -101,11 +99,12 @@ class ManagePlayersWindow(QMainWindow):
         self.new_player_dialog = NewPlayerWindow(self)
         self.new_player_dialog.ui.first_name_line_edit.setText(player.first_name)
         self.new_player_dialog.ui.last_name_line_edit.setText(player.last_name)
-
+        self.new_player_dialog.player = player
         self.new_player_dialog.setWindowTitle("Edit Existing Player")
         self.new_player_dialog.new_player = False
         self.new_player_dialog.show()
         
     def remove_player(self, player):
         #remove player, then call populate_players again
+        delete_player(player)
         self.populate_players()
