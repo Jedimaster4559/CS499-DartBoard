@@ -257,6 +257,20 @@ def is_turn_bust(turn):
     return score_remaining == 1 or score_remaining < 0
 
 
+def get_all_hits_in_leg(leg):
+    # Get all the attached turns
+    turns = Turn.objects.filter(game=leg)
+
+    if turns.count() > 0:
+        hits = DartboardHit.objects.filter(turn=turns[0])
+
+        # Assemble all hits
+        for turn in turns:
+            hits = hits | DartboardHit.objects.filter(turn=turn)
+
+    return hits
+
+
 # Gets the score remaining, accounting for the current turn.
 def get_score_remaining(turn):
     score_remaining = turn.player.score_remaining
