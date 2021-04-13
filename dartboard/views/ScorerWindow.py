@@ -128,13 +128,13 @@ class ScorerWindow(QMainWindow):
             
         if (bkf == "b"):
             print("call mark_bounce_out with a dart id of: {} and a status of {}".format(dart.id, status))
-            #mark_bounce_foul(dart.id, status)
+            toggle_bounce_out(dart.id)
         elif(bkf == "k"):
             print("call mark_knock_out with a dart id of: {} and a status of {}".format(dart.id, status))
-            #mark_bounce_knock_out(dart.id, status)
+            toggle_knock_out(dart.id)
         elif (bkf == "f"):
             print("call foul with a dart id of: {} and a status of {}".format(dart.id, status))
-            #mark_foul(dart.id, status)
+            toggle_foul(dart.id)
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
 
