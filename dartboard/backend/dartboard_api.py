@@ -127,17 +127,22 @@ def remove_hit(dart):
     dart.delete()
     return True
 
-
-def mark_bounce_out(hit_id):
+def mark_foul(hit_id, status):
     hit = DartboardHit.objects.get(id=hit_id)
-    hit.is_bounce_out = True
+    hit.is_foul = status
+    hit.save()
+    return hit
+
+def mark_bounce_out(hit_id, status):
+    hit = DartboardHit.objects.get(id=hit_id)
+    hit.is_bounce_out = status
     hit.save()
     return hit
 
 
-def mark_knock_out(hit_id):
+def mark_knock_out(hit_id, status):
     hit = DartboardHit.objects.get(id=hit_id)
-    hit.is_knock_out = True
+    hit.is_knock_out = status
     hit.save()
     return hit
 

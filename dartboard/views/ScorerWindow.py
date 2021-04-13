@@ -59,7 +59,7 @@ class ScorerWindow(QMainWindow):
     def player_score_stats_clicked(self):
         print("player score stats clicked")
 
-    def addpopulaterow(self, table, value, bounce, knock, foul, index):
+    def addpopulaterow(self, table, value, bounce, knock, foul, index, dart):
         rowPosition = table.rowCount()
         table.insertRow(rowPosition)
 
@@ -74,6 +74,7 @@ class ScorerWindow(QMainWindow):
             chk_bx.setCheckState(Qt.Checked)
         else:
             chk_bx.setCheckState(Qt.Unchecked)
+        chk_bx.stateChanged.connect(lambda x: self.bkf_status_changed(x, dart, "b"))
         layout = QHBoxLayout(cell_widget)
         layout.addWidget(chk_bx)
         layout.setAlignment(Qt.AlignCenter)
@@ -87,6 +88,7 @@ class ScorerWindow(QMainWindow):
             chk_bx.setCheckState(Qt.Checked)
         else:
             chk_bx.setCheckState(Qt.Unchecked)
+        chk_bx.stateChanged.connect(lambda x: self.bkf_status_changed(x, dart, "k"))
         layout = QHBoxLayout(cell_widget)
         layout.addWidget(chk_bx)
         layout.setAlignment(Qt.AlignCenter)
@@ -100,6 +102,7 @@ class ScorerWindow(QMainWindow):
             chk_bx.setCheckState(Qt.Checked)
         else:
             chk_bx.setCheckState(Qt.Unchecked)
+        chk_bx.stateChanged.connect(lambda x: self.bkf_status_changed(x, dart, "f"))
         layout = QHBoxLayout(cell_widget)
         layout.addWidget(chk_bx)
         layout.setAlignment(Qt.AlignCenter)
@@ -116,6 +119,25 @@ class ScorerWindow(QMainWindow):
         cell_widget.setLayout(layout)
         table.setCellWidget(rowPosition, 4, cell_widget)
         button.clicked.connect(lambda: self.remove_dart_throw(score, index))
+
+    def bkf_status_changed(self, checkState, dart, bkf):
+
+        status = False
+        if (checkState == 2):
+            status = True
+            
+        if (bkf == "b"):
+            print("call mark_bounce_out with a dart id of: {} and a status of {}".format(dart.id, status))
+            #mark_bounce_foul(dart.id, status)
+        elif(bkf == "k"):
+            print("call mark_knock_out with a dart id of: {} and a status of {}".format(dart.id, status))
+            #mark_bounce_knock_out(dart.id, status)
+        elif (bkf == "f"):
+            print("call foul with a dart id of: {} and a status of {}".format(dart.id, status))
+            #mark_foul(dart.id, status)
+
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
+
 
     def remove_dart_throw(self, item, index):
         self.tables[self.ui.tabWidget.currentIndex()].setCurrentItem(item)
@@ -190,10 +212,11 @@ class ScorerWindow(QMainWindow):
 
         current_player_index = self.ui.tabWidget.currentIndex()
         turn = self.current_turns[current_player_index]
-        
-        self.addpopulaterow(self.tables[current_player_index], str(score), False, False, False, index)
 
         dart = add_hit(turn=turn, value=score, is_double=is_double, is_triple=is_triple, is_bullseye=is_bullseye)
+
+        self.addpopulaterow(self.tables[current_player_index], str(score), False, False, False, index, dart)
+
 
         self.darts_thrown[index] = dart
 
