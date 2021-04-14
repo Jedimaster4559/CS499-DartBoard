@@ -73,30 +73,30 @@ class Ui_Scorer(object):
 
         self.gridLayout_2.addWidget(self.label_5, 0, 3, 1, 1)
 
-        self.label_7 = QLabel(self.Player1Tab)
-        self.label_7.setObjectName(u"label_7")
+        self.player_1_legs = QLabel(self.Player1Tab)
+        self.player_1_legs.setObjectName(u"player_1_legs")
 
-        self.gridLayout_2.addWidget(self.label_7, 0, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.player_1_legs, 0, 4, 1, 1)
 
         self.label_6 = QLabel(self.Player1Tab)
         self.label_6.setObjectName(u"label_6")
 
         self.gridLayout_2.addWidget(self.label_6, 0, 5, 1, 1)
 
-        self.label_4 = QLabel(self.Player1Tab)
-        self.label_4.setObjectName(u"label_4")
+        self.player_1_score = QLabel(self.Player1Tab)
+        self.player_1_score.setObjectName(u"player_1_score")
 
-        self.gridLayout_2.addWidget(self.label_4, 0, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.player_1_score, 0, 2, 1, 1)
 
         self.label_3 = QLabel(self.Player1Tab)
         self.label_3.setObjectName(u"label_3")
 
         self.gridLayout_2.addWidget(self.label_3, 0, 1, 1, 1, Qt.AlignRight)
 
-        self.label_8 = QLabel(self.Player1Tab)
-        self.label_8.setObjectName(u"label_8")
+        self.player_1_matches = QLabel(self.Player1Tab)
+        self.player_1_matches.setObjectName(u"player_1_matches")
 
-        self.gridLayout_2.addWidget(self.label_8, 0, 6, 1, 1)
+        self.gridLayout_2.addWidget(self.player_1_matches, 0, 6, 1, 1)
 
         self.Player1DartsTable = QTableWidget(self.Player1Tab)
         if (self.Player1DartsTable.columnCount() < 5):
@@ -124,10 +124,10 @@ class Ui_Scorer(object):
         self.Player2Tab.setObjectName(u"Player2Tab")
         self.gridLayout_3 = QGridLayout(self.Player2Tab)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.label_12 = QLabel(self.Player2Tab)
-        self.label_12.setObjectName(u"label_12")
+        self.player_2_legs = QLabel(self.Player2Tab)
+        self.player_2_legs.setObjectName(u"player_2_legs")
 
-        self.gridLayout_3.addWidget(self.label_12, 1, 3, 1, 1)
+        self.gridLayout_3.addWidget(self.player_2_legs, 1, 3, 1, 1)
 
         self.label_13 = QLabel(self.Player2Tab)
         self.label_13.setObjectName(u"label_13")
@@ -139,20 +139,20 @@ class Ui_Scorer(object):
 
         self.gridLayout_3.addWidget(self.label_9, 1, 0, 1, 1)
 
-        self.label_10 = QLabel(self.Player2Tab)
-        self.label_10.setObjectName(u"label_10")
+        self.player_2_score = QLabel(self.Player2Tab)
+        self.player_2_score.setObjectName(u"player_2_score")
 
-        self.gridLayout_3.addWidget(self.label_10, 1, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.player_2_score, 1, 1, 1, 1)
 
         self.label_11 = QLabel(self.Player2Tab)
         self.label_11.setObjectName(u"label_11")
 
         self.gridLayout_3.addWidget(self.label_11, 1, 2, 1, 1)
 
-        self.label_14 = QLabel(self.Player2Tab)
-        self.label_14.setObjectName(u"label_14")
+        self.player_2_matches = QLabel(self.Player2Tab)
+        self.player_2_matches.setObjectName(u"player_2_matches")
 
-        self.gridLayout_3.addWidget(self.label_14, 1, 5, 1, 1)
+        self.gridLayout_3.addWidget(self.player_2_matches, 1, 5, 1, 1)
 
         self.Player2DartsTable = QTableWidget(self.Player2Tab)
         if (self.Player2DartsTable.columnCount() < 5):
@@ -265,11 +265,11 @@ class Ui_Scorer(object):
         self.player_score_stats.setText(QCoreApplication.translate("Scorer", u"Player Score Stats", None))
         self.label.setText(QCoreApplication.translate("Scorer", u"Current Leg", None))
         self.label_5.setText(QCoreApplication.translate("Scorer", u"Legs Won:", None))
-        self.label_7.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.player_1_legs.setText(QCoreApplication.translate("Scorer", u"0", None))
         self.label_6.setText(QCoreApplication.translate("Scorer", u"Matches Won:", None))
-        self.label_4.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.player_1_score.setText(QCoreApplication.translate("Scorer", u"0", None))
         self.label_3.setText(QCoreApplication.translate("Scorer", u"Remaining Score:", None))
-        self.label_8.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.player_1_matches.setText(QCoreApplication.translate("Scorer", u"0", None))
         ___qtablewidgetitem = self.Player1DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Scorer", u"Score", None));
         ___qtablewidgetitem1 = self.Player1DartsTable.horizontalHeaderItem(1)
@@ -281,12 +281,12 @@ class Ui_Scorer(object):
         ___qtablewidgetitem4 = self.Player1DartsTable.horizontalHeaderItem(4)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Scorer", u"Remove", None));
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.Player1Tab), QCoreApplication.translate("Scorer", u"Player 1", None))
-        self.label_12.setText(QCoreApplication.translate("Scorer", u"0", None))
-        self.label_13.setText(QCoreApplication.translate("Scorer", u"Sets Won:", None))
+        self.player_2_legs.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.label_13.setText(QCoreApplication.translate("Scorer", u"Matches Won:", None))
         self.label_9.setText(QCoreApplication.translate("Scorer", u"Remaining Score:", None))
-        self.label_10.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.player_2_score.setText(QCoreApplication.translate("Scorer", u"0", None))
         self.label_11.setText(QCoreApplication.translate("Scorer", u"Legs Won:", None))
-        self.label_14.setText(QCoreApplication.translate("Scorer", u"0", None))
+        self.player_2_matches.setText(QCoreApplication.translate("Scorer", u"0", None))
         ___qtablewidgetitem5 = self.Player2DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem5.setText(QCoreApplication.translate("Scorer", u"Score", None));
         ___qtablewidgetitem6 = self.Player2DartsTable.horizontalHeaderItem(1)

@@ -35,6 +35,17 @@ class ScorerWindow(QMainWindow):
 
         self.darts_thrown = {}
 
+    def update_scorer_info(self):
+        #print(get_set_by_number(self.match_id, 1).num_legs_complete)
+        self.ui.player_1_score.setText(str(get_score_remaining(self.current_turns[0])))
+        self.ui.player_2_score.setText(str(get_score_remaining(self.current_turns[1])))
+
+        self.ui.player_1_legs.setText(str(self.players[0].leg_wins))
+        self.ui.player_2_legs.setText(str(self.players[1].leg_wins))
+
+        self.ui.player_1_matches.setText(str(self.players[0].set_wins))
+        self.ui.player_2_matches.setText(str(self.players[1].set_wins))
+
     def match_averages_clicked(self):
         print("match averages clicked")
 
@@ -137,6 +148,7 @@ class ScorerWindow(QMainWindow):
             toggle_foul(dart.id)
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
+        self.update_scorer_info()
 
 
     def remove_dart_throw(self, item, index):
@@ -150,8 +162,10 @@ class ScorerWindow(QMainWindow):
         self.ui.graphicsView.remove_dart(index)
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
         self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
+        self.update_scorer_info()
         
     def enter_match_id(self, match_id):
+        self.match_id = match_id
         self.match = get_match_by_id(match_id)
 
         self.number_of_sets = self.match.best_of_sets_number
@@ -169,6 +183,7 @@ class ScorerWindow(QMainWindow):
         leg = get_leg_by_number(match_id=match_id, set_number=1, leg_number=1)
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
         self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
+        self.update_scorer_info()
 
     def change_set_number_label(self, current_set):
         result = str(current_set) + "/" + str(self.number_of_sets)
@@ -203,6 +218,7 @@ class ScorerWindow(QMainWindow):
         self.ui.tabWidget.setCurrentIndex((current_player_index + 1) % 2)
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
+        self.update_scorer_info()
 
     def dart_thrown(self, region, score, index):
         # print("Coming from Scorer: {}".format(msg))
@@ -228,6 +244,7 @@ class ScorerWindow(QMainWindow):
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
 
         self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
+        self.update_scorer_info()
 
     def check_game_win(self):
 
@@ -256,6 +273,10 @@ class ScorerWindow(QMainWindow):
 
             self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
             self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
+
+            print("Current Set: {}".format(self.current_set))
+            print("Current Leg: {}".format(self.current_leg))
+            
             self.change_leg_number_label(self.current_leg)
             self.change_set_number_label(self.current_set)
             leg = get_leg_by_number(match_id=self.match.id, set_number=1, leg_number=1)

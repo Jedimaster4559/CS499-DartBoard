@@ -59,7 +59,7 @@
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="player_1_legs">
           <property name="text">
            <string>0</string>
           </property>
@@ -73,7 +73,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="player_1_score">
           <property name="text">
            <string>0</string>
           </property>
@@ -87,7 +87,7 @@
          </widget>
         </item>
         <item row="0" column="6">
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="player_1_matches">
           <property name="text">
            <string>0</string>
           </property>
@@ -142,7 +142,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="1" column="3">
-         <widget class="QLabel" name="label_12">
+         <widget class="QLabel" name="player_2_legs">
           <property name="text">
            <string>0</string>
           </property>
@@ -151,7 +151,7 @@
         <item row="1" column="4">
          <widget class="QLabel" name="label_13">
           <property name="text">
-           <string>Sets Won:</string>
+           <string>Matches Won:</string>
           </property>
          </widget>
         </item>
@@ -163,7 +163,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLabel" name="label_10">
+         <widget class="QLabel" name="player_2_score">
           <property name="text">
            <string>0</string>
           </property>
@@ -177,7 +177,7 @@
          </widget>
         </item>
         <item row="1" column="5">
-         <widget class="QLabel" name="label_14">
+         <widget class="QLabel" name="player_2_matches">
           <property name="text">
            <string>0</string>
           </property>
