@@ -35,6 +35,10 @@ class ScorerWindow(QMainWindow):
 
         self.darts_thrown = {}
 
+    def keyPressEvent(self, e):
+        if(e.key() == Qt.Key_Enter or e.key() == Qt.Key_Return):
+            self.commit_turn()
+
     def update_scorer_info(self):
         #print(get_set_by_number(self.match_id, 1).num_legs_complete)
         self.ui.player_1_score.setText(str(get_score_remaining(self.current_turns[0])))
@@ -257,6 +261,7 @@ class ScorerWindow(QMainWindow):
             # leg is won everytime
             leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg)
             add_leg_win(turn.player, opponent_turn.player, leg)
+            self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
             print("Leg Won!")
 
             # set is only won when number of legs won == number of legs
@@ -264,6 +269,8 @@ class ScorerWindow(QMainWindow):
                 set = get_set_by_number(self.match.id, self.current_set)
                 add_set_win(turn.player, opponent_turn.player, set)
                 self.current_leg = 0
+                self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
+                self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
                 print("Set Won!")
 
             # Handle Match win
@@ -271,14 +278,13 @@ class ScorerWindow(QMainWindow):
                 add_match_win(turn.player, opponent_turn.player, self.match)
                 print("Match Won!")
 
-            self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
-            self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
 
             print("Current Set: {}".format(self.current_set))
             print("Current Leg: {}".format(self.current_leg))
             
             self.change_leg_number_label(self.current_leg)
             self.change_set_number_label(self.current_set)
+            
             leg = get_leg_by_number(match_id=self.match.id, set_number=1, leg_number=1)
             self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
             self.leg_starting_player_index = (self.leg_starting_player_index + 1) % 2

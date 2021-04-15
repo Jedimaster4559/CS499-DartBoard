@@ -234,12 +234,12 @@ def add_set_win(winning_player, losing_player, set):
 
 def get_set_by_number(match_id, set_number):
     match = get_match_by_id(match_id=match_id)
-    return Set.objects.filter(match=match, set_number=set_number - 1).first()
+    return Set.objects.filter(match=match, set_number=set_number).first()
 
 
 def get_leg_by_number(match_id, set_number, leg_number):
     darts_set = get_set_by_number(match_id=match_id, set_number=set_number)
-    return Leg.objects.filter(set=darts_set, leg_number=leg_number - 1).first()
+    return Leg.objects.filter(set=darts_set, leg_number=leg_number).first()
 
 
 # Checks if a turn is a bust or not
