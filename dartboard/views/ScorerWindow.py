@@ -276,7 +276,7 @@ class ScorerWindow(QMainWindow):
 
         self.darts_thrown[index] = dart
 
-        self.check_game_win()
+        # self.check_game_win()
 
 
 

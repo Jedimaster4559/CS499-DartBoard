@@ -9,9 +9,11 @@ def create_player(first_name, last_name):
     player.save()
     return player
 
+
 def delete_player(player):
     player.delete()
     return True
+
 
 def edit_player(first, last, player):
     player.first_name = first
@@ -19,6 +21,7 @@ def edit_player(first, last, player):
     player.full_name = first + " " + last
     player.save()
     return player
+
 
 def get_player_by_full_name(full_name):
     return Player.objects.filter(full_name=full_name).first()
@@ -40,10 +43,6 @@ def search_players(search):
 
 def get_players_by_id(player_id):
     return Player.objects.get(id=player_id)
-
-
-def get_match_by_id(match_id):
-    return Match.objects.get(id=match_id)
 
 
 def get_match_by_id(match_id):
@@ -122,6 +121,10 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
 def get_hits(turn):
     return DartboardHit.objects.filter(turn=turn)
     
+
+def get_leg_value(turn):
+    return turn.game.game_mode
+
 
 def remove_hit(dart):
     dart.delete()
@@ -259,9 +262,9 @@ def is_turn_bust(turn):
     return score_remaining == 1 or score_remaining < 0
 
 
-def get_all_hits_in_leg(leg):
+def get_all_hits_in_leg(leg, player):
     # Get all the attached turns
-    turns = Turn.objects.filter(game=leg)
+    turns = Turn.objects.filter(game=leg, player=player)
 
     if turns.count() > 0:
         hits = DartboardHit.objects.filter(turn=turns[0])

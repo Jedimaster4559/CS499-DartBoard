@@ -3,6 +3,8 @@
 ##################
 
 import sys
+
+from backend.fewest_darts import *
 from views.Scoreboard import Ui_Scoreboard
 from PySide2.QtWidgets import QApplication, QMainWindow, QCheckBox, QTableWidgetItem, QWidget, QHBoxLayout, QHeaderView, QPushButton
 from PySide2.QtCore import Qt
@@ -46,7 +48,7 @@ class ScoreboardWindow(QMainWindow):
         self.clear_scoreboard()
         hits_player_1 = get_hits(turn_1)
         hits_player_2 = get_hits(turn_2)
-        first, second, third = "", "", ""
+        first, second, third = "", "-1", ""
 
         #get checkouts for player 1 if applicable
         if (get_turn_score_remaining(turn_1) <= 170):
@@ -75,7 +77,6 @@ class ScoreboardWindow(QMainWindow):
                 first, second, third = check_outs.first_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count()-1])
             elif hits_player_2.count() == 2:
                 first, second, third = check_outs.second_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
-
             if first != "":
                 self.ui.player_two_checkouts_label.setText("{} | {} | {}".format(first, second, third))
                 self.ui.player_two_checkouts_label.show()
@@ -84,7 +85,13 @@ class ScoreboardWindow(QMainWindow):
 
         else:
             self.ui.player_two_checkouts_label.hide()
-        
+
+        print(turn_1.game.leg_number)
+        print(turn_1.player.player.first_name)
+        print(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1)))
+
+        print(fewestdartschecker(get_all_hits_in_leg(turn_2.game, turn_2.player), first, second, third, get_leg_value(turn_2)))
+
         index = 0
 
         for hit in hits_player_1:
