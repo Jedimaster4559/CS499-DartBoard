@@ -15,78 +15,66 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="5" column="0" colspan="7">
-     <widget class="QLineEdit" name="location_line_edit"/>
-    </item>
-    <item row="11" column="3" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_501_radio_button">
+    <item row="4" column="0" colspan="7">
+     <widget class="QLabel" name="label_9">
       <property name="text">
-       <string>501</string>
+       <string>Official Names</string>
       </property>
      </widget>
     </item>
-    <item row="12" column="3" alignment="Qt::AlignHCenter|Qt::AlignBottom">
-     <widget class="QLabel" name="label_7">
-      <property name="text">
-       <string>Starting Stats Display</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="7">
-     <widget class="QComboBox" name="player_one_combo_box">
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="14" column="3" alignment="Qt::AlignLeft">
+    <item row="16" column="3" alignment="Qt::AlignLeft">
      <widget class="QCheckBox" name="lifetime_avg_checkbox">
       <property name="text">
        <string>Lifetime Average</string>
       </property>
      </widget>
     </item>
-    <item row="13" column="3" alignment="Qt::AlignLeft">
+    <item row="15" column="4" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="last_champ_win_checkbox">
+      <property name="text">
+       <string>Last Champ Win</string>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="2" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="league_rank_checkbox">
+      <property name="text">
+       <string>League Rank</string>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="3" alignment="Qt::AlignLeft">
      <widget class="QCheckBox" name="last_match_win_checkbox">
       <property name="text">
        <string>Last Match Win</string>
       </property>
      </widget>
     </item>
-    <item row="11" column="2" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_801_radio_button">
+    <item row="16" column="4" alignment="Qt::AlignLeft">
+     <widget class="QCheckBox" name="season_180s_checkbox">
       <property name="text">
-       <string>801</string>
+       <string>Season 180s</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="0" colspan="7">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>Player 1 Name</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
+    <item row="11" column="4" colspan="2">
+     <widget class="QSpinBox" name="number_of_sets_spin_box"/>
     </item>
-    <item row="7" column="0" colspan="7">
-     <widget class="QDateEdit" name="date_edit"/>
-    </item>
-    <item row="10" column="2" colspan="3">
-     <widget class="QLabel" name="label_6">
-      <property name="text">
-       <string>Scoring Leg Value</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+    <item row="3" column="0" colspan="7">
+     <widget class="QComboBox" name="player_two_combo_box">
+      <property name="editable">
+       <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="9" column="1" colspan="2">
-     <widget class="QSpinBox" name="number_of_legs_spin_box"/>
+    <item row="13" column="4" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_301_radio_button">
+      <property name="text">
+       <string>301</string>
+      </property>
+     </widget>
     </item>
-    <item row="8" column="1" colspan="2">
+    <item row="10" column="1" colspan="2">
      <widget class="QLabel" name="label_4">
       <property name="text">
        <string>Number of Legs</string>
@@ -96,21 +84,37 @@
       </property>
      </widget>
     </item>
-    <item row="14" column="2" alignment="Qt::AlignLeft">
+    <item row="16" column="2" alignment="Qt::AlignLeft">
      <widget class="QCheckBox" name="season_avg_checkbox">
       <property name="text">
        <string>Season Average</string>
       </property>
      </widget>
     </item>
-    <item row="13" column="2" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="league_rank_checkbox">
+    <item row="2" column="0" colspan="7">
+     <widget class="QLabel" name="label_2">
       <property name="text">
-       <string>League Rank</string>
+       <string>Player 2 Name</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
       </property>
      </widget>
     </item>
-    <item row="15" column="3">
+    <item row="7" column="0" colspan="7">
+     <widget class="QLineEdit" name="location_line_edit"/>
+    </item>
+    <item row="10" column="4" colspan="2">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>Number of Matches</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="17" column="3">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -126,24 +130,7 @@
       </property>
      </spacer>
     </item>
-    <item row="2" column="0" colspan="7">
-     <widget class="QLabel" name="label_2">
-      <property name="text">
-       <string>Player 2 Name</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-      </property>
-     </widget>
-    </item>
-    <item row="13" column="4" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="last_champ_win_checkbox">
-      <property name="text">
-       <string>Last Champ Win</string>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" colspan="7">
+    <item row="8" column="0" colspan="7">
      <widget class="QLabel" name="label_8">
       <property name="text">
        <string>Date</string>
@@ -153,7 +140,7 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="7">
+    <item row="6" column="0" colspan="7">
      <widget class="QLabel" name="label_3">
       <property name="text">
        <string>Location</string>
@@ -163,46 +150,69 @@
       </property>
      </widget>
     </item>
-    <item row="9" column="4" colspan="2">
-     <widget class="QSpinBox" name="number_of_sets_spin_box"/>
-    </item>
-    <item row="11" column="4" alignment="Qt::AlignHCenter">
-     <widget class="QRadioButton" name="leg_value_301_radio_button">
+    <item row="14" column="3" alignment="Qt::AlignHCenter|Qt::AlignBottom">
+     <widget class="QLabel" name="label_7">
       <property name="text">
-       <string>301</string>
+       <string>Starting Stats Display</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="4" colspan="2">
-     <widget class="QLabel" name="label_5">
+    <item row="1" column="0" colspan="7">
+     <widget class="QComboBox" name="player_one_combo_box">
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="2" colspan="3">
+     <widget class="QLabel" name="label_6">
       <property name="text">
-       <string>Number of Matches</string>
+       <string>Scoring Leg Value</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignBottom|Qt::AlignHCenter</set>
       </property>
      </widget>
     </item>
-    <item row="14" column="4" alignment="Qt::AlignLeft">
-     <widget class="QCheckBox" name="season_180s_checkbox">
-      <property name="text">
-       <string>Season 180s</string>
-      </property>
-     </widget>
-    </item>
-    <item row="16" column="3">
+    <item row="18" column="3">
      <widget class="QPushButton" name="start_game_button">
       <property name="text">
        <string>Start Game</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0" colspan="7">
-     <widget class="QComboBox" name="player_two_combo_box">
-      <property name="editable">
-       <bool>true</bool>
+    <item row="13" column="2" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_801_radio_button">
+      <property name="text">
+       <string>801</string>
       </property>
      </widget>
+    </item>
+    <item row="9" column="0" colspan="7">
+     <widget class="QDateEdit" name="date_edit"/>
+    </item>
+    <item row="0" column="0" colspan="7">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>Player 1 Name</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="1" colspan="2">
+     <widget class="QSpinBox" name="number_of_legs_spin_box"/>
+    </item>
+    <item row="13" column="3" alignment="Qt::AlignHCenter">
+     <widget class="QRadioButton" name="leg_value_501_radio_button">
+      <property name="text">
+       <string>501</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="7">
+     <widget class="QLineEdit" name="official_names_line_edit"/>
     </item>
    </layout>
   </widget>

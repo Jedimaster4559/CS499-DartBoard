@@ -248,6 +248,9 @@ class ScorerWindow(QMainWindow):
 
         self.check_game_win()
 
+        self.ui.graphicsView.clear_board()
+        self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
+
         leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
 
         # start new turns
@@ -333,8 +336,7 @@ class ScorerWindow(QMainWindow):
             while self.ui.Player2DartsTable.rowCount() > 0:
                 self.ui.Player2DartsTable.removeRow(0)
 
-            self.ui.graphicsView.clear_board()
-            self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
+
 
             self.ui.tabWidget.setCurrentIndex(self.leg_starting_player_index)
 
