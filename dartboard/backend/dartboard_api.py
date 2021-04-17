@@ -121,7 +121,7 @@ def add_hit(turn, value, is_double=False, is_triple=False, is_bullseye=False):
 
 def get_hits(turn):
     return DartboardHit.objects.filter(turn=turn)
-
+    
 
 def remove_hit(dart):
     dart.delete()
@@ -321,6 +321,7 @@ def commit_turn(turn):
                 turn.is_committed = True
                 turn.save()
                 return False
+
 
     # Update Player's leg score
     turn.player.score_remaining -= score

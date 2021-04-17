@@ -20,6 +20,8 @@ class ScoreboardWindow(QMainWindow):
 
         self.current_set = 1
         self.current_leg = 1
+        self.ui.player_one_additional_stats.hide()
+        self.ui.player_two_additional_stats.hide()
 
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -31,6 +33,13 @@ class ScoreboardWindow(QMainWindow):
             self.ui.Player1DartsTable.removeRow(0)
         while self.ui.Player2DartsTable.rowCount() > 0:
             self.ui.Player2DartsTable.removeRow(0)
+
+    def set_additional_game_statistics(self,stat):
+        if stat:
+            self.ui.player_one_additional_stats.show()
+            self.ui.player_two_additional_stats.show()
+            self.ui.player_one_additional_stats.setText(stat)
+            self.ui.player_two_additional_stats.setText(stat)
 
     def update(self, turn_1, turn_2):
         #update is called in ScorerWindow remove_dart_throw, enter_match_id, and dart_thrown
@@ -49,7 +58,7 @@ class ScoreboardWindow(QMainWindow):
             elif hits_player_1.count() == 2:
                 first, second, third = check_outs.second_sum(get_turn_score_remaining(turn_1), hits_player_1[hits_player_1.count() - 2], hits_player_1[hits_player_1.count()-1])
             if first != "":
-                self.ui.player_one_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
+                self.ui.player_one_checkouts_label.setText("{} | {} | {}".format(first, second, third))
                 self.ui.player_one_checkouts_label.show()
             else:
                 self.ui.player_one_checkouts_label.hide()
@@ -68,17 +77,13 @@ class ScoreboardWindow(QMainWindow):
                 first, second, third = check_outs.second_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
 
             if first != "":
-                self.ui.player_two_checkouts_label.setText("Checkouts: {} | {} | {}".format(first, second, third))
+                self.ui.player_two_checkouts_label.setText("{} | {} | {}".format(first, second, third))
                 self.ui.player_two_checkouts_label.show()
             else:
                 self.ui.player_two_checkouts_label.hide()
 
         else:
             self.ui.player_two_checkouts_label.hide()
-
-
-        
-
         
         index = 0
 
