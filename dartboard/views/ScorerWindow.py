@@ -297,7 +297,8 @@ class ScorerWindow(QMainWindow):
             # leg is won everytime
             leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg)
             add_leg_win(turn.player, opponent_turn.player, leg)
-            self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
+            if get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1) is not None:
+                self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
             print("Leg Won!")
 
             # set is only won when number of legs won == number of legs
@@ -305,8 +306,10 @@ class ScorerWindow(QMainWindow):
                 set = get_set_by_number(self.match.id, self.current_set)
                 add_set_win(turn.player, opponent_turn.player, set)
                 self.current_leg = 0
-                self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
-                self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
+                if get_set_by_number(self.match.id, self.current_set + 1) is not None:
+                    self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
+                if get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1) is not None:
+                    self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
                 print("Set Won!")
 
             # Handle Match win
