@@ -24,6 +24,9 @@ class ScoreboardWindow(QMainWindow):
         self.current_leg = 1
         self.ui.player_one_additional_stats.hide()
         self.ui.player_two_additional_stats.hide()
+        self.ui.fewest_darts_player_one_label.hide()
+        self.ui.fewest_darts_player_two_label.hide()
+
 
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -88,22 +91,33 @@ class ScoreboardWindow(QMainWindow):
 
         print(turn_1.game.leg_number)
         print(turn_1.player.player.first_name)
+
+
         print(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1)))
+        if(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1))):
+            self.ui.fewest_darts_player_one_label.show()
+        else:
+            self.ui.fewest_darts_player_one_label.hide()
 
         print(fewestdartschecker(get_all_hits_in_leg(turn_2.game, turn_2.player), first, second, third, get_leg_value(turn_2)))
+        if(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1))):
+            self.ui.fewest_darts_player_two_label.show()
+        else:
+            self.ui.fewest_darts_player_two_label.hide()
+
 
         index = 0
 
         for hit in hits_player_1:
             self.addpopulaterow(
-                self.tables[0], hit.score, hit.is_bounce_out, hit.is_knock_out, False, index)
+                self.tables[0], hit.score, hit.is_bounce_out, hit.is_knock_out, hit.is_foul, index)
             index = index+1
 
         index = 0
 
         for hit in hits_player_2:
             self.addpopulaterow(
-                self.tables[1], hit.score, hit.is_bounce_out, hit.is_knock_out, False, index)
+                self.tables[1], hit.score, hit.is_bounce_out, hit.is_knock_out, hit.is_foul, index)
             index = index+1
 
         # Set Players Name

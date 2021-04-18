@@ -222,6 +222,16 @@ class Ui_Scoreboard(object):
 
         self.verticalLayout_2.addWidget(self.player_one_checkouts_label)
 
+        self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_2.addItem(self.verticalSpacer_3)
+
+        self.fewest_darts_player_one_label = QLabel(self.centralwidget)
+        self.fewest_darts_player_one_label.setObjectName(u"fewest_darts_player_one_label")
+        self.fewest_darts_player_one_label.setFont(font4)
+
+        self.verticalLayout_2.addWidget(self.fewest_darts_player_one_label)
+
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
@@ -230,6 +240,8 @@ class Ui_Scoreboard(object):
         self.player_one_additional_stats.setObjectName(u"player_one_additional_stats")
         self.player_one_additional_stats.setEnabled(True)
         self.player_one_additional_stats.setFont(font5)
+        self.player_one_additional_stats.setTextFormat(Qt.AutoText)
+        self.player_one_additional_stats.setWordWrap(True)
 
         self.verticalLayout_2.addWidget(self.player_one_additional_stats)
 
@@ -304,6 +316,16 @@ class Ui_Scoreboard(object):
 
         self.verticalLayout_3.addWidget(self.player_two_checkouts_label)
 
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_3.addItem(self.verticalSpacer_4)
+
+        self.fewest_darts_player_two_label = QLabel(self.centralwidget)
+        self.fewest_darts_player_two_label.setObjectName(u"fewest_darts_player_two_label")
+        self.fewest_darts_player_two_label.setFont(font4)
+
+        self.verticalLayout_3.addWidget(self.fewest_darts_player_two_label)
+
         self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_3.addItem(self.verticalSpacer_2)
@@ -312,6 +334,7 @@ class Ui_Scoreboard(object):
         self.player_two_additional_stats.setObjectName(u"player_two_additional_stats")
         self.player_two_additional_stats.setEnabled(True)
         self.player_two_additional_stats.setFont(font5)
+        self.player_two_additional_stats.setWordWrap(True)
 
         self.verticalLayout_3.addWidget(self.player_two_additional_stats)
 
@@ -346,6 +369,7 @@ class Ui_Scoreboard(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Scoreboard", u"Foul", None));
         self.player_one_label.setText(QCoreApplication.translate("Scoreboard", u"Checkouts", None))
         self.player_one_checkouts_label.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
+        self.fewest_darts_player_one_label.setText(QCoreApplication.translate("Scoreboard", u"<html><head/><body><p><span style=\" color:#00ff00;\">On Track For Perfect Leg</span></p></body></html>", None))
         self.player_one_additional_stats.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
         ___qtablewidgetitem4 = self.Player2DartsTable.horizontalHeaderItem(0)
         ___qtablewidgetitem4.setText(QCoreApplication.translate("Scoreboard", u"Score", None));
@@ -357,6 +381,7 @@ class Ui_Scoreboard(object):
         ___qtablewidgetitem7.setText(QCoreApplication.translate("Scoreboard", u"Foul", None));
         self.label.setText(QCoreApplication.translate("Scoreboard", u"Checkouts", None))
         self.player_two_checkouts_label.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
+        self.fewest_darts_player_two_label.setText(QCoreApplication.translate("Scoreboard", u"<html><head/><body><p><span style=\" color:#00ff00;\">On Track For Perfect Leg</span></p></body></html>", None))
         self.player_two_additional_stats.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
     # retranslateUi
 
