@@ -133,8 +133,8 @@ class ScoreboardWindow(QMainWindow):
         self.ui.player_one_additional_stats.show()
         self.ui.player_two_additional_stats.show()
         if self.current_stats_display == "averages":
-            self.ui.player_one_additional_stats.setText("Match Averages: " + str(turn_1.player.average_turn_score))
-            self.ui.player_two_additional_stats.setText("Match Averages: " + str(turn_2.player.average_turn_score))
+            self.ui.player_one_additional_stats.setText("Match Averages: " + str(round(turn_1.player.average_turn_score, 2)))
+            self.ui.player_two_additional_stats.setText("Match Averages: " + str(round(turn_2.player.average_turn_score, 2)))
         elif self.current_stats_display == "score_stats":
             self.ui.player_one_additional_stats.setText("Match Score Stats:\nNumber of Sets Complete: " + str(turn_1.player.match.num_sets_complete) + \
                 "\nLowest Turn Score: " + str(turn_1.player.lowest_turn_score) + \
@@ -163,10 +163,10 @@ class ScoreboardWindow(QMainWindow):
             else:
                 self.ui.player_two_additional_stats.setText("Last Win: " + turn_2.player.player.last_win)
         elif self.current_stats_display == "lifetime_averages":
-            self.ui.player_one_additional_stats.setText("Lifetime Average: " + turn_1.player.player.average_lifetime_score + \
-                "\nSeason Average: " + turn_1.player.player.average_season_score)
-            self.ui.player_two_additional_stats.setText("Lifetime Average: " + turn_2.player.player.average_lifetime_score + \
-                "\nSeason Average: " + turn_2.player.player.average_season_score)
+            self.ui.player_one_additional_stats.setText("Lifetime Average: " + str(round(turn_1.player.player.average_lifetime_score, 2)) + \
+                "\nSeason Average: " + str(round(turn_1.player.player.average_season_score, 2)))
+            self.ui.player_two_additional_stats.setText("Lifetime Average: " + str(round(turn_2.player.player.average_lifetime_score, 2)) + \
+                "\nSeason Average: " + str(round(turn_2.player.player.average_season_score, 2)))
         elif self.current_stats_display == "lifetime_scores":
             self.ui.player_one_additional_stats.setText("Lifetime Lowest Turn: " + turn_1.player.player.lowest_turn_score + \
                 "\nLifetime 180s: " + turn_1.player.player.number_of_180s)
