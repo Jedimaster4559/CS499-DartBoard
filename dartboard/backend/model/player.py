@@ -13,6 +13,7 @@ class Player(models.Model):
     current_league_rank = models.IntegerField()
     average_season_score = models.DecimalField(default=0, decimal_places=10, max_digits=15)
     average_lifetime_score = models.DecimalField(default=0, decimal_places=10, max_digits=15)
+    lowest_turn_score = models.IntegerField(default=181)
     number_of_180s = models.IntegerField(default=0)
     number_of_season_turns = models.IntegerField(default=0)
     number_of_lifetime_turns = models.IntegerField(default=0)
@@ -21,6 +22,8 @@ class Player(models.Model):
     number_of_sets_won = models.IntegerField(default=0)
     number_of_sets_lost = models.IntegerField(default=0)
     number_of_matches_won = models.IntegerField(default=0)
+    number_of_matches_lost = models.IntegerField(default=0)
+    last_win = models.DateField(default=None, null=True)
 
     def update(self, hits):
         # Generate Score
@@ -43,6 +46,10 @@ class Player(models.Model):
         # Update 180s
         if score == 180:
             self.number_of_180s += 1
+
+        # Update Lowest Turn Score
+        if score < self.lowest_turn_score:
+            self.lowest_turn_score = score
 
         # Save Results
         self.save()

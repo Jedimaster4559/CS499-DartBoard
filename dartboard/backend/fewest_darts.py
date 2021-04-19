@@ -7,7 +7,7 @@ def sixtylistinit(n):
     return listofsixties
 
 
-def fewestdartschecker(hits, first, second, third, leg):
+def fewestdartschecker(hits, first, second, third, leg, score):
     darts_sum = 0
     checkout_sum = 0
     prev_darts_sum = 0
@@ -44,9 +44,13 @@ def fewestdartschecker(hits, first, second, third, leg):
     # print(leg - darts_sum)
 
     if leg == 501 or leg == 301:
-        if leg - darts_sum <= 0:
+        print(score)
+        if leg - darts_sum <= 0 and score >= 0:
             if len(hits) >= max_darts - 3:
+                print(second)
                 if second == "":
+                    return False
+                elif second != "" and len(hits) >= 9:
                     return False
 
                 """
@@ -61,7 +65,7 @@ def fewestdartschecker(hits, first, second, third, leg):
         else:
             return False
     else:  # leg is == 801
-        if leg - darts_sum <= 0:
+        if leg - darts_sum <= 0 and score >= 0:
             if len(hits) == max_darts - 2:
                 if third != "":
                     return False

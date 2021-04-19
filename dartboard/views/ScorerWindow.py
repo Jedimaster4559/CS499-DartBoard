@@ -55,60 +55,43 @@ class ScorerWindow(QMainWindow):
         self.ui.player_2_matches.setText(str(self.players[1].set_wins))
 
     def match_averages_clicked(self):
-        average_turn_score=int(self.players[0].average_turn_score)
-        self.hub.scoreboard.set_additional_game_statistics("Match Averages: "+str(average_turn_score))
+        self.hub.scoreboard.set_stats_display("averages")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("match averages clicked")
 
     def match_score_stats_clicked(self):
-        self.players[0].lowest_turn_score
-        self.players[0].match.best_of_sets_number
-        self.players[0].match.num_sets_complete
-        self.hub.scoreboard.set_additional_game_statistics("Match Score Stats: "+ \
-            "Number of Sets Complete: "+str(self.players[0].match.num_sets_complete) + \
-            " Lowest Turn Score: " + str(self.players[0].lowest_turn_score) + \
-            " Number of 180s: " + str(self.players[0].number_of_180s))
+        self.hub.scoreboard.set_stats_display("score_stats")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("match score stats clicked")
 
     def match_highest_out_clicked(self):
-        match_highest_out = "0"
-        self.hub.scoreboard.set_additional_game_statistics("Match Highest Out: " + match_highest_out)
+        self.hub.scoreboard.set_stats_display("highest_out")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("match highest out clicked")
 
     def match_doubles_triples_clicked(self):
-        match_triples=self.players[0].number_of_triples 
-        match_doubles=self.players[0].number_of_doubles
-        self.hub.scoreboard.set_additional_game_statistics("Match Doubles : " + str(match_doubles) + \
-            " Match Triples : "+str(match_triples))
+        self.hub.scoreboard.set_stats_display("triples_doubles")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("match doubles triples clicked")
 
     def player_ranks_clicked(self):
-        rank=self.players[0].player.current_league_rank
-        self.hub.scoreboard.set_additional_game_statistics("Player Ranks: " + rank)
+        self.hub.scoreboard.set_stats_display("ranks")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("player ranks clicked")
 
     def player_last_win_clicked(self):
-        player_last_win="0"
-        self.players[0].player.number_of_matches_won
-        self.hub.scoreboard.set_additional_game_statistics("player Last Win: "+player_last_win)
+        self.hub.scoreboard.set_stats_display("last_win")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("player last win clicked")
 
     def player_averages_clicked(self):
-        player_averages = self.players[0].average_turn_score
-        self.hub.scoreboard.set_additional_game_statistics("Player Averages: " + player_averages)
+        self.hub.scoreboard.set_stats_display("lifetime_averages")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("player averages clicked")
 
     def player_score_stats_clicked(self):
-        sets=self.players[0].match.best_of_sets_number
-        self.players[0].player.number_of_sets_won
-        self.players[0].player.number_of_sets_lost
-        self.players[0].player.number_of_legs_won
-        self.players[0].player.number_of_legs_lost
-        self.players[0].player.number_of_season_turns
-        self.players[0].player.number_of_lifetime_turns
-        self.players[0].player.number_of_matches_won
-        
-        player_score_stats="0"
-        self.hub.scoreboard.set_additional_game_statistics("Player Score Stats: "+player_score_stats)
+        self.hub.scoreboard.set_stats_display("lifetime_scores")
+        self.hub.scoreboard.update(self.current_turns[0], self.current_turns[1])
         print("player score stats clicked")
 
     def addpopulaterow(self, table, value, bounce, knock, foul, index, dart):
@@ -242,7 +225,7 @@ class ScorerWindow(QMainWindow):
         
 
         current_player_index = self.ui.tabWidget.currentIndex()
-        
+
         isbust = not commit_turn(self.current_turns[current_player_index])
 
         if isbust:
@@ -304,6 +287,7 @@ class ScorerWindow(QMainWindow):
             # leg is won everytime
             leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg)
             add_leg_win(turn.player, opponent_turn.player, leg)
+            update_highest_out(turn)
             if get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1) is not None:
                 self.current_leg = get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1).leg_number
             print("Leg Won!")

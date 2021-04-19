@@ -19,6 +19,7 @@ class MatchPlayer(models.Model):
     score_remaining = models.IntegerField(default=301)
     leg_wins = models.IntegerField(default=0)
     set_wins = models.IntegerField(default=0)
+    highest_out = models.IntegerField(default=0)
 
     def update(self, hits):
         # Generate Score
