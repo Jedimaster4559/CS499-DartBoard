@@ -26,6 +26,8 @@ class ScoreboardWindow(QMainWindow):
         self.ui.player_two_additional_stats.hide()
         self.ui.fewest_darts_player_one_label.hide()
         self.ui.fewest_darts_player_two_label.hide()
+        self.ui.player_one_win_label.hide()
+        self.ui.player_two_win_label.hide()
 
         self.current_stats_display = ""
 
@@ -130,6 +132,16 @@ class ScoreboardWindow(QMainWindow):
         # Update Custom Stats Displays
         self.update_stats_displays(turn_1, turn_2)
 
+    def declare_winner(self, index):
+        if (index == 0):
+            self.ui.player_one_win_label.setText("WINNER")
+            self.ui.player_two_win_label.setText("LOSER")
+        elif(index == 1):
+            self.ui.player_one_win_label.setText("LOSER")
+            self.ui.player_two_win_label.setText("WINNER")
+        self.ui.player_two_win_label.show()
+        self.ui.player_two_win_label.show()
+        
     def update_stats_displays(self, turn_1, turn_2):
         self.ui.player_one_additional_stats.show()
         self.ui.player_two_additional_stats.show()

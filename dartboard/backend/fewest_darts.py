@@ -35,6 +35,7 @@ def fewestdartschecker(hits, first, second, third, leg, score):
         return False
 
     print(fewestdartslist)
+    print(len(hits))
 
     for i in fewestdartslist:
         darts_sum += i
@@ -50,7 +51,7 @@ def fewestdartschecker(hits, first, second, third, leg, score):
                 print(second)
                 if second == "":
                     return False
-                elif second != "" and len(hits) >= 9:
+                elif second != "" and len(hits) >= max_darts:
                     return False
 
                 """

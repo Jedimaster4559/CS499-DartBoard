@@ -27,6 +27,7 @@ class ScorerWindow(QMainWindow):
         self.ui.player_averages.triggered.connect(self.player_averages_clicked)
         self.ui.player_score_stats.triggered.connect(self.player_score_stats_clicked)
         self.ui.EndMatchButton.clicked.connect(self.end_game)
+        self.ui.EndMatchButton.hide()
         
         self.current_set = 0
         self.current_leg = 0
@@ -306,6 +307,8 @@ class ScorerWindow(QMainWindow):
             if turn.player.set_wins == (self.number_of_sets // 2) + 1:
                 add_match_win(turn.player, opponent_turn.player, self.match)
                 print("Match Won!")
+                self.ui.EndGameButton.show()
+                self.hub.scoreboard.declare_winner(current_player_index)
 
 
             print("Current Set: {}".format(self.current_set))
