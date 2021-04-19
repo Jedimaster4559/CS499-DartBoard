@@ -28,8 +28,8 @@ class ScorerWindow(QMainWindow):
         self.ui.player_score_stats.triggered.connect(self.player_score_stats_clicked)
         self.ui.EndMatchButton.clicked.connect(self.end_game)
         
-        self.current_set = 1
-        self.current_leg = 1
+        self.current_set = 0
+        self.current_leg = 0
         self.leg_starting_player_index = 0
         self.current_turns = [None, None]
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
@@ -204,19 +204,17 @@ class ScorerWindow(QMainWindow):
         self.change_set_number_label(1)
         self.change_leg_number_label(1)
 
-        leg = get_leg_by_number(match_id=match_id, set_number=1, leg_number=1)
+        leg = get_leg_by_number(match_id=match_id, set_number=0, leg_number=0)
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
         self.hub.scoreboard.update(self.current_turns[0],self.current_turns[1])
         self.update_scorer_info()
 
     def change_set_number_label(self, current_set):
-        result = str(current_set) + "/" + str(self.number_of_sets)
-        self.current_set = current_set
+        result = str(current_set+1) + "/" + str(self.number_of_sets)
         self.ui.SetNumberLabel.setText(result)
 
     def change_leg_number_label(self, current_leg):
-        result = str(current_leg) + "/" + str(self.number_of_legs)
-        self.current_leg = current_leg
+        result = str(current_leg+1) + "/" + str(self.number_of_legs)
         self.ui.LegNumberLabel.setText(result)
 
     def commit_turn(self):
@@ -239,6 +237,7 @@ class ScorerWindow(QMainWindow):
         self.hub.scoreboard.ui.graphicsView.set_points(self.ui.graphicsView.points)
 
         leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
+        print("Current Leg: " + str(leg.leg_number))
 
         # start new turns
         if current_player_index == (self.leg_starting_player_index + 1) % 2:
@@ -296,7 +295,7 @@ class ScorerWindow(QMainWindow):
             if turn.player.leg_wins == (self.number_of_legs // 2) + 1:
                 set = get_set_by_number(self.match.id, self.current_set)
                 add_set_win(turn.player, opponent_turn.player, set)
-                self.current_leg = 0
+                self.current_leg = -1
                 if get_set_by_number(self.match.id, self.current_set + 1) is not None:
                     self.current_set = get_set_by_number(self.match.id, self.current_set + 1).set_number
                 if get_leg_by_number(self.match.id, self.current_set, self.current_leg + 1) is not None:
@@ -315,7 +314,7 @@ class ScorerWindow(QMainWindow):
             self.change_leg_number_label(self.current_leg)
             self.change_set_number_label(self.current_set)
             
-            leg = get_leg_by_number(match_id=self.match.id, set_number=1, leg_number=1)
+            leg = get_leg_by_number(match_id=self.match.id, set_number=self.current_set, leg_number=self.current_leg)
             self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
             self.leg_starting_player_index = (self.leg_starting_player_index + 1) % 2
             
