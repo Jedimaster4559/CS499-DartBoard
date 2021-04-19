@@ -1,5 +1,6 @@
 from views.StartGameConfiguration import Ui_StartGameConfiguration
 from PySide2.QtWidgets import QApplication, QMainWindow, QCompleter
+from PySide2.QtCore import QDate
 from backend.dartboard_api import search_players, get_player_by_full_name, create_match
 import sys
 
@@ -15,9 +16,10 @@ class StartGameConfigurationWindow(QMainWindow):
         self.ui.start_game_button.clicked.connect(self.start_game)
 
         self.populate_player_names("")
-
+        
         self.enter_start_values()
-
+        self.ui.date_edit.setDate(QDate.currentDate())
+        
     def enter_start_values(self):
         self.ui.number_of_legs_spin_box.setValue(5)
         self.ui.number_of_sets_spin_box.setValue(5)
@@ -27,7 +29,6 @@ class StartGameConfigurationWindow(QMainWindow):
     def on_navigated_to(self):
         self.populate_player_names("")
         
-
     def populate_player_names(self, text):
         self.ui.player_one_combo_box.clear()
         self.ui.player_two_combo_box.clear()
@@ -56,11 +57,8 @@ class StartGameConfigurationWindow(QMainWindow):
         print(player_two_name)
         player_two = get_player_by_full_name(player_two_name)
 
-        
-
 
         location = self.ui.location_line_edit.text()
-        date = self.ui.date_edit.text()
         legs = self.ui.number_of_legs_spin_box.value()
         sets = self.ui.number_of_sets_spin_box.value()
 
@@ -85,8 +83,6 @@ class StartGameConfigurationWindow(QMainWindow):
 
         #get player object through player name
 
-        
-        
         self.hide()
         self.hub.navigate_to_view("scorer")
         self.hub.navigate_to_view("scoreboard")
