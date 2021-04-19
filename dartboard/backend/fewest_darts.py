@@ -27,7 +27,10 @@ def fewestdartschecker(hits, first, second, third, leg):
 
     if len(hits) <= max_darts:
         for i in range(len(hits)):
-            fewestdartslist[i] = hits[i].score
+            if hits[i].is_knock_out or hits[i].is_bounce_out or hits[i].is_foul:
+                fewestdartslist[i] = 0
+            else:
+                fewestdartslist[i] = hits[i].score
     else:
         return False
 

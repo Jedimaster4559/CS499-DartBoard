@@ -94,13 +94,13 @@ class ScoreboardWindow(QMainWindow):
 
 
         print(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1)))
-        if(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1))):
+        if(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1))) and len(get_all_hits_in_leg(turn_1.game, turn_1.player)) != 0:
             self.ui.fewest_darts_player_one_label.show()
         else:
             self.ui.fewest_darts_player_one_label.hide()
 
         print(fewestdartschecker(get_all_hits_in_leg(turn_2.game, turn_2.player), first, second, third, get_leg_value(turn_2)))
-        if(fewestdartschecker(get_all_hits_in_leg(turn_1.game, turn_1.player), first, second, third, get_leg_value(turn_1))):
+        if(fewestdartschecker(get_all_hits_in_leg(turn_2.game, turn_2.player), first, second, third, get_leg_value(turn_2))) and len(get_all_hits_in_leg(turn_2.game, turn_2.player)) != 0:
             self.ui.fewest_darts_player_two_label.show()
         else:
             self.ui.fewest_darts_player_two_label.hide()

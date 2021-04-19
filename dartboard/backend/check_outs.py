@@ -102,7 +102,11 @@ def union(list1, list2, list3):
 def first_sum(target, first_dart):
     # check again for posterity
     if target <= 170:
-        target = target - first_dart.score
+        if first_dart.is_knock_out or first_dart.is_bounce_out or first_dart.is_foul:
+            first_score = 0
+        else:
+            first_score = first_dart.score
+        target = target - first_score
         # we already have the first hit, so only find the largest double to checkout
         for i in doublesdict:
             new_target = target - i
@@ -110,13 +114,13 @@ def first_sum(target, first_dart):
             if new_target == 0:
                 if first_dart.is_double:
                     # print(doublesdict[first_dart.score], doublesdict[i], "")
-                    return doublesdict[first_dart.score], doublesdict[i], ""
+                    return doublesdict[first_score], doublesdict[i], ""
                 elif first_dart.is_triple:
                     # print(treblesdict[first_dart.score], doublesdict[i], "")
-                    return treblesdict[first_dart.score], doublesdict[i], ""
+                    return treblesdict[first_score], doublesdict[i], ""
                 else:
                     # print(first_dart.score, doublesdict[i], "")
-                    return first_dart.score, doublesdict[i], ""
+                    return first_score, doublesdict[i], ""
             for j in alldict:
                 if new_target >= 0:
                     second_target = new_target - j
@@ -128,13 +132,13 @@ def first_sum(target, first_dart):
                     if second_target == 0:
                         if first_dart.is_double:
                             # print(doublesdict[first_dart.score], alldict[j][0], doublesdict[i])
-                            return doublesdict[first_dart.score], alldict[j][0], doublesdict[i]
+                            return doublesdict[first_score], alldict[j][0], doublesdict[i]
                         elif first_dart.is_triple:
                             # print(treblesdict[first_dart.score], alldict[j][0], doublesdict[i])
-                            return treblesdict[first_dart.score], alldict[j][0], doublesdict[i]
+                            return treblesdict[first_score], alldict[j][0], doublesdict[i]
                         else:
                             # print(first_dart.score, alldict[j][0], doublesdict[i])
-                            return first_dart.score, alldict[j][0], doublesdict[i]
+                            return first_score, alldict[j][0], doublesdict[i]
         # print("First sum did not find a number.")
         return "", "", ""
     return "", "", ""
@@ -143,8 +147,16 @@ def first_sum(target, first_dart):
 def second_sum(target, first_dart, second_dart):
     # again, check for posterity
     if target <= 170:
+        if first_dart.is_knock_out or first_dart.is_bounce_out or first_dart.is_foul:
+            first_score = 0
+        else:
+            first_score = first_dart.score
+        if second_dart.is_knock_out or second_dart.is_bounce_out or second_dart.is_foul:
+            second_score = 0
+        else:
+            second_score = second_dart.score
         # calculate the value remaining after the first and second hits
-        target = target - first_dart.score - second_dart.score
+        target = target - first_score - second_score
         # iterate through all possible doubles to see if we can check out
         for i in doublesdict:
             new_target = target - i
@@ -152,33 +164,33 @@ def second_sum(target, first_dart, second_dart):
                 if first_dart.is_double:
                     if second_dart.is_double:
                         # print(doublesdict[first_dart.score], doublesdict[second_dart.score], doublesdict[i])
-                        return doublesdict[first_dart.score], doublesdict[second_dart.score], doublesdict[i]
+                        return doublesdict[first_score], doublesdict[second_score], doublesdict[i]
                     elif second_dart.is_triple:
                         # print(doublesdict[first_dart.score], treblesdict[second_dart.score], doublesdict[i])
-                        return doublesdict[first_dart.score], treblesdict[second_dart.score], doublesdict[i]
+                        return doublesdict[first_score], treblesdict[second_score], doublesdict[i]
                     else:
                         # print(doublesdict[first_dart.score], second_dart.score, doublesdict[i])
-                        return doublesdict[first_dart.score], second_dart.score, doublesdict[i]
+                        return doublesdict[first_score], second_score, doublesdict[i]
                 elif first_dart.is_triple:
                     if second_dart.is_double:
                         # print(treblesdict[first_dart.score], doublesdict[second_dart.score], doublesdict[i])
-                        return treblesdict[first_dart.score], doublesdict[second_dart.score], doublesdict[i]
+                        return treblesdict[first_score], doublesdict[second_score], doublesdict[i]
                     elif second_dart.is_triple:
                         # print(treblesdict[first_dart.score], treblesdict[second_dart.score], doublesdict[i])
-                        return treblesdict[first_dart.score], treblesdict[second_dart.score], doublesdict[i]
+                        return treblesdict[first_score], treblesdict[second_score], doublesdict[i]
                     else:
                         # print(treblesdict[first_dart.score], second_dart.score, doublesdict[i])
-                        return treblesdict[first_dart.score], second_dart.score, doublesdict[i]
+                        return treblesdict[first_score], second_score, doublesdict[i]
                 else:
                     if second_dart.is_double:
                         # print(first_dart.score, doublesdict[second_dart.score], doublesdict[i])
-                        return first_dart.score, doublesdict[second_dart.score], doublesdict[i]
+                        return first_score, doublesdict[second_score], doublesdict[i]
                     elif second_dart.is_triple:
                         # print(first_dart.score, treblesdict[second_dart.score], doublesdict[i])
-                        return first_dart.score, treblesdict[second_dart.score], doublesdict[i]
+                        return first_score, treblesdict[second_score], doublesdict[i]
                     else:
                         # print(first_dart.score, second_dart.score, doublesdict[i])
-                        return first_dart.score, second_dart.score, doublesdict[i]
+                        return first_score, second_score, doublesdict[i]
         # print("Second sum did not find a number.")
         return "", "", ""
     # print("Score is not <= 170")
