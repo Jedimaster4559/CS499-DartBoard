@@ -202,8 +202,8 @@ class ScorerWindow(QMainWindow):
         self.ui.tabWidget.setTabText(0, self.players[0].player.full_name)
         self.ui.tabWidget.setTabText(1, self.players[1].player.full_name)
         # set leg and set numbers
-        self.change_set_number_label(1)
-        self.change_leg_number_label(1)
+        self.change_set_number_label(0)
+        self.change_leg_number_label(0)
 
         leg = get_leg_by_number(match_id=match_id, set_number=0, leg_number=0)
         self.current_turns = [start_new_turn(leg, self.players[0]), start_new_turn(leg, self.players[1])]
