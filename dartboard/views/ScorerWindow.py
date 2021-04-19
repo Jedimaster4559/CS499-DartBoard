@@ -26,6 +26,7 @@ class ScorerWindow(QMainWindow):
         self.ui.player_last_win.triggered.connect(self.player_last_win_clicked)
         self.ui.player_averages.triggered.connect(self.player_averages_clicked)
         self.ui.player_score_stats.triggered.connect(self.player_score_stats_clicked)
+        self.ui.EndMatchButton.clicked.connect(self.end_game)
         
         self.current_set = 1
         self.current_leg = 1
@@ -34,6 +35,9 @@ class ScorerWindow(QMainWindow):
         self.tables = [self.ui.Player1DartsTable, self.ui.Player2DartsTable]
         
         self.darts_thrown = {}
+
+    def end_game(self):
+        self.hub.end_game()
 
     def keyPressEvent(self, e):
         if(e.key() == Qt.Key_Enter or e.key() == Qt.Key_Return):

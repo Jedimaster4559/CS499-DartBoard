@@ -61,6 +61,11 @@ class Hub(QApplication):
         elif (name == "manage_players"):
             self.manage_players.show()
 
+    def end_game(self):
+        self.scorer.hide()
+        self.scoreboard.hide()
+        self.navigate_to_view("start_menu")
+
     def send_match_id(self, match_id):
         self.scoreboard.enter_match_id(match_id)
         self.scorer.enter_match_id(match_id)
