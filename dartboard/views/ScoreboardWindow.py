@@ -27,6 +27,11 @@ class ScoreboardWindow(QMainWindow):
         self.ui.fewest_darts_player_one_label.hide()
         self.ui.fewest_darts_player_two_label.hide()
 
+        self.current_stats_display = ""
+
+    def set_stats_display(self, new_display):
+        self.current_stats_display = new_display
+
 
     def enter_match_id(self, match_id):
         self.match = get_match_by_id(match_id)
@@ -38,13 +43,6 @@ class ScoreboardWindow(QMainWindow):
             self.ui.Player1DartsTable.removeRow(0)
         while self.ui.Player2DartsTable.rowCount() > 0:
             self.ui.Player2DartsTable.removeRow(0)
-
-    def set_additional_game_statistics(self,stat):
-        if stat:
-            self.ui.player_one_additional_stats.show()
-            self.ui.player_two_additional_stats.show()
-            self.ui.player_one_additional_stats.setText(stat)
-            self.ui.player_two_additional_stats.setText(stat)
 
     def update(self, turn_1, turn_2):
         #update is called in ScorerWindow remove_dart_throw, enter_match_id, and dart_thrown
@@ -127,6 +125,61 @@ class ScoreboardWindow(QMainWindow):
         # Set the players remaining scores
         self.ui.player_1_score.display(str(get_score_remaining(turn_1)))
         self.ui.player_2_score.display(str(get_score_remaining(turn_2)))
+
+        # Update Custom Stats Displays
+        self.update_stats_displays(turn_1, turn_2)
+
+    def update_stats_displays(self, turn_1, turn_2):
+        self.ui.player_one_additional_stats.show()
+        self.ui.player_two_additional_stats.show()
+        if self.current_stats_display == "averages":
+            self.ui.player_one_additional_stats.setText("Match Averages: " + str(turn_1.player.average_turn_score))
+            self.ui.player_two_additional_stats.setText("Match Averages: " + str(turn_2.player.average_turn_score))
+        elif self.current_stats_display == "score_stats":
+            self.ui.player_one_additional_stats.setText("Match Score Stats:\nNumber of Sets Complete: " + str(turn_1.player.match.num_sets_complete) + \
+                "\nLowest Turn Score: " + str(turn_1.player.lowest_turn_score) + \
+                "\nNumber of 180s: " + str(turn_1.player.number_of_180s))
+            self.ui.player_two_additional_stats.setText("Match Score Stats:\nNumber of Sets Complete: " + str(turn_2.player.match.num_sets_complete) + \
+                "\nLowest Turn Score: " + str(turn_2.player.lowest_turn_score) + \
+                "\nNumber of 180s: " + str(turn_2.player.number_of_180s))
+        elif self.current_stats_display == "highest_out":
+            self.ui.player_one_additional_stats.setText("Match Highest Out: " + turn_1.player.match_highest_out)
+            self.ui.player_two_additional_stats.setText("Match Highest Out: " + turn_2.player.match_highest_out)
+        elif self.current_stats_display == "triples_doubles":
+            self.ui.player_one_additional_stats.setText("Match Doubles: " + turn_1.player.number_of_doubles + \
+                "\nMatch Triples: " + turn_1.player.number_of_triples)
+            self.ui.player_two_additional_stats.setText("Match Doubles: " + turn_2.player.number_of_doubles + \
+                "\nMatch Triples: " + turn_2.player.number_of_triples)
+        elif self.current_stats_display == "ranks":
+            self.ui.player_one_additional_stats.setText("Current League Rank: " + turn_1.player.player.current_league_rank)
+            self.ui.player_two_additional_stats.setText("Current League Rank: " + turn_2.player.player.current_league_rank)
+        elif self.current_stats_display == "last_win":
+            if turn_1.player.player.last_win is None:
+                self.ui.player_one_additional_stats.setText("Last Win: Never")
+            else:
+                self.ui.player_one_additional_stats.setText("Last Win: " + turn_1.player.player.last_win)
+            if turn_2.player.player.last_win is None:
+                self.ui.player_two_additional_stats.setText("Last Win: Never")
+            else:
+                self.ui.player_two_additional_stats.setText("Last Win: " + turn_2.player.player.last_win)
+        elif self.current_stats_display == "lifetime_averages":
+            self.ui.player_one_additional_stats.setText("Lifetime Average: " + turn_1.player.player.average_lifetime_score + \
+                "\nSeason Average: " + turn_1.player.player.average_season_score)
+            self.ui.player_two_additional_stats.setText("Lifetime Average: " + turn_2.player.player.average_lifetime_score + \
+                "\nSeason Average: " + turn_2.player.player.average_season_score)
+        elif self.current_stats_display == "lifetime_scores":
+            self.ui.player_one_additional_stats.setText("Lifetime Lowest Turn: " + turn_1.player.player.lowest_turn_score + \
+                "\nLifetime 180s: " + turn_1.player.player.number_of_180s)
+            self.ui.player_two_additional_stats.setText("Lifetime Lowest Turn: " + turn_2.player.player.lowest_turn_score + \
+                "\nLifetime 180s: " + turn_2.player.player.number_of_180s)
+        else:
+            self.ui.player_one_additional_stats.hide()
+            self.ui.player_two_additional_stats.hide()
+
+
+
+
+
 
     def addpopulaterow(self, table, value, bounce, knock, foul, index):
         rowPosition = table.rowCount()

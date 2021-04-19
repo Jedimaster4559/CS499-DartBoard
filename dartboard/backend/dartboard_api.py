@@ -202,16 +202,10 @@ def add_leg_win(winning_player, losing_player, leg):
 
 
 def add_match_win(winning_player, losing_player, match):
-    # Mark winner
-    winning_player.match_wins = winning_player.match_wins + 1
-    winning_player.save()
-
-    # No need to increment number of matches for match
-
     # Increment player stats
     winning_player.player.number_of_matches_won = winning_player.player.number_of_matches_won + 1
     winning_player.save()
-    losing_player.player.number_of_matches_won = losing_player.player.number_of_matches_won + 1
+    losing_player.player.number_of_matches_lost = losing_player.player.number_of_matches_lost + 1
     losing_player.save()
 
 
@@ -297,6 +291,19 @@ def get_turn_score_remaining(turn):
     return turn.player.score_remaining
 
 
+def update_highest_out(turn):
+    # Get hits
+    hits = DartboardHit.objects.filter(turn=turn)
+
+    score = 0
+    for hit in hits:
+        score += hit.score
+
+    if score > turn.player.highest_out:
+        turn.player.highest_out = score
+        turn.player.save()
+
+
 # Commits a turn to the database. Returns True if the turn could
 # be committed and false if the turn was a bust.
 def commit_turn(turn):
@@ -319,7 +326,7 @@ def commit_turn(turn):
             print(str(hit.score) + " " + str(score))
             # Check that this turn wasn't a bust
             if score_remaining - score < 0 or score_remaining - score == 1 or (
-                    score_remaining == 0 and not is_winnable):
+                    score_remaining - score == 0 and not is_winnable):
                 turn.is_bust = True
                 turn.is_committed = True
                 turn.save()
