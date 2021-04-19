@@ -22,7 +22,7 @@ class Player(models.Model):
     number_of_sets_won = models.IntegerField(default=0)
     number_of_sets_lost = models.IntegerField(default=0)
     number_of_matches_won = models.IntegerField(default=0)
-    number_of_matches_list = models.IntegerField(default=0)
+    number_of_matches_lost = models.IntegerField(default=0)
     last_win = models.DateField(default=None, null=True)
 
     def update(self, hits):
