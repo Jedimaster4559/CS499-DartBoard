@@ -80,7 +80,7 @@ class ScoreboardWindow(QMainWindow):
             elif hits_player_2.count() == 1:
                 first_2, second_2, third_2 = check_outs.first_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count()-1])
             elif hits_player_2.count() == 2:
-                first_2, second_2, third_2d = check_outs.second_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
+                first_2, second_2, third_2 = check_outs.second_sum(get_turn_score_remaining(turn_2), hits_player_2[hits_player_2.count() - 2], hits_player_2[hits_player_2.count()-1])
             if first_2 != "":
                 self.ui.player_two_checkouts_label.setText("{} | {} | {}".format(first_2, second_2, third_2))
                 self.ui.player_two_checkouts_label.show()

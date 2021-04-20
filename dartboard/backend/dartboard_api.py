@@ -73,12 +73,12 @@ def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
     player2_stats.save()
 
     # Add all the sets
-    for x in range(num_sets):
+    for x in range(num_sets+1):
         darts_set = Set(match=match, best_of_legs_number=num_legs, set_number=x)
         darts_set.save()
 
         # Add all the legs
-        for y in range(num_legs):
+        for y in range(num_legs+1):
             leg = Leg(set=darts_set, match=match, game_mode=game_mode, player1=player1_stats, player2=player2_stats,
                       leg_number=y)
             leg.save()
