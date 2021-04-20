@@ -52,6 +52,8 @@ class StartGameConfigurationWindow(QMainWindow):
         player_one_name = self.ui.player_one_combo_box.currentText()
         print(player_one_name)
         player_one = get_player_by_full_name(player_one_name)
+        print("Number of matches won: {}".format(player_one.number_of_matches_won))
+
         
         player_two_name = self.ui.player_two_combo_box.currentText()
         print(player_two_name)
