@@ -74,8 +74,14 @@
     </item>
     <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QLabel" name="player_one_win_label">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#00ff00;&quot;&gt;WINNER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>WINNER</string>
       </property>
      </widget>
     </item>
@@ -782,8 +788,14 @@
     </item>
     <item row="1" column="5" alignment="Qt::AlignHCenter">
      <widget class="QLabel" name="player_two_win_label">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#00ff00;&quot;&gt;WINNER&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>WINNER</string>
       </property>
      </widget>
     </item>

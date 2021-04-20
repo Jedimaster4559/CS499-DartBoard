@@ -134,12 +134,12 @@ class ScoreboardWindow(QMainWindow):
 
     def declare_winner(self, index):
         if (index == 0):
-            self.ui.player_one_win_label.setText("WINNER")
-            self.ui.player_two_win_label.setText("LOSER")
+            self.ui.player_one_win_label.setText("<font color='light green'>WINNER</font>")
+            self.ui.player_two_win_label.setText("<font color='light green'>LOSER</font>")
         elif(index == 1):
-            self.ui.player_one_win_label.setText("LOSER")
-            self.ui.player_two_win_label.setText("WINNER")
-        self.ui.player_two_win_label.show()
+            self.ui.player_one_win_label.setText("<font color='light green'>LOSER</font>")
+            self.ui.player_two_win_label.setText("<font color='light green'>WINNER</font>")
+        self.ui.player_one_win_label.show()
         self.ui.player_two_win_label.show()
         
     def update_stats_displays(self, turn_1, turn_2):

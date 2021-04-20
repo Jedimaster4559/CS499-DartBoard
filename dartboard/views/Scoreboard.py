@@ -57,6 +57,10 @@ class Ui_Scoreboard(object):
 
         self.player_one_win_label = QLabel(self.centralwidget)
         self.player_one_win_label.setObjectName(u"player_one_win_label")
+        font1 = QFont()
+        font1.setFamily(u"Segoe UI")
+        font1.setPointSize(16)
+        self.player_one_win_label.setFont(font1)
 
         self.gridLayout.addWidget(self.player_one_win_label, 1, 0, 1, 1, Qt.AlignHCenter|Qt.AlignVCenter)
 
@@ -68,11 +72,11 @@ class Ui_Scoreboard(object):
         self.player_1_score = QLCDNumber(self.centralwidget)
         self.player_1_score.setObjectName(u"player_1_score")
         self.player_1_score.setMaximumSize(QSize(90, 30))
-        font1 = QFont()
-        font1.setPointSize(27)
-        font1.setBold(True)
-        font1.setWeight(75)
-        self.player_1_score.setFont(font1)
+        font2 = QFont()
+        font2.setPointSize(27)
+        font2.setBold(True)
+        font2.setWeight(75)
+        self.player_1_score.setFont(font2)
         self.player_1_score.setFrameShape(QFrame.StyledPanel)
         self.player_1_score.setFrameShadow(QFrame.Plain)
         self.player_1_score.setSmallDecimalPoint(False)
@@ -132,26 +136,26 @@ class Ui_Scoreboard(object):
         self.Player2DartsTable = QTableWidget(self.centralwidget)
         if (self.Player2DartsTable.columnCount() < 4):
             self.Player2DartsTable.setColumnCount(4)
-        font2 = QFont()
-        font2.setPointSize(10)
-        font2.setBold(True)
-        font2.setWeight(75)
-        __qtablewidgetitem = QTableWidgetItem()
-        __qtablewidgetitem.setFont(font2);
-        self.Player2DartsTable.setHorizontalHeaderItem(0, __qtablewidgetitem)
         font3 = QFont()
         font3.setPointSize(10)
         font3.setBold(True)
         font3.setWeight(75)
-        font3.setStyleStrategy(QFont.PreferAntialias)
+        __qtablewidgetitem = QTableWidgetItem()
+        __qtablewidgetitem.setFont(font3);
+        self.Player2DartsTable.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        font4 = QFont()
+        font4.setPointSize(10)
+        font4.setBold(True)
+        font4.setWeight(75)
+        font4.setStyleStrategy(QFont.PreferAntialias)
         __qtablewidgetitem1 = QTableWidgetItem()
-        __qtablewidgetitem1.setFont(font3);
+        __qtablewidgetitem1.setFont(font4);
         self.Player2DartsTable.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        __qtablewidgetitem2.setFont(font2);
+        __qtablewidgetitem2.setFont(font3);
         self.Player2DartsTable.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
-        __qtablewidgetitem3.setFont(font2);
+        __qtablewidgetitem3.setFont(font3);
         self.Player2DartsTable.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         self.Player2DartsTable.setObjectName(u"Player2DartsTable")
         sizePolicy1 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -187,18 +191,18 @@ class Ui_Scoreboard(object):
 
         self.label = QLabel(self.centralwidget)
         self.label.setObjectName(u"label")
-        font4 = QFont()
-        font4.setFamily(u"Segoe UI")
-        font4.setPointSize(17)
-        self.label.setFont(font4)
+        font5 = QFont()
+        font5.setFamily(u"Segoe UI")
+        font5.setPointSize(17)
+        self.label.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.label)
 
         self.player_two_checkouts_label = QLabel(self.centralwidget)
         self.player_two_checkouts_label.setObjectName(u"player_two_checkouts_label")
-        font5 = QFont()
-        font5.setPointSize(13)
-        self.player_two_checkouts_label.setFont(font5)
+        font6 = QFont()
+        font6.setPointSize(13)
+        self.player_two_checkouts_label.setFont(font6)
 
         self.verticalLayout_3.addWidget(self.player_two_checkouts_label)
 
@@ -208,7 +212,7 @@ class Ui_Scoreboard(object):
 
         self.fewest_darts_player_two_label = QLabel(self.centralwidget)
         self.fewest_darts_player_two_label.setObjectName(u"fewest_darts_player_two_label")
-        self.fewest_darts_player_two_label.setFont(font4)
+        self.fewest_darts_player_two_label.setFont(font5)
 
         self.verticalLayout_3.addWidget(self.fewest_darts_player_two_label)
 
@@ -219,7 +223,7 @@ class Ui_Scoreboard(object):
         self.player_two_additional_stats = QLabel(self.centralwidget)
         self.player_two_additional_stats.setObjectName(u"player_two_additional_stats")
         self.player_two_additional_stats.setEnabled(True)
-        self.player_two_additional_stats.setFont(font5)
+        self.player_two_additional_stats.setFont(font6)
         self.player_two_additional_stats.setWordWrap(True)
 
         self.verticalLayout_3.addWidget(self.player_two_additional_stats)
@@ -230,9 +234,9 @@ class Ui_Scoreboard(object):
         self.player_2_score = QLCDNumber(self.centralwidget)
         self.player_2_score.setObjectName(u"player_2_score")
         self.player_2_score.setMaximumSize(QSize(60, 30))
-        font6 = QFont()
-        font6.setPointSize(9)
-        self.player_2_score.setFont(font6)
+        font7 = QFont()
+        font7.setPointSize(9)
+        self.player_2_score.setFont(font7)
         self.player_2_score.setFrameShape(QFrame.StyledPanel)
         self.player_2_score.setFrameShadow(QFrame.Plain)
         self.player_2_score.setSmallDecimalPoint(False)
@@ -273,16 +277,16 @@ class Ui_Scoreboard(object):
         if (self.Player1DartsTable.columnCount() < 4):
             self.Player1DartsTable.setColumnCount(4)
         __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFont(font2);
+        __qtablewidgetitem4.setFont(font3);
         self.Player1DartsTable.setHorizontalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
-        __qtablewidgetitem5.setFont(font2);
+        __qtablewidgetitem5.setFont(font3);
         self.Player1DartsTable.setHorizontalHeaderItem(1, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
-        __qtablewidgetitem6.setFont(font2);
+        __qtablewidgetitem6.setFont(font3);
         self.Player1DartsTable.setHorizontalHeaderItem(2, __qtablewidgetitem6)
         __qtablewidgetitem7 = QTableWidgetItem()
-        __qtablewidgetitem7.setFont(font2);
+        __qtablewidgetitem7.setFont(font3);
         self.Player1DartsTable.setHorizontalHeaderItem(3, __qtablewidgetitem7)
         self.Player1DartsTable.setObjectName(u"Player1DartsTable")
         self.Player1DartsTable.setMinimumSize(QSize(400, 200))
@@ -310,13 +314,13 @@ class Ui_Scoreboard(object):
 
         self.player_one_label = QLabel(self.centralwidget)
         self.player_one_label.setObjectName(u"player_one_label")
-        self.player_one_label.setFont(font4)
+        self.player_one_label.setFont(font5)
 
         self.verticalLayout_2.addWidget(self.player_one_label)
 
         self.player_one_checkouts_label = QLabel(self.centralwidget)
         self.player_one_checkouts_label.setObjectName(u"player_one_checkouts_label")
-        self.player_one_checkouts_label.setFont(font5)
+        self.player_one_checkouts_label.setFont(font6)
 
         self.verticalLayout_2.addWidget(self.player_one_checkouts_label)
 
@@ -326,7 +330,7 @@ class Ui_Scoreboard(object):
 
         self.fewest_darts_player_one_label = QLabel(self.centralwidget)
         self.fewest_darts_player_one_label.setObjectName(u"fewest_darts_player_one_label")
-        self.fewest_darts_player_one_label.setFont(font4)
+        self.fewest_darts_player_one_label.setFont(font5)
 
         self.verticalLayout_2.addWidget(self.fewest_darts_player_one_label)
 
@@ -337,7 +341,7 @@ class Ui_Scoreboard(object):
         self.player_one_additional_stats = QLabel(self.centralwidget)
         self.player_one_additional_stats.setObjectName(u"player_one_additional_stats")
         self.player_one_additional_stats.setEnabled(True)
-        self.player_one_additional_stats.setFont(font5)
+        self.player_one_additional_stats.setFont(font6)
         self.player_one_additional_stats.setTextFormat(Qt.AutoText)
         self.player_one_additional_stats.setWordWrap(True)
 
@@ -348,6 +352,7 @@ class Ui_Scoreboard(object):
 
         self.player_two_win_label = QLabel(self.centralwidget)
         self.player_two_win_label.setObjectName(u"player_two_win_label")
+        self.player_two_win_label.setFont(font1)
 
         self.gridLayout.addWidget(self.player_two_win_label, 1, 5, 1, 1, Qt.AlignHCenter)
 
@@ -364,7 +369,7 @@ class Ui_Scoreboard(object):
     def retranslateUi(self, Scoreboard):
         Scoreboard.setWindowTitle(QCoreApplication.translate("Scoreboard", u"MainWindow", None))
         self.current_score.setText(QCoreApplication.translate("Scoreboard", u"Current Score", None))
-        self.player_one_win_label.setText(QCoreApplication.translate("Scoreboard", u"<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">WINNER</span></p></body></html>", None))
+        self.player_one_win_label.setText(QCoreApplication.translate("Scoreboard", u"WINNER", None))
         self.player_1_stats.setText("")
         self.player_2_stats.setText("")
         self.player_1_name.setText(QCoreApplication.translate("Scoreboard", u"<Player 1 Name>", None))
@@ -394,6 +399,6 @@ class Ui_Scoreboard(object):
         self.player_one_checkouts_label.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
         self.fewest_darts_player_one_label.setText(QCoreApplication.translate("Scoreboard", u"<html><head/><body><p><span style=\" color:#00ff00;\">On Track For Perfect Leg</span></p></body></html>", None))
         self.player_one_additional_stats.setText(QCoreApplication.translate("Scoreboard", u"TextLabel", None))
-        self.player_two_win_label.setText(QCoreApplication.translate("Scoreboard", u"<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">WINNER</span></p></body></html>", None))
+        self.player_two_win_label.setText(QCoreApplication.translate("Scoreboard", u"WINNER", None))
     # retranslateUi
 
