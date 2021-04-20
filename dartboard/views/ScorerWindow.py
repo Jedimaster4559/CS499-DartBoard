@@ -308,7 +308,7 @@ class ScorerWindow(QMainWindow):
             if turn.player.set_wins == (self.number_of_sets // 2) + 1:
                 add_match_win(turn.player, opponent_turn.player, self.match)
                 print("Match Won!")
-                self.ui.EndGameButton.show()
+                self.ui.EndMatchButton.show()
                 self.hub.scoreboard.declare_winner(current_player_index)
 
 
