@@ -57,6 +57,7 @@ class Hub(QApplication):
             self.scoreboard = ScoreboardWindow(self)
             self.scoreboard.show()
         elif (name == "manage_players"):
+            self.manage_players.populate_players()
             self.manage_players.show()
 
     def end_game(self):
