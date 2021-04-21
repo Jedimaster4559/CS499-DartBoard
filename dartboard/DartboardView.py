@@ -97,7 +97,7 @@ class DartboardView(QGraphicsView):
             region = "bullseye"  # Inner
             score = 50
         elif (self.outer_bullseye.containsPoint(realPosition, Qt.OddEvenFill)):
-            region = "bullseye"  # Outer
+            region = "regular"  # Outer
             score = 25
         for i in range(20):
             if self.doubles_regions[i].containsPoint(realPosition, Qt.OddEvenFill):
