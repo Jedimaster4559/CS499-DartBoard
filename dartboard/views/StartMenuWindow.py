@@ -1,5 +1,6 @@
 from views.StartMenu import Ui_StartMenu
 from PySide2.QtWidgets import QApplication, QMainWindow
+from backend.generate_players import generate_players
 import sys
 
 class StartMenuWindow(QMainWindow):
@@ -24,4 +25,5 @@ class StartMenuWindow(QMainWindow):
 
     def generate_players(self):
         print("generate_players called")
-        # code goes here
+        generate_players()
+        self.hub.manage_players.populate_players()
