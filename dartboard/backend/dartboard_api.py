@@ -1,5 +1,6 @@
 from backend import check_outs
 from backend.models import *
+from django.utils import timezone
 
 
 def create_player(first_name, last_name):
@@ -61,9 +62,9 @@ def get_number_of_legs_by_match_id(match_id):
     return first_set.best_of_legs_number
 
 
-def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301):
+def create_match(player1, player2, num_sets=13, num_legs=5, game_mode=301, date=timezone.now):
     # Create the new Match
-    match = Match(best_of_sets_number=num_sets)
+    match = Match(best_of_sets_number=num_sets, match_date=date)
     match.save()
 
     # Setup the new players and add them to the match
@@ -204,9 +205,10 @@ def add_leg_win(winning_player, losing_player, leg):
 def add_match_win(winning_player, losing_player, match):
     # Increment player stats
     winning_player.player.number_of_matches_won = winning_player.player.number_of_matches_won + 1
-    winning_player.save()
+    winning_player.player.last_win = match.match_date
+    winning_player.player.save()
     losing_player.player.number_of_matches_lost = losing_player.player.number_of_matches_lost + 1
-    losing_player.save()
+    losing_player.player.save()
 
 
 def add_set_win(winning_player, losing_player, set):

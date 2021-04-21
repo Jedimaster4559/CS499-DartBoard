@@ -63,6 +63,7 @@ class StartGameConfigurationWindow(QMainWindow):
         location = self.ui.location_line_edit.text()
         legs = self.ui.number_of_legs_spin_box.value()
         sets = self.ui.number_of_sets_spin_box.value()
+        date = self.ui.date_edit.date().toString("yyyy-MM-dd")
 
         game_mode = 0
 
@@ -73,7 +74,7 @@ class StartGameConfigurationWindow(QMainWindow):
         elif self.ui.leg_value_301_radio_button.isChecked():
             game_mode = 301
 
-        match = create_match(player_one, player_two, sets, legs, game_mode)
+        match = create_match(player_one, player_two, sets, legs, game_mode, date)
         match_id = match.id
         
         print("{}".format(self.ui.league_rank_checkbox.checkState()))
