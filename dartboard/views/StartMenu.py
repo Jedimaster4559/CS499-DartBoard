@@ -38,6 +38,10 @@ class Ui_StartMenu(object):
 
         self.verticalLayout.addWidget(self.label, 0, Qt.AlignHCenter)
 
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
         self.new_match_button = QPushButton(self.centralwidget)
         self.new_match_button.setObjectName(u"new_match_button")
         sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -45,6 +49,7 @@ class Ui_StartMenu(object):
         sizePolicy1.setVerticalStretch(0)
         sizePolicy1.setHeightForWidth(self.new_match_button.sizePolicy().hasHeightForWidth())
         self.new_match_button.setSizePolicy(sizePolicy1)
+        self.new_match_button.setMinimumSize(QSize(100, 0))
 
         self.verticalLayout.addWidget(self.new_match_button, 0, Qt.AlignHCenter)
 
@@ -52,8 +57,21 @@ class Ui_StartMenu(object):
         self.manage_players_button.setObjectName(u"manage_players_button")
         sizePolicy1.setHeightForWidth(self.manage_players_button.sizePolicy().hasHeightForWidth())
         self.manage_players_button.setSizePolicy(sizePolicy1)
+        self.manage_players_button.setMinimumSize(QSize(100, 0))
 
         self.verticalLayout.addWidget(self.manage_players_button, 0, Qt.AlignHCenter)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
+        self.generate_players_button = QPushButton(self.centralwidget)
+        self.generate_players_button.setObjectName(u"generate_players_button")
+        sizePolicy1.setHeightForWidth(self.generate_players_button.sizePolicy().hasHeightForWidth())
+        self.generate_players_button.setSizePolicy(sizePolicy1)
+        self.generate_players_button.setMinimumSize(QSize(100, 0))
+
+        self.verticalLayout.addWidget(self.generate_players_button, 0, Qt.AlignHCenter)
 
 
         self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
@@ -77,5 +95,6 @@ class Ui_StartMenu(object):
         self.label.setText(QCoreApplication.translate("StartMenu", u"Dart Premier League", None))
         self.new_match_button.setText(QCoreApplication.translate("StartMenu", u"New Game", None))
         self.manage_players_button.setText(QCoreApplication.translate("StartMenu", u"Manage Players", None))
+        self.generate_players_button.setText(QCoreApplication.translate("StartMenu", u"Generate Players", None))
     # retranslateUi
 
