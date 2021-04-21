@@ -1,5 +1,5 @@
 from views.StartGameConfiguration import Ui_StartGameConfiguration
-from PySide2.QtWidgets import QApplication, QMainWindow, QCompleter
+from PySide2.QtWidgets import QApplication, QMainWindow, QCompleter, QButtonGroup
 from PySide2.QtCore import QDate
 from backend.dartboard_api import search_players, get_player_by_full_name, create_match
 import sys
@@ -19,12 +19,31 @@ class StartGameConfigurationWindow(QMainWindow):
         
         self.enter_start_values()
         self.ui.date_edit.setDate(QDate.currentDate())
+        self.scoring_leg_values_group = QButtonGroup()
+        self.scoring_leg_values_group.addButton(self.ui.leg_value_801_radio_button)
+        self.scoring_leg_values_group.addButton(self.ui.leg_value_501_radio_button)
+        self.scoring_leg_values_group.addButton(self.ui.leg_value_301_radio_button)
+
+        self.statistics_group = QButtonGroup()
+        
+        self.statistics_group.addButton(self.ui.match_averages_radio_button)
+        self.statistics_group.addButton(self.ui.match_score_stats_radio_button)
+        self.statistics_group.addButton(self.ui.match_highest_out_radio_button)
+        self.statistics_group.addButton(self.ui.triples_doubles_radio_button)
+        self.statistics_group.addButton(self.ui.player_rank_radio_button)
+        self.statistics_group.addButton(self.ui.player_last_win_radio_button)
+        self.statistics_group.addButton(self.ui.lifetime_averages_radio_button)
+        self.statistics_group.addButton(self.ui.lifetime_scores_radio_button)
+
+        self.enter_start_values()
+
         
     def enter_start_values(self):
         self.ui.number_of_legs_spin_box.setValue(5)
         self.ui.number_of_sets_spin_box.setValue(5)
 
         self.ui.leg_value_501_radio_button.setChecked(True)
+        self.ui.lifetime_scores_radio_button.setChecked(True)
 
     def on_navigated_to(self):
         self.populate_player_names("")
@@ -76,13 +95,27 @@ class StartGameConfigurationWindow(QMainWindow):
 
         match = create_match(player_one, player_two, sets, legs, game_mode, date)
         match_id = match.id
-        
-        print("{}".format(self.ui.league_rank_checkbox.checkState()))
-        print("{}".format(self.ui.last_match_win_checkbox.checkState()))
-        print("{}".format(self.ui.last_champ_win_checkbox.checkState()))
-        print("{}".format(self.ui.season_avg_checkbox.checkState()))
-        print("{}".format(self.ui.lifetime_avg_checkbox.checkState()))
-        print("{}".format(self.ui.season_180s_checkbox.checkState()))
+
+        checked_radio_button = "lifetime_scores"
+
+        if (self.ui.match_averages_radio_button.isChecked()):
+            checked_radio_button = "averages"
+        elif (self.ui.match_score_stats_radio_button.isChecked()):
+            checked_radio_button = "score_stats"
+        elif (self.ui.match_highest_out_radio_button.isChecked()):
+            checked_radio_button = "highest_out"
+        elif (self.ui.triples_doubles_radio_button.isChecked()):
+            checked_radio_button = "triples_doubles"
+        elif (self.ui.player_rank_radio_button.isChecked()):
+            checked_radio_button = "ranks"
+        elif (self.ui.player_last_win_radio_button.isChecked()):
+            checked_radio_button = "last_win"
+        elif (self.ui.lifetime_averages_radio_button.isChecked()):
+            checked_radio_button = "lifetime_averages"
+
+        print(checked_radio_button)
+
+
 
         #get player object through player name
 
@@ -90,4 +123,6 @@ class StartGameConfigurationWindow(QMainWindow):
         self.hub.navigate_to_view("scorer")
         self.hub.navigate_to_view("scoreboard")
         self.hub.send_match_id(match_id)
+        self.hub.scoreboard.set_stats_display(checked_radio_button)
+
         
