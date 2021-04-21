@@ -156,35 +156,35 @@ class ScoreboardWindow(QMainWindow):
                 "\nLowest Turn Score: " + str(turn_2.player.lowest_turn_score) + \
                 "\nNumber of 180s: " + str(turn_2.player.number_of_180s))
         elif self.current_stats_display == "highest_out":
-            self.ui.player_one_additional_stats.setText("Match Highest Out: " + turn_1.player.match_highest_out)
-            self.ui.player_two_additional_stats.setText("Match Highest Out: " + turn_2.player.match_highest_out)
+            self.ui.player_one_additional_stats.setText("Match Highest Out: " + str(turn_1.player.highest_out))
+            self.ui.player_two_additional_stats.setText("Match Highest Out: " + str(turn_2.player.highest_out))
         elif self.current_stats_display == "triples_doubles":
-            self.ui.player_one_additional_stats.setText("Match Doubles: " + turn_1.player.number_of_doubles + \
-                "\nMatch Triples: " + turn_1.player.number_of_triples)
-            self.ui.player_two_additional_stats.setText("Match Doubles: " + turn_2.player.number_of_doubles + \
-                "\nMatch Triples: " + turn_2.player.number_of_triples)
+            self.ui.player_one_additional_stats.setText("Match Doubles: " + str(turn_1.player.number_of_doubles) + \
+                "\nMatch Triples: " + str(turn_1.player.number_of_triples))
+            self.ui.player_two_additional_stats.setText("Match Doubles: " + str(turn_2.player.number_of_doubles) + \
+                "\nMatch Triples: " + str(turn_2.player.number_of_triples))
         elif self.current_stats_display == "ranks":
-            self.ui.player_one_additional_stats.setText("Current League Rank: " + turn_1.player.player.current_league_rank)
-            self.ui.player_two_additional_stats.setText("Current League Rank: " + turn_2.player.player.current_league_rank)
+            self.ui.player_one_additional_stats.setText("Current League Rank: " + str(turn_1.player.player.current_league_rank))
+            self.ui.player_two_additional_stats.setText("Current League Rank: " + str(turn_2.player.player.current_league_rank))
         elif self.current_stats_display == "last_win":
             if turn_1.player.player.last_win is None:
                 self.ui.player_one_additional_stats.setText("Last Win: Never")
             else:
-                self.ui.player_one_additional_stats.setText("Last Win: " + turn_1.player.player.last_win)
+                self.ui.player_one_additional_stats.setText("Last Win: " + str(turn_1.player.player.last_win))
             if turn_2.player.player.last_win is None:
                 self.ui.player_two_additional_stats.setText("Last Win: Never")
             else:
-                self.ui.player_two_additional_stats.setText("Last Win: " + turn_2.player.player.last_win)
+                self.ui.player_two_additional_stats.setText("Last Win: " + str(turn_2.player.player.last_win))
         elif self.current_stats_display == "lifetime_averages":
             self.ui.player_one_additional_stats.setText("Lifetime Average: " + str(round(turn_1.player.player.average_lifetime_score, 2)) + \
                 "\nSeason Average: " + str(round(turn_1.player.player.average_season_score, 2)))
             self.ui.player_two_additional_stats.setText("Lifetime Average: " + str(round(turn_2.player.player.average_lifetime_score, 2)) + \
                 "\nSeason Average: " + str(round(turn_2.player.player.average_season_score, 2)))
         elif self.current_stats_display == "lifetime_scores":
-            self.ui.player_one_additional_stats.setText("Lifetime Lowest Turn: " + turn_1.player.player.lowest_turn_score + \
-                "\nLifetime 180s: " + turn_1.player.player.number_of_180s)
-            self.ui.player_two_additional_stats.setText("Lifetime Lowest Turn: " + turn_2.player.player.lowest_turn_score + \
-                "\nLifetime 180s: " + turn_2.player.player.number_of_180s)
+            self.ui.player_one_additional_stats.setText("Lifetime Lowest Turn: " + str(turn_1.player.player.lowest_turn_score) + \
+                "\nLifetime 180s: " + str(turn_1.player.player.number_of_180s))
+            self.ui.player_two_additional_stats.setText("Lifetime Lowest Turn: " + str(turn_2.player.player.lowest_turn_score) + \
+                "\nLifetime 180s: " + str(turn_2.player.player.number_of_180s))
         else:
             self.ui.player_one_additional_stats.hide()
             self.ui.player_two_additional_stats.hide()
