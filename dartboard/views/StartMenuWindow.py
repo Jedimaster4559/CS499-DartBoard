@@ -12,6 +12,7 @@ class StartMenuWindow(QMainWindow):
         self.ui.setupUi(self)
         self.ui.new_match_button.clicked.connect(self.new_match)
         self.ui.manage_players_button.clicked.connect(self.manage_players)
+        self.ui.generate_players_button.clicked.connect(self.generate_players)
 
     def new_match(self):
         self.hide()
@@ -20,3 +21,7 @@ class StartMenuWindow(QMainWindow):
     def manage_players(self):
         self.hide()
         self.hub.navigate_to_view("manage_players")
+
+    def generate_players(self):
+        print("generate_players called")
+        # code goes here
